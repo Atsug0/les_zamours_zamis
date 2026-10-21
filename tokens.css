@@ -1,0 +1,159 @@
+/* ============================================================
+   Les Zamours Zamis — jetons de design
+   DA : pop art, d'après le décor du jeu télé (inspiré de Roy
+   Lichtenstein : canapés rouge / jaune / bleu, cœur au sol,
+   mur de couples en couleurs vives).
+   Référence visuelle complète : DA.html
+   ============================================================ */
+
+:root {
+  /* --- Encre et papier : l'imprimerie comics, pas l'écran --- */
+  --papier:        #ffffff;   /* le blanc du papier, ground par défaut */
+  --papier-2:      #f7f1f4;   /* surface secondaire, biais rouge */
+  --encre:         #15101b;   /* le noir des contours, violacé, jamais #000 */
+  --texte:         #15101b;
+  --texte-2:       #5a4b55;   /* gris à biais rouge, choisi et non hérité */
+  --bord:          #15101b;
+  --ombre:         #15101b;   /* ombre portée DURE, 0 flou */
+
+  /* --- Les trois canapés du plateau : couleurs de binôme canoniques --- */
+  --rouge:         #e8112d;
+  --jaune:         #ffd400;
+  --bleu:          #0b5fd9;
+  /* --- Extensions, pour aller jusqu'à six binômes --- */
+  --vert:          #19a974;
+  --orange:        #ff6a13;
+  --violet:        #7b2ff2;
+
+  /* --- Les deux modes --- */
+  --zamours:       #ff3d8b;   /* le cœur */
+  --zamis:         #ffd400;   /* l'éclair */
+
+  /* --- Sémantique : jamais seule, toujours doublée d'une forme --- */
+  --valide:        #0e8c47;
+  --refuse:        #cf0a2c;
+  --attente:       #5a4b55;
+  --sur-semantique:#ffffff;   /* texte posé sur --valide / --refuse */
+
+  /* --- Trames Ben-Day --- */
+  --trame:         rgba(232, 17, 45, .22);
+  --trame-pas:     7px;       /* pas de la trame */
+  --trame-point:   1.6px;     /* rayon du point */
+
+  /* --- Traits et ombres --- */
+  --filet:         3px;       /* filet standard d'un panneau */
+  --filet-fort:    5px;       /* filet d'un panneau clé */
+  --decalage:      6px;       /* décalage de l'ombre dure */
+  --rayon:         0px;       /* le pop art n'arrondit pas */
+
+  /* --- Typographie --- */
+  --display: "Bangers", "Lilita One", Impact, "Haettenschweiler",
+             "Arial Narrow Bold", "Arial Black", sans-serif;
+  --corps:   "Archivo", "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --donnees: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --t-xs: .75rem; --t-s: .875rem; --t-m: 1rem; --t-l: 1.25rem;
+  --t-xl: 1.625rem; --t-2xl: 2.125rem; --t-3xl: 3rem; --t-4xl: 4.5rem;
+
+  /* --- Rythme --- */
+  --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 20px;
+  --e-5: 32px; --e-6: 52px; --e-7: 84px;
+
+  /* --- Mouvement : coupe franche, pas de fondu --- */
+  --snap: 90ms steps(3, end);
+  --pop:  160ms cubic-bezier(.2, 1.6, .4, 1);
+}
+
+/* Le studio la nuit. Les primaires montent en luminosité pour tenir
+   sur fond sombre ; les filets passent en clair, l'ombre reste visible. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papier:   #100c14;
+    --papier-2: #1a1420;
+    --encre:    #f7f0f5;
+    --texte:    #f7f0f5;
+    --texte-2:  #b3a3ae;
+    --bord:     #f7f0f5;
+    --ombre:    #40304a;
+    --rouge:    #ff2d4a;
+    --jaune:    #ffde3d;
+    --bleu:     #3b82ff;
+    --vert:     #2bc47e;
+    --orange:   #ff8a3d;
+    --violet:   #9d5cff;
+    --zamours:  #ff5c9e;
+    --zamis:    #ffde3d;
+    --valide:   #2bc47e;
+    --refuse:   #ff5068;
+    --attente:  #b3a3ae;
+    --sur-semantique: #15101b;  /* les verts/rouges clairs du sombre exigent du texte encre */
+    --trame:    rgba(255, 45, 74, .30);
+  }
+}
+
+:root[data-theme="dark"] {
+  --papier:   #100c14;
+  --papier-2: #1a1420;
+  --encre:    #f7f0f5;
+  --texte:    #f7f0f5;
+  --texte-2:  #b3a3ae;
+  --bord:     #f7f0f5;
+  --ombre:    #40304a;
+  --rouge:    #ff2d4a;
+  --jaune:    #ffde3d;
+  --bleu:     #3b82ff;
+  --vert:     #2bc47e;
+  --orange:   #ff8a3d;
+  --violet:   #9d5cff;
+  --zamours:  #ff5c9e;
+  --zamis:    #ffde3d;
+  --valide:   #2bc47e;
+  --refuse:   #ff5068;
+  --attente:  #b3a3ae;
+  --sur-semantique: #15101b;
+  --trame:    rgba(255, 45, 74, .30);
+}
+
+/* ---- Primitives réutilisables ---- */
+
+.trame {
+  background-image:
+    radial-gradient(var(--trame) var(--trame-point), transparent calc(var(--trame-point) + .1px)),
+    radial-gradient(var(--trame) var(--trame-point), transparent calc(var(--trame-point) + .1px));
+  background-size: var(--trame-pas) var(--trame-pas);
+  background-position: 0 0, calc(var(--trame-pas) / 2) calc(var(--trame-pas) / 2);
+}
+
+.trame-zamis {                    /* trame du mode Zamis : rayures à 45°, même pas */
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--trame) 0 2px,
+    transparent 2px var(--trame-pas)
+  );
+}
+
+.panneau {
+  background: var(--papier);
+  border: var(--filet) solid var(--bord);
+  border-radius: var(--rayon);
+  box-shadow: var(--decalage) var(--decalage) 0 var(--ombre);
+}
+
+.narration {                      /* boîte de narration : jaune, filet noir */
+  background: var(--jaune);
+  color: #15101b;                 /* toujours noir sur jaune, jamais blanc */
+  border: var(--filet) solid #15101b;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.lettrage {                       /* lettrage de couverture */
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .01em;
+  line-height: .92;
+  -webkit-text-stroke: 2px var(--encre);
+  paint-order: stroke fill;
+}

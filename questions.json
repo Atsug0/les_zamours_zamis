@@ -1,0 +1,2627 @@
+{
+  "version": "2026.1",
+  "source": "Refonte de Questionnaire_Les_Zamours_340_Questions.pdf (idees-de-jeux.fr), remis au goût 2026 et dégenré.",
+  "convention": {
+    "{P}": "prénom du partenaire de binôme, injecté par l'app",
+    "prepa": "posé au joueur sur lui-même, en tutoiement, sans aucun genre",
+    "jeu": "affiché sur l'écran TV, à la 3e personne, {P} remplacé par le prénom",
+    "modes": "zamours = binôme amoureux, zamis = binôme amical. Une question présente dans les deux doit être neutre sur la nature du lien.",
+    "diff": "1 = concordance facile, 2 = moyenne, 3 = piège",
+    "tol": "tolérance d'arbitrage pour les réponses numériques",
+    "sensible": "n'est tirée que si le binôme a activé les catégories sensibles au lobby",
+    "occasion": "absente = question du fonds commun. Sinon, bloc optionnel activé par le binôme au lobby (ex. mariage). Un bloc d'occasion n'est jamais tiré par défaut.",
+    "jumeau": "id de la paire équivalente dans l'autre mode. Même sujet, formulation adaptée au lien. Permet de jouer le même emplacement en zamours et en zamis.",
+    "verifiable": "la réponse est consultable en direct sur le téléphone du joueur (temps d'écran, emoji le plus utilisé, titre le plus écouté…). L'app invite à vérifier à la révélation : la preuve à l'écran vaut mieux qu'un vote."
+  },
+  "paires_ouvertes": [
+    {
+      "id": "quo-01",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "tol": "±1 h",
+      "a": {
+        "prepa": "À quelle heure tu te lèves le samedi ?",
+        "jeu": "À quelle heure {P} se lève le samedi ?"
+      },
+      "b": {
+        "prepa": "À quelle heure tu te couches en semaine ?",
+        "jeu": "À quelle heure {P} se couche en semaine ?"
+      }
+    },
+    {
+      "id": "quo-02",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton tout premier geste au réveil ?",
+        "jeu": "Quel est le tout premier geste de {P} au réveil ?"
+      },
+      "b": {
+        "prepa": "Quel est ton dernier geste avant de dormir ?",
+        "jeu": "Quel est le dernier geste de {P} avant de dormir ?"
+      }
+    },
+    {
+      "id": "quo-03",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "tol": "±5 min",
+      "a": {
+        "prepa": "Combien de temps tu passes sous la douche ?",
+        "jeu": "Combien de temps {P} passe sous la douche ?"
+      },
+      "b": {
+        "prepa": "Combien de temps il te faut pour être prêt le matin ?",
+        "jeu": "Combien de temps il faut à {P} pour être prêt le matin ?"
+      }
+    },
+    {
+      "id": "quo-04",
+      "theme": "quotidien",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "De quel côté du lit tu dors ?",
+        "jeu": "De quel côté du lit dort {P} ?"
+      },
+      "b": {
+        "prepa": "Combien d'oreillers il te faut pour dormir ?",
+        "jeu": "Combien d'oreillers il faut à {P} pour dormir ?"
+      }
+    },
+    {
+      "id": "quo-05",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle tâche ménagère tu détestes le plus ?",
+        "jeu": "Quelle tâche ménagère {P} déteste le plus ?"
+      },
+      "b": {
+        "prepa": "Quelle tâche ménagère tu fais sans râler ?",
+        "jeu": "Quelle tâche ménagère {P} fait sans râler ?"
+      }
+    },
+    {
+      "id": "quo-06",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce qu'il y a toujours dans ton frigo ?",
+        "jeu": "Qu'est-ce qu'il y a toujours dans le frigo de {P} ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce qu'on ne trouvera jamais dans tes placards ?",
+        "jeu": "Qu'est-ce qu'on ne trouvera jamais dans les placards de {P} ?"
+      }
+    },
+    {
+      "id": "quo-07",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton coin préféré chez toi ?",
+        "jeu": "Quel est le coin préféré de {P} chez lui ?"
+      },
+      "b": {
+        "prepa": "Où s'entassent tes affaires qui n'ont pas de place ?",
+        "jeu": "Où s'entassent les affaires de {P} qui n'ont pas de place ?"
+      }
+    },
+    {
+      "id": "quo-08",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Où tu poses tes clés en rentrant ?",
+        "jeu": "Où {P} pose ses clés en rentrant ?"
+      },
+      "b": {
+        "prepa": "Où est branché ton chargeur de téléphone ?",
+        "jeu": "Où est branché le chargeur de téléphone de {P} ?"
+      }
+    },
+    {
+      "id": "quo-09",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton petit déjeuner type ?",
+        "jeu": "Quel est le petit déjeuner type de {P} ?"
+      },
+      "b": {
+        "prepa": "Quelle est ta première boisson de la journée ?",
+        "jeu": "Quelle est la première boisson de la journée de {P} ?"
+      }
+    },
+    {
+      "id": "quo-10",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "tol": "±1",
+      "a": {
+        "prepa": "Combien de fois ton réveil sonne avant que tu te lèves ?",
+        "jeu": "Combien de fois le réveil de {P} sonne avant qu'il se lève ?"
+      },
+      "b": {
+        "prepa": "Combien de cafés ou de thés tu bois par jour ?",
+        "jeu": "Combien de cafés ou de thés {P} boit par jour ?"
+      }
+    },
+    {
+      "id": "ecr-01",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle appli tu utilises le plus ?",
+        "jeu": "Quelle appli {P} utilise le plus ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Quelle appli tu as désinstallée puis réinstallée ?",
+        "jeu": "Quelle appli {P} a désinstallée puis réinstallée ?"
+      }
+    },
+    {
+      "id": "ecr-02",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "tol": "±20 %",
+      "a": {
+        "prepa": "Quel est ton temps d'écran quotidien ? (regarde, on vérifie)",
+        "jeu": "Quel est le temps d'écran quotidien de {P} ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Combien de notifications non lues sur ton téléphone là, maintenant ?",
+        "jeu": "Combien de notifications non lues sur le téléphone de {P} là, maintenant ?",
+        "verifiable": true
+      }
+    },
+    {
+      "id": "ecr-03",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle est la dernière série que tu as terminée ?",
+        "jeu": "Quelle est la dernière série que {P} a terminée ?"
+      },
+      "b": {
+        "prepa": "Quelle série tu as abandonnée en cours de route ?",
+        "jeu": "Quelle série {P} a abandonnée en cours de route ?"
+      }
+    },
+    {
+      "id": "ecr-04",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Sur quelle plateforme tu regardes le plus de choses ?",
+        "jeu": "Sur quelle plateforme {P} regarde le plus de choses ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Quel abonnement tu paies sans jamais l'utiliser ?",
+        "jeu": "Quel abonnement {P} paie sans jamais l'utiliser ?"
+      }
+    },
+    {
+      "id": "ecr-05",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel emoji tu envoies le plus ?",
+        "jeu": "Quel emoji {P} envoie le plus ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Tu réponds plutôt en vocal, en texte ou tu appelles ?",
+        "jeu": "{P} répond plutôt en vocal, en texte ou en appelant ?"
+      }
+    },
+    {
+      "id": "ecr-06",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu demandes le plus souvent à une IA ?",
+        "jeu": "Qu'est-ce que {P} demande le plus souvent à une IA ?"
+      },
+      "b": {
+        "prepa": "Quel onglet est ouvert sur ton téléphone depuis des semaines ?",
+        "jeu": "Quel onglet est ouvert sur le téléphone de {P} depuis des semaines ?"
+      }
+    },
+    {
+      "id": "ecr-07",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton titre le plus écouté de l'année ?",
+        "jeu": "Quel est le titre le plus écouté de l'année de {P} ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Quel podcast ou quelle chaîne tu suis vraiment ?",
+        "jeu": "Quel podcast ou quelle chaîne {P} suit vraiment ?"
+      }
+    },
+    {
+      "id": "ecr-08",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton dernier achat en seconde main ?",
+        "jeu": "Quel est le dernier achat en seconde main de {P} ?"
+      },
+      "b": {
+        "prepa": "Quel est le dernier truc que tu t'es fait livrer ?",
+        "jeu": "Quel est le dernier truc que {P} s'est fait livrer ?"
+      }
+    },
+    {
+      "id": "ecr-09",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Où est ton téléphone quand tu dors ?",
+        "jeu": "Où est le téléphone de {P} quand il dort ?"
+      },
+      "b": {
+        "prepa": "Ton téléphone est en sonnerie, en vibreur ou en silencieux ?",
+        "jeu": "Le téléphone de {P} est en sonnerie, en vibreur ou en silencieux ?"
+      }
+    },
+    {
+      "id": "ecr-10",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ton fond d'écran ?",
+        "jeu": "C'est quoi le fond d'écran de {P} ?",
+        "verifiable": true
+      },
+      "b": {
+        "prepa": "Combien de photos tu as dans ton téléphone, à peu près ?",
+        "jeu": "Combien de photos {P} a dans son téléphone ?",
+        "verifiable": true
+      }
+    },
+    {
+      "id": "gou-01",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel est ton plat préféré ?",
+        "jeu": "Quel est le plat préféré de {P} ?"
+      },
+      "b": {
+        "prepa": "Quel est ton dessert préféré ?",
+        "jeu": "Quel est le dessert préféré de {P} ?"
+      }
+    },
+    {
+      "id": "gou-02",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel aliment tu ne mangeras jamais ?",
+        "jeu": "Quel aliment {P} ne mangera jamais ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu manges en cachette ?",
+        "jeu": "Qu'est-ce que {P} mange en cachette ?"
+      }
+    },
+    {
+      "id": "gou-03",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu commandes toujours au restaurant ?",
+        "jeu": "Qu'est-ce que {P} commande toujours au restaurant ?"
+      },
+      "b": {
+        "prepa": "Quelle cuisine du monde tu préfères ?",
+        "jeu": "Quelle cuisine du monde {P} préfère ?"
+      }
+    },
+    {
+      "id": "gou-04",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel film tu as revu le plus de fois ?",
+        "jeu": "Quel film {P} a revu le plus de fois ?"
+      },
+      "b": {
+        "prepa": "Quel classique tu n'as jamais vu ?",
+        "jeu": "Quel classique {P} n'a jamais vu ?"
+      }
+    },
+    {
+      "id": "gou-05",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel style de musique tu écoutes le plus ?",
+        "jeu": "Quel style de musique {P} écoute le plus ?"
+      },
+      "b": {
+        "prepa": "Quel est le dernier concert ou festival que tu as fait ?",
+        "jeu": "Quel est le dernier concert ou festival que {P} a fait ?"
+      }
+    },
+    {
+      "id": "gou-06",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle est ta saison préférée ?",
+        "jeu": "Quelle est la saison préférée de {P} ?"
+      },
+      "b": {
+        "prepa": "Quel est ton jour préféré de la semaine ?",
+        "jeu": "Quel est le jour préféré de la semaine de {P} ?"
+      }
+    },
+    {
+      "id": "gou-07",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle destination tu rêves de faire ?",
+        "jeu": "Quelle destination {P} rêve de faire ?"
+      },
+      "b": {
+        "prepa": "Dans quel pays tu ne mettrais jamais les pieds ?",
+        "jeu": "Dans quel pays {P} ne mettrait jamais les pieds ?"
+      }
+    },
+    {
+      "id": "gou-08",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel animal tu préfères ?",
+        "jeu": "Quel animal {P} préfère ?"
+      },
+      "b": {
+        "prepa": "Quel animal te fait vraiment peur ?",
+        "jeu": "Quel animal fait vraiment peur à {P} ?"
+      }
+    },
+    {
+      "id": "gou-09",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel vêtement tu portes le plus souvent ?",
+        "jeu": "Quel vêtement {P} porte le plus souvent ?"
+      },
+      "b": {
+        "prepa": "Quelle couleur domine dans ton armoire ?",
+        "jeu": "Quelle couleur domine dans l'armoire de {P} ?"
+      }
+    },
+    {
+      "id": "gou-10",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel jeu de société tu sors toujours ?",
+        "jeu": "Quel jeu de société {P} sort toujours ?"
+      },
+      "b": {
+        "prepa": "Quel jeu vidéo tu as le plus joué ?",
+        "jeu": "Quel jeu vidéo {P} a le plus joué ?"
+      }
+    },
+    {
+      "id": "gou-11",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel sport tu pratiques, ou tu fais semblant de pratiquer ?",
+        "jeu": "Quel sport {P} pratique, ou fait semblant de pratiquer ?"
+      },
+      "b": {
+        "prepa": "Quel sport tu regardes sans jamais le pratiquer ?",
+        "jeu": "Quel sport {P} regarde sans jamais le pratiquer ?"
+      }
+    },
+    {
+      "id": "sou-01",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Où est-ce que vous vous êtes rencontrés ?",
+        "jeu": "Où est-ce que {P} et son binôme se sont rencontrés ?"
+      },
+      "b": {
+        "prepa": "Qui a fait le premier pas ?",
+        "jeu": "Qui a fait le premier pas, selon {P} ?"
+      },
+      "jumeau": "ami-01"
+    },
+    {
+      "id": "sou-02",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle a été votre première sortie ensemble ?",
+        "jeu": "Quelle a été leur première sortie ensemble, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Quel a été le premier cadeau offert entre vous ?",
+        "jeu": "Quel a été le premier cadeau offert entre eux, selon {P} ?"
+      }
+    },
+    {
+      "id": "sou-03",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qui a dit « je t'aime » en premier ?",
+        "jeu": "Qui a dit « je t'aime » en premier, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Où étiez-vous à ce moment-là ?",
+        "jeu": "Où étaient-ils à ce moment-là, selon {P} ?"
+      }
+    },
+    {
+      "id": "sou-04",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi votre chanson, celle qui est à vous deux ?",
+        "jeu": "Quelle est leur chanson, celle qui est à eux deux ?"
+      },
+      "b": {
+        "prepa": "Quelle série vous regardez uniquement ensemble ?",
+        "jeu": "Quelle série ils regardent uniquement ensemble, selon {P} ?"
+      },
+      "jumeau": "ami-06"
+    },
+    {
+      "id": "sou-05",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel surnom tu lui donnes quand personne n'écoute ?",
+        "jeu": "Quel surnom {P} lui donne quand personne n'écoute ?"
+      },
+      "b": {
+        "prepa": "C'est quoi votre blague privée que personne ne comprend ?",
+        "jeu": "C'est quoi leur blague privée que personne ne comprend ?"
+      },
+      "jumeau": "ami-03"
+    },
+    {
+      "id": "sou-06",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel a été votre premier voyage ensemble ?",
+        "jeu": "Quel a été leur premier voyage ensemble, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Quel est votre meilleur souvenir de vacances ensemble ?",
+        "jeu": "Quel est leur meilleur souvenir de vacances ensemble, selon {P} ?"
+      },
+      "jumeau": "ami-05"
+    },
+    {
+      "id": "sou-07",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Sur quel sujet vous vous disputez toujours ?",
+        "jeu": "Sur quel sujet ils se disputent toujours, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce qui met fin à vos disputes ?",
+        "jeu": "Qu'est-ce qui met fin à leurs disputes, selon {P} ?"
+      },
+      "jumeau": "ami-07"
+    },
+    {
+      "id": "sou-08",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle est la première chose que vous avez achetée ensemble ?",
+        "jeu": "Quelle est la première chose qu'ils ont achetée ensemble ?"
+      },
+      "b": {
+        "prepa": "Quelle est la dernière chose que vous avez achetée ensemble ?",
+        "jeu": "Quelle est la dernière chose qu'ils ont achetée ensemble ?"
+      }
+    },
+    {
+      "id": "ami-01",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Où est-ce que vous vous êtes rencontrés ?",
+        "jeu": "Où est-ce que {P} et son binôme se sont rencontrés ?"
+      },
+      "b": {
+        "prepa": "Qui a écrit le premier message, en général ?",
+        "jeu": "Qui écrit le premier message, selon {P} ?"
+      },
+      "jumeau": "sou-01"
+    },
+    {
+      "id": "ami-02",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi votre pire idée commune ?",
+        "jeu": "C'est quoi leur pire idée commune, selon {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi votre meilleur souvenir de soirée ?",
+        "jeu": "C'est quoi leur meilleur souvenir de soirée, selon {P} ?"
+      }
+    },
+    {
+      "id": "ami-03",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel surnom tu lui donnes ?",
+        "jeu": "Quel surnom {P} lui donne ?"
+      },
+      "b": {
+        "prepa": "Quelle expression tu lui as volée ?",
+        "jeu": "Quelle expression {P} lui a volée ?"
+      },
+      "jumeau": "sou-05"
+    },
+    {
+      "id": "ami-04",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "tol": "±1 h",
+      "a": {
+        "prepa": "En combien de temps tu réponds à ses messages ?",
+        "jeu": "En combien de temps {P} répond à ses messages ?"
+      },
+      "b": {
+        "prepa": "Lequel de vous deux annule le plus souvent ?",
+        "jeu": "Lequel des deux annule le plus souvent, selon {P} ?"
+      }
+    },
+    {
+      "id": "ami-05",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi votre rituel à tous les deux ?",
+        "jeu": "C'est quoi leur rituel à tous les deux, selon {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi le dernier endroit où vous êtes allés ensemble ?",
+        "jeu": "C'est quoi le dernier endroit où ils sont allés ensemble ?"
+      },
+      "jumeau": "sou-06"
+    },
+    {
+      "id": "ami-06",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que vous commandez systématiquement tous les deux ?",
+        "jeu": "Qu'est-ce qu'ils commandent systématiquement, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Quel film ou série vous revoyez à chaque fois ?",
+        "jeu": "Quel film ou série ils revoient à chaque fois, selon {P} ?"
+      },
+      "jumeau": "sou-04"
+    },
+    {
+      "id": "ami-07",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Sur quoi tu ne seras jamais d'accord avec lui ?",
+        "jeu": "Sur quoi {P} ne sera jamais d'accord avec son binôme ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu lui empruntes et que tu ne rends jamais ?",
+        "jeu": "Qu'est-ce que {P} emprunte et ne rend jamais ?"
+      },
+      "jumeau": "sou-07"
+    },
+    {
+      "id": "per-01",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle est ta plus grande qualité ?",
+        "jeu": "Quelle est la plus grande qualité de {P}, selon lui-même ?"
+      },
+      "b": {
+        "prepa": "Quel est ton plus gros défaut ?",
+        "jeu": "Quel est le plus gros défaut de {P}, selon lui-même ?"
+      }
+    },
+    {
+      "id": "per-02",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce qui te met vraiment en colère ?",
+        "jeu": "Qu'est-ce qui met vraiment {P} en colère ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce qui te fait rire aux larmes ?",
+        "jeu": "Qu'est-ce qui fait rire {P} aux larmes ?"
+      }
+    },
+    {
+      "id": "per-03",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ta plus grande peur ?",
+        "jeu": "C'est quoi la plus grande peur de {P} ?"
+      },
+      "b": {
+        "prepa": "De quoi tu es le plus fier ?",
+        "jeu": "De quoi {P} est le plus fier ?"
+      }
+    },
+    {
+      "id": "per-04",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu fais quand tu es stressé ?",
+        "jeu": "Qu'est-ce que {P} fait quand il est stressé ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu fais pour vraiment décompresser ?",
+        "jeu": "Qu'est-ce que {P} fait pour vraiment décompresser ?"
+      }
+    },
+    {
+      "id": "per-05",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Si tu étais un animal, lequel ?",
+        "jeu": "Si {P} était un animal, lequel ?"
+      },
+      "b": {
+        "prepa": "Si tu étais un plat, lequel ?",
+        "jeu": "Si {P} était un plat, lequel ?"
+      }
+    },
+    {
+      "id": "per-06",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu remets toujours au lendemain ?",
+        "jeu": "Qu'est-ce que {P} remet toujours au lendemain ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu fais toujours en avance ?",
+        "jeu": "Qu'est-ce que {P} fait toujours en avance ?"
+      }
+    },
+    {
+      "id": "per-07",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ton petit mensonge habituel ?",
+        "jeu": "C'est quoi le petit mensonge habituel de {P} ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu dis quand tu t'excuses ?",
+        "jeu": "Qu'est-ce que {P} dit quand il s'excuse ?"
+      }
+    },
+    {
+      "id": "per-08",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu aimerais changer chez toi ?",
+        "jeu": "Qu'est-ce que {P} aimerait changer chez lui ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce qu'on te reproche le plus souvent ?",
+        "jeu": "Qu'est-ce qu'on reproche le plus souvent à {P} ?"
+      }
+    },
+    {
+      "id": "dro-01",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ta manie la plus bizarre ?",
+        "jeu": "C'est quoi la manie la plus bizarre de {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ton tic de langage ?",
+        "jeu": "C'est quoi le tic de langage de {P} ?"
+      }
+    },
+    {
+      "id": "dro-02",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ton talent le plus inutile ?",
+        "jeu": "C'est quoi le talent le plus inutile de {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ton pire achat inutile ?",
+        "jeu": "C'est quoi le pire achat inutile de {P} ?"
+      }
+    },
+    {
+      "id": "dro-03",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ton surnom d'enfance le plus gênant ?",
+        "jeu": "C'est quoi le surnom d'enfance le plus gênant de {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ta pire coiffure du passé ?",
+        "jeu": "C'est quoi la pire coiffure du passé de {P} ?"
+      }
+    },
+    {
+      "id": "dro-04",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Qu'est-ce que tu chantes à fond dans la voiture ?",
+        "jeu": "Qu'est-ce que {P} chante à fond dans la voiture ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu fais quand tu es seul chez toi ?",
+        "jeu": "Qu'est-ce que {P} fait quand il est seul chez lui ?"
+      }
+    },
+    {
+      "id": "dro-05",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi le truc le plus improbable dans ton sac ou tes poches ?",
+        "jeu": "C'est quoi le truc le plus improbable dans le sac de {P} ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu gardes « au cas où » depuis des années ?",
+        "jeu": "Qu'est-ce que {P} garde « au cas où » depuis des années ?"
+      }
+    },
+    {
+      "id": "dro-06",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel super-pouvoir tu voudrais ?",
+        "jeu": "Quel super-pouvoir {P} voudrait ?"
+      },
+      "b": {
+        "prepa": "Si tu gagnais au loto, ta première dépense ?",
+        "jeu": "Si {P} gagnait au loto, sa première dépense ?"
+      }
+    },
+    {
+      "id": "dro-07",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Avec quelle célébrité tu dînerais ?",
+        "jeu": "Avec quelle célébrité {P} dînerait ?"
+      },
+      "b": {
+        "prepa": "À quelle célébrité on te compare ?",
+        "jeu": "À quelle célébrité on compare {P} ?"
+      }
+    },
+    {
+      "id": "dro-08",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi le truc le plus gênant qui t'est arrivé en public ?",
+        "jeu": "C'est quoi le truc le plus gênant qui est arrivé à {P} en public ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ta chanson de karaoké ?",
+        "jeu": "C'est quoi la chanson de karaoké de {P} ?"
+      }
+    },
+    {
+      "id": "enf-01",
+      "theme": "enfance",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "C'était quoi ton dessin animé préféré ?",
+        "jeu": "C'était quoi le dessin animé préféré de {P} ?"
+      },
+      "b": {
+        "prepa": "C'était quoi ton jouet préféré ?",
+        "jeu": "C'était quoi le jouet préféré de {P} ?"
+      }
+    },
+    {
+      "id": "enf-02",
+      "theme": "enfance",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Dans quelle ville tu as grandi ?",
+        "jeu": "Dans quelle ville {P} a grandi ?"
+      },
+      "b": {
+        "prepa": "Combien de fois tu as déménagé dans ta vie ?",
+        "jeu": "Combien de fois {P} a déménagé dans sa vie ?"
+      }
+    },
+    {
+      "id": "enf-03",
+      "theme": "enfance",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi le plat de ton enfance ?",
+        "jeu": "C'est quoi le plat de l'enfance de {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi le cadeau qui t'a le plus marqué enfant ?",
+        "jeu": "C'est quoi le cadeau qui a le plus marqué {P} enfant ?"
+      }
+    },
+    {
+      "id": "enf-04",
+      "theme": "enfance",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": true,
+      "a": {
+        "prepa": "À qui tu ressembles le plus dans ta famille ?",
+        "jeu": "À qui {P} ressemble le plus dans sa famille ?"
+      },
+      "b": {
+        "prepa": "Avec qui tu es le plus proche dans ta famille ?",
+        "jeu": "Avec qui {P} est le plus proche dans sa famille ?"
+      }
+    },
+    {
+      "id": "bou-01",
+      "theme": "boulot",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "C'est quoi ton métier, en un mot ?",
+        "jeu": "C'est quoi le métier de {P}, en un mot ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce que tu aimes le moins dans ton travail ?",
+        "jeu": "Qu'est-ce que {P} aime le moins dans son travail ?"
+      }
+    },
+    {
+      "id": "bou-02",
+      "theme": "boulot",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "C'était quoi ta matière préférée à l'école ?",
+        "jeu": "C'était quoi la matière préférée de {P} à l'école ?"
+      },
+      "b": {
+        "prepa": "C'était quoi la matière que tu détestais ?",
+        "jeu": "C'était quoi la matière que {P} détestait ?"
+      }
+    },
+    {
+      "id": "bou-03",
+      "theme": "boulot",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "C'était quoi ton premier job ?",
+        "jeu": "C'était quoi le premier job de {P} ?"
+      },
+      "b": {
+        "prepa": "Quel métier tu voulais faire à 8 ans ?",
+        "jeu": "Quel métier {P} voulait faire à 8 ans ?"
+      }
+    },
+    {
+      "id": "bou-04",
+      "theme": "boulot",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "tol": "±15 min",
+      "a": {
+        "prepa": "À quelle heure tu commences à travailler ?",
+        "jeu": "À quelle heure {P} commence à travailler ?"
+      },
+      "b": {
+        "prepa": "Combien de temps de trajet pour aller travailler ?",
+        "jeu": "Combien de temps de trajet pour {P} ?"
+      }
+    },
+    {
+      "id": "ave-01",
+      "theme": "avenir",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Où tu te vois dans 5 ans ?",
+        "jeu": "Où {P} se voit dans 5 ans ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ton prochain gros achat ?",
+        "jeu": "C'est quoi le prochain gros achat de {P} ?"
+      }
+    },
+    {
+      "id": "ave-02",
+      "theme": "avenir",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle compétence tu veux apprendre ?",
+        "jeu": "Quelle compétence {P} veut apprendre ?"
+      },
+      "b": {
+        "prepa": "C'est quoi ton prochain voyage prévu ?",
+        "jeu": "C'est quoi le prochain voyage prévu de {P} ?"
+      }
+    },
+    {
+      "id": "ave-03",
+      "theme": "avenir",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "sensible": false,
+      "a": {
+        "prepa": "C'était quoi ta résolution de l'année ?",
+        "jeu": "C'était quoi la résolution de l'année de {P} ?"
+      },
+      "b": {
+        "prepa": "Quel projet tu repousses depuis trop longtemps ?",
+        "jeu": "Quel projet {P} repousse depuis trop longtemps ?"
+      }
+    },
+    {
+      "id": "arg-01",
+      "theme": "argent",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": true,
+      "a": {
+        "prepa": "C'est quoi ton plus gros poste de dépense, hors loyer ?",
+        "jeu": "C'est quoi le plus gros poste de dépense de {P} ?"
+      },
+      "b": {
+        "prepa": "C'est quoi la dépense que tu regrettes le plus ?",
+        "jeu": "C'est quoi la dépense que {P} regrette le plus ?"
+      }
+    },
+    {
+      "id": "int-01",
+      "theme": "intime",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "sensible": true,
+      "a": {
+        "prepa": "Où a eu lieu votre premier baiser ?",
+        "jeu": "Où a eu lieu leur premier baiser, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Qu'est-ce qui te plaît le plus physiquement chez lui ?",
+        "jeu": "Qu'est-ce qui plaît le plus physiquement à {P} chez son binôme ?"
+      }
+    },
+    {
+      "id": "int-02",
+      "theme": "intime",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 3,
+      "sensible": true,
+      "a": {
+        "prepa": "Quel geste de sa part te fait fondre à chaque fois ?",
+        "jeu": "Quel geste fait fondre {P} à chaque fois ?"
+      },
+      "b": {
+        "prepa": "C'est quoi le compliment qui te touche le plus ?",
+        "jeu": "C'est quoi le compliment qui touche le plus {P} ?"
+      }
+    },
+    {
+      "id": "mar-01",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle chanson pour votre première danse ?",
+        "jeu": "Quelle chanson pour leur première danse, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Où partez-vous en voyage de noces ?",
+        "jeu": "Où partent-ils en voyage de noces, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-02",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "tol": "±20 %",
+      "a": {
+        "prepa": "Combien d'invités au total ?",
+        "jeu": "Combien d'invités au total, selon {P} ?"
+      },
+      "b": {
+        "prepa": "La cérémonie : en intérieur ou en extérieur ?",
+        "jeu": "La cérémonie, selon {P} : en intérieur ou en extérieur ?"
+      }
+    },
+    {
+      "id": "mar-03",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 1,
+      "sensible": false,
+      "a": {
+        "prepa": "Quelle saison pour le jour J ?",
+        "jeu": "Quelle saison pour le jour J, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Quelle couleur principale pour la déco ?",
+        "jeu": "Quelle couleur principale pour la déco, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-04",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Lequel de vous deux pleurera le premier ?",
+        "jeu": "Lequel des deux pleurera le premier, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Qui fera le discours le plus long ?",
+        "jeu": "Qui fera le discours le plus long, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-05",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 3,
+      "sensible": true,
+      "a": {
+        "prepa": "Quel est votre plus gros poste de budget ?",
+        "jeu": "Quel est leur plus gros poste de budget, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Sur quoi êtes-vous prêts à rogner ?",
+        "jeu": "Sur quoi sont-ils prêts à rogner, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-06",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Pour la soirée : DJ ou groupe live ?",
+        "jeu": "Pour la soirée, selon {P} : DJ ou groupe live ?"
+      },
+      "b": {
+        "prepa": "Photobooth ou photographe qui suit tout ?",
+        "jeu": "Photobooth ou photographe, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-07",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Quel plat au menu, obligatoirement ?",
+        "jeu": "Quel plat au menu obligatoirement, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Pièce montée ou gâteau unique ?",
+        "jeu": "Pièce montée ou gâteau unique, selon {P} ?"
+      }
+    },
+    {
+      "id": "mar-08",
+      "theme": "mariage",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "sensible": false,
+      "a": {
+        "prepa": "Lequel de vous deux a demandé l'autre ?",
+        "jeu": "Lequel des deux a demandé l'autre, selon {P} ?"
+      },
+      "b": {
+        "prepa": "Où est-ce que ça s'est passé ?",
+        "jeu": "Où est-ce que ça s'est passé, selon {P} ?"
+      }
+    }
+  ],
+  "paires_qcm": [
+    {
+      "id": "qcm-01",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "a": {
+        "prepa": "Tu te douches plutôt…",
+        "jeu": "{P} se douche plutôt…",
+        "props": [
+          "le matin",
+          "le soir",
+          "les deux"
+        ]
+      },
+      "b": {
+        "prepa": "Tu es plutôt…",
+        "jeu": "{P} est plutôt…",
+        "props": [
+          "du matin",
+          "du soir",
+          "ni l'un ni l'autre"
+        ]
+      }
+    },
+    {
+      "id": "qcm-02",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "a": {
+        "prepa": "Le matin, c'est plutôt…",
+        "jeu": "Le matin, pour {P}, c'est plutôt…",
+        "props": [
+          "café",
+          "thé",
+          "ni l'un ni l'autre"
+        ]
+      },
+      "b": {
+        "prepa": "Tu es plutôt…",
+        "jeu": "{P} est plutôt…",
+        "props": [
+          "sucré",
+          "salé",
+          "les deux au même repas"
+        ]
+      }
+    },
+    {
+      "id": "qcm-03",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "a": {
+        "prepa": "En vacances, tu choisis…",
+        "jeu": "En vacances, {P} choisit…",
+        "props": [
+          "la mer",
+          "la montagne",
+          "la ville"
+        ]
+      },
+      "b": {
+        "prepa": "Tu préfères voyager…",
+        "jeu": "{P} préfère voyager…",
+        "props": [
+          "en avion",
+          "en train",
+          "en voiture"
+        ]
+      }
+    },
+    {
+      "id": "qcm-04",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "a": {
+        "prepa": "Tu es plutôt…",
+        "jeu": "{P} est plutôt…",
+        "props": [
+          "chien",
+          "chat",
+          "aucun des deux"
+        ]
+      },
+      "b": {
+        "prepa": "Un dimanche parfait, c'est…",
+        "jeu": "Un dimanche parfait pour {P}, c'est…",
+        "props": [
+          "dehors à marcher",
+          "sur le canapé",
+          "à voir du monde"
+        ]
+      }
+    },
+    {
+      "id": "qcm-05",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Niveau rangement, tu es plutôt…",
+        "jeu": "Niveau rangement, {P} est plutôt…",
+        "props": [
+          "organisé",
+          "bordélique",
+          "bordélique mais il sait où est tout"
+        ]
+      },
+      "b": {
+        "prepa": "Niveau organisation, tu es plutôt…",
+        "jeu": "Niveau organisation, {P} est plutôt…",
+        "props": [
+          "spontané",
+          "planificateur",
+          "planificateur qui improvise"
+        ]
+      }
+    },
+    {
+      "id": "qcm-06",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Tu réponds plutôt…",
+        "jeu": "{P} répond plutôt…",
+        "props": [
+          "en vocal",
+          "en texte",
+          "il appelle"
+        ]
+      },
+      "b": {
+        "prepa": "Tes notifications sont…",
+        "jeu": "Les notifications de {P} sont…",
+        "props": [
+          "toutes activées",
+          "toutes coupées",
+          "filtrées"
+        ]
+      }
+    },
+    {
+      "id": "qcm-07",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Une série, tu la regardes…",
+        "jeu": "Une série, {P} la regarde…",
+        "props": [
+          "d'une traite",
+          "un épisode par soir",
+          "en fond en faisant autre chose"
+        ]
+      },
+      "b": {
+        "prepa": "Un film, tu le regardes…",
+        "jeu": "Un film, {P} le regarde…",
+        "props": [
+          "au cinéma",
+          "à la maison",
+          "jamais en entier"
+        ]
+      }
+    },
+    {
+      "id": "qcm-08",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Ton lit est fait…",
+        "jeu": "Le lit de {P} est fait…",
+        "props": [
+          "tous les matins",
+          "jamais",
+          "seulement quand il y a de la visite"
+        ]
+      },
+      "b": {
+        "prepa": "Ta vaisselle est faite…",
+        "jeu": "La vaisselle de {P} est faite…",
+        "props": [
+          "tout de suite",
+          "le lendemain",
+          "quand il n'y a plus d'assiettes"
+        ]
+      }
+    },
+    {
+      "id": "qcm-09",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Ta valise est faite…",
+        "jeu": "La valise de {P} est faite…",
+        "props": [
+          "une semaine avant",
+          "la veille",
+          "le jour même"
+        ]
+      },
+      "b": {
+        "prepa": "Tes courses, c'est…",
+        "jeu": "Les courses de {P}, c'est…",
+        "props": [
+          "avec une liste",
+          "au feeling",
+          "en livraison"
+        ]
+      }
+    },
+    {
+      "id": "qcm-10",
+      "theme": "perso",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Quand ça ne va pas, tu…",
+        "jeu": "Quand ça ne va pas, {P}…",
+        "props": [
+          "en parle tout de suite",
+          "laisse retomber",
+          "fait comme si de rien n'était"
+        ]
+      },
+      "b": {
+        "prepa": "Après une brouille, faire le premier geste, pour toi c'est…",
+        "jeu": "Après une brouille, faire le premier geste, pour {P} c'est…",
+        "props": [
+          "facile",
+          "difficile",
+          "hors de question"
+        ]
+      }
+    },
+    {
+      "id": "qcm-11",
+      "theme": "drole",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "En soirée, tu es…",
+        "jeu": "En soirée, {P} est…",
+        "props": [
+          "le premier arrivé",
+          "le dernier parti",
+          "les deux"
+        ]
+      },
+      "b": {
+        "prepa": "Tu danses…",
+        "jeu": "{P} danse…",
+        "props": [
+          "tout de suite",
+          "après un verre",
+          "jamais"
+        ]
+      }
+    },
+    {
+      "id": "qcm-12",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Un appel d'un numéro inconnu, tu…",
+        "jeu": "Un appel d'un numéro inconnu, {P}…",
+        "props": [
+          "décroche",
+          "rappelle plus tard",
+          "ne décroche jamais"
+        ]
+      },
+      "b": {
+        "prepa": "Tu réponds à un message…",
+        "jeu": "{P} répond à un message…",
+        "props": [
+          "dans la minute",
+          "dans l'heure",
+          "dans la semaine"
+        ]
+      }
+    },
+    {
+      "id": "qcm-13",
+      "theme": "gouts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "a": {
+        "prepa": "L'ananas sur la pizza…",
+        "jeu": "L'ananas sur la pizza, pour {P}…",
+        "props": [
+          "oui",
+          "non",
+          "jamais essayé"
+        ]
+      },
+      "b": {
+        "prepa": "Avec les frites…",
+        "jeu": "Avec les frites, {P} prend…",
+        "props": [
+          "ketchup",
+          "mayo",
+          "rien"
+        ]
+      }
+    },
+    {
+      "id": "qcm-14",
+      "theme": "quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Le réveil, tu…",
+        "jeu": "Le réveil, {P}…",
+        "props": [
+          "le repousse plusieurs fois",
+          "se lève direct",
+          "se réveille avant"
+        ]
+      },
+      "b": {
+        "prepa": "Tu t'endors…",
+        "jeu": "{P} s'endort…",
+        "props": [
+          "avec son téléphone",
+          "avec un livre",
+          "dans le noir complet"
+        ]
+      }
+    },
+    {
+      "id": "qcm-15",
+      "theme": "amitie",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "La soirée idéale, c'est…",
+        "jeu": "La soirée idéale de {P}, c'est…",
+        "props": [
+          "chez quelqu'un",
+          "au bar",
+          "dehors, peu importe où"
+        ]
+      },
+      "b": {
+        "prepa": "Un plan annulé à la dernière minute, tu es…",
+        "jeu": "Un plan annulé à la dernière minute, {P} est…",
+        "props": [
+          "soulagé",
+          "déçu",
+          "vexé"
+        ]
+      }
+    },
+    {
+      "id": "qcm-16",
+      "theme": "souvenirs",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Le cadeau, tu l'achètes…",
+        "jeu": "Le cadeau, {P} l'achète…",
+        "props": [
+          "des semaines avant",
+          "la veille",
+          "le jour même"
+        ]
+      },
+      "b": {
+        "prepa": "Les dates importantes, tu…",
+        "jeu": "Les dates importantes, {P}…",
+        "props": [
+          "les retient toutes",
+          "en oublie une sur deux",
+          "a mis un rappel"
+        ]
+      }
+    },
+    {
+      "id": "qcm-17",
+      "theme": "ecrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Les photos, tu les…",
+        "jeu": "Les photos, {P} les…",
+        "props": [
+          "trie et archive",
+          "laisse s'entasser",
+          "supprime régulièrement"
+        ]
+      },
+      "b": {
+        "prepa": "En vacances, tu…",
+        "jeu": "En vacances, {P}…",
+        "props": [
+          "prend tout en photo",
+          "ne prend presque rien",
+          "ne poste que des stories"
+        ]
+      }
+    },
+    {
+      "id": "qcm-18",
+      "theme": "boulot",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "a": {
+        "prepa": "Tu travailles plutôt…",
+        "jeu": "{P} travaille plutôt…",
+        "props": [
+          "au bureau",
+          "à distance",
+          "un peu des deux"
+        ]
+      },
+      "b": {
+        "prepa": "Tu préfères travailler…",
+        "jeu": "{P} préfère travailler…",
+        "props": [
+          "en équipe",
+          "seul",
+          "seul dans une équipe"
+        ]
+      }
+    }
+  ],
+  "bonus": [
+    {
+      "id": "bon-01",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "enonce": "Lequel de vous deux est le plus ponctuel ?"
+    },
+    {
+      "id": "bon-02",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "enonce": "Lequel de vous deux a le plus mauvais caractère le matin ?"
+    },
+    {
+      "id": "bon-03",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux raconte le mieux les histoires ?"
+    },
+    {
+      "id": "bon-04",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux serait éliminé le premier sur une île déserte ?"
+    },
+    {
+      "id": "bon-05",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux est le plus susceptible ?"
+    },
+    {
+      "id": "bon-06",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Qui est le chef quand vous cuisinez ensemble ?"
+    },
+    {
+      "id": "bon-07",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "enonce": "Si vous ouvriez un commerce ensemble, ce serait quoi ?"
+    },
+    {
+      "id": "bon-08",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "enonce": "Quel animal représente votre duo ?"
+    },
+    {
+      "id": "bon-09",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "enonce": "Quelle est votre pire idée commune à ce jour ?"
+    },
+    {
+      "id": "bon-10",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "enonce": "Quel mot vous dites tous les deux trop souvent ?"
+    },
+    {
+      "id": "bon-11",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux prend le plus de place dans le lit ?"
+    },
+    {
+      "id": "bon-12",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 3,
+      "enonce": "Dans dix ans, vous vivez où ?"
+    },
+    {
+      "id": "bon-13",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux annule le plus souvent ?"
+    },
+    {
+      "id": "bon-14",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "enonce": "Lequel de vous deux appelle l'autre en premier quand ça va mal ?"
+    },
+    {
+      "id": "bon-15",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "sensible": true,
+      "enonce": "Lequel de vous deux paie le plus souvent l'addition ?"
+    },
+    {
+      "id": "bon-16",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 2,
+      "enonce": "Lequel de vous deux stresse le plus pour l'organisation ?"
+    },
+    {
+      "id": "bon-17",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "diff": 3,
+      "enonce": "Quel invité va finir le dernier sur la piste ?"
+    }
+  ],
+  "series_finale": [
+    {
+      "id": "fin-quotidien",
+      "titre": "Le quotidien",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton café du matin : avec quoi ?",
+          "jeu": "Le café du matin de {P} : avec quoi ?"
+        },
+        {
+          "prepa": "Ton jour préféré de la semaine ?",
+          "jeu": "Le jour préféré de {P} ?"
+        },
+        {
+          "prepa": "L'heure de ton réveil demain ?",
+          "jeu": "L'heure du réveil de {P} demain ?"
+        },
+        {
+          "prepa": "La tâche ménagère que tu détestes ?",
+          "jeu": "La tâche ménagère que {P} déteste ?"
+        },
+        {
+          "prepa": "Douche : matin ou soir ?",
+          "jeu": "Douche de {P} : matin ou soir ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-gouts",
+      "titre": "Les goûts",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton plat préféré ?",
+          "jeu": "Le plat préféré de {P} ?"
+        },
+        {
+          "prepa": "Ton dessert préféré ?",
+          "jeu": "Le dessert préféré de {P} ?"
+        },
+        {
+          "prepa": "L'aliment que tu ne mangeras jamais ?",
+          "jeu": "L'aliment que {P} ne mangera jamais ?"
+        },
+        {
+          "prepa": "Ta boisson en soirée ?",
+          "jeu": "La boisson de {P} en soirée ?"
+        },
+        {
+          "prepa": "Ton fast-food ?",
+          "jeu": "Le fast-food de {P} ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-ecrans",
+      "titre": "Les écrans",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton appli numéro un ?",
+          "jeu": "L'appli numéro un de {P} ?"
+        },
+        {
+          "prepa": "La série que tu regardes en ce moment ?",
+          "jeu": "La série que {P} regarde en ce moment ?"
+        },
+        {
+          "prepa": "Ton emoji le plus envoyé ?",
+          "jeu": "L'emoji le plus envoyé de {P} ?"
+        },
+        {
+          "prepa": "Vocal ou texte ?",
+          "jeu": "{P} : vocal ou texte ?"
+        },
+        {
+          "prepa": "Ton temps d'écran, à l'heure près ?",
+          "jeu": "Le temps d'écran de {P}, à l'heure près ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-enfance",
+      "titre": "L'enfance",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton dessin animé d'enfance ?",
+          "jeu": "Le dessin animé d'enfance de {P} ?"
+        },
+        {
+          "prepa": "Ton surnom quand tu étais petit ?",
+          "jeu": "Le surnom de {P} quand il était petit ?"
+        },
+        {
+          "prepa": "Ta matière préférée à l'école ?",
+          "jeu": "La matière préférée de {P} à l'école ?"
+        },
+        {
+          "prepa": "Le métier que tu voulais faire à 8 ans ?",
+          "jeu": "Le métier que {P} voulait faire à 8 ans ?"
+        },
+        {
+          "prepa": "La ville où tu as grandi ?",
+          "jeu": "La ville où {P} a grandi ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-caractere",
+      "titre": "Le caractère",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton plus gros défaut ?",
+          "jeu": "Le plus gros défaut de {P} ?"
+        },
+        {
+          "prepa": "Ta plus grande peur ?",
+          "jeu": "La plus grande peur de {P} ?"
+        },
+        {
+          "prepa": "Ce qui te fait rire aux larmes ?",
+          "jeu": "Ce qui fait rire {P} aux larmes ?"
+        },
+        {
+          "prepa": "Ce qui t'énerve le plus ?",
+          "jeu": "Ce qui énerve le plus {P} ?"
+        },
+        {
+          "prepa": "Si tu étais un animal ?",
+          "jeu": "Si {P} était un animal ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-envies",
+      "titre": "Les envies",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "La destination que tu rêves de faire ?",
+          "jeu": "La destination dont rêve {P} ?"
+        },
+        {
+          "prepa": "Le super-pouvoir que tu voudrais ?",
+          "jeu": "Le super-pouvoir que {P} voudrait ?"
+        },
+        {
+          "prepa": "La célébrité avec qui tu dînerais ?",
+          "jeu": "La célébrité avec qui {P} dînerait ?"
+        },
+        {
+          "prepa": "Ton prochain achat important ?",
+          "jeu": "Le prochain achat important de {P} ?"
+        },
+        {
+          "prepa": "Ta résolution de l'année ?",
+          "jeu": "La résolution de l'année de {P} ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-bizarreries",
+      "titre": "Les bizarreries",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ta manie la plus bizarre ?",
+          "jeu": "La manie la plus bizarre de {P} ?"
+        },
+        {
+          "prepa": "Ton talent le plus inutile ?",
+          "jeu": "Le talent le plus inutile de {P} ?"
+        },
+        {
+          "prepa": "Ton pire achat inutile ?",
+          "jeu": "Le pire achat inutile de {P} ?"
+        },
+        {
+          "prepa": "Ce que tu chantes dans la voiture ?",
+          "jeu": "Ce que {P} chante dans la voiture ?"
+        },
+        {
+          "prepa": "Le truc improbable dans ton sac ?",
+          "jeu": "Le truc improbable dans le sac de {P} ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-duo-zamours",
+      "titre": "Le duo",
+      "modes": [
+        "zamours"
+      ],
+      "questions": [
+        {
+          "prepa": "Où vous êtes-vous rencontrés ?",
+          "jeu": "Où se sont-ils rencontrés, selon {P} ?"
+        },
+        {
+          "prepa": "Qui a fait le premier pas ?",
+          "jeu": "Qui a fait le premier pas, selon {P} ?"
+        },
+        {
+          "prepa": "Votre chanson ?",
+          "jeu": "Leur chanson, selon {P} ?"
+        },
+        {
+          "prepa": "La série que vous regardez ensemble ?",
+          "jeu": "La série qu'ils regardent ensemble, selon {P} ?"
+        },
+        {
+          "prepa": "Le surnom que tu lui donnes ?",
+          "jeu": "Le surnom que {P} lui donne ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-duo-zamis",
+      "titre": "Le duo",
+      "modes": [
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Où vous êtes-vous rencontrés ?",
+          "jeu": "Où se sont-ils rencontrés, selon {P} ?"
+        },
+        {
+          "prepa": "Lequel écrit le premier ?",
+          "jeu": "Lequel écrit le premier, selon {P} ?"
+        },
+        {
+          "prepa": "Votre rituel à tous les deux ?",
+          "jeu": "Leur rituel, selon {P} ?"
+        },
+        {
+          "prepa": "Ce que vous commandez toujours ?",
+          "jeu": "Ce qu'ils commandent toujours, selon {P} ?"
+        },
+        {
+          "prepa": "Le surnom que tu lui donnes ?",
+          "jeu": "Le surnom que {P} lui donne ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-boulot",
+      "titre": "Le travail",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "questions": [
+        {
+          "prepa": "Ton métier en un mot ?",
+          "jeu": "Le métier de {P} en un mot ?"
+        },
+        {
+          "prepa": "Ton heure de début ?",
+          "jeu": "L'heure de début de {P} ?"
+        },
+        {
+          "prepa": "Ton temps de trajet ?",
+          "jeu": "Le temps de trajet de {P} ?"
+        },
+        {
+          "prepa": "Ce que tu préfères dans ton travail ?",
+          "jeu": "Ce que {P} préfère dans son travail ?"
+        },
+        {
+          "prepa": "Ton premier job ?",
+          "jeu": "Le premier job de {P} ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-mariage",
+      "titre": "Le jour J",
+      "modes": [
+        "zamours"
+      ],
+      "occasion": "mariage",
+      "questions": [
+        {
+          "prepa": "Votre date ?",
+          "jeu": "Leur date, selon {P} ?"
+        },
+        {
+          "prepa": "Votre lieu ?",
+          "jeu": "Leur lieu, selon {P} ?"
+        },
+        {
+          "prepa": "La chanson d'entrée ?",
+          "jeu": "La chanson d'entrée, selon {P} ?"
+        },
+        {
+          "prepa": "Le témoin qui parlera trop longtemps ?",
+          "jeu": "Le témoin qui parlera trop longtemps, selon {P} ?"
+        },
+        {
+          "prepa": "L'heure à laquelle vous irez vous coucher ?",
+          "jeu": "L'heure à laquelle ils iront se coucher, selon {P} ?"
+        }
+      ]
+    }
+  ],
+  "citez_trois": [
+    {
+      "id": "c3-01",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 qualités de {P}."
+    },
+    {
+      "id": "c3-02",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 défauts de {P}. Avec le sourire."
+    },
+    {
+      "id": "c3-03",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 choses qui énervent {P}."
+    },
+    {
+      "id": "c3-04",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 choses qui font rire {P}."
+    },
+    {
+      "id": "c3-05",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 passions de {P}."
+    },
+    {
+      "id": "c3-06",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 séries ou films préférés de {P}."
+    },
+    {
+      "id": "c3-07",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 plats préférés de {P}."
+    },
+    {
+      "id": "c3-08",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 destinations où {P} veut aller."
+    },
+    {
+      "id": "c3-09",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 applis que {P} utilise le plus."
+    },
+    {
+      "id": "c3-10",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 personnes que {P} appelle régulièrement."
+    },
+    {
+      "id": "c3-11",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 expressions que {P} utilise tout le temps."
+    },
+    {
+      "id": "c3-12",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 choses que {P} fait quand il est stressé."
+    },
+    {
+      "id": "c3-13",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 souvenirs marquants de votre duo."
+    },
+    {
+      "id": "c3-14",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 endroits où vous aimez aller tous les deux."
+    },
+    {
+      "id": "c3-15",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "enonce": "Cite 3 mots qui définissent votre duo."
+    }
+  ]
+}

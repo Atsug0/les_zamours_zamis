@@ -1,0 +1,554 @@
+<title>Les Zamours Zamis — Direction artistique</title>
+
+<style>
+:root {
+  --papier:#ffffff; --papier-2:#f7f1f4; --encre:#15101b; --texte:#15101b;
+  --texte-2:#5a4b55; --bord:#15101b; --ombre:#15101b;
+  --rouge:#e8112d; --jaune:#ffd400; --bleu:#0b5fd9;
+  --vert:#19a974; --orange:#ff6a13; --violet:#7b2ff2;
+  --zamours:#ff3d8b; --zamis:#ffd400;
+  --valide:#0e8c47; --refuse:#cf0a2c; --attente:#5a4b55; --sur-semantique:#ffffff;
+  --trame:rgba(232,17,45,.22); --trame-pas:7px; --trame-point:1.6px;
+  --filet:3px; --filet-fort:5px; --decalage:6px;
+  --display:Impact,"Haettenschweiler","Arial Narrow Bold","Arial Black",sans-serif;
+  --corps:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --donnees:ui-monospace,"SF Mono",Menlo,monospace;
+  --t-xs:.75rem; --t-s:.875rem; --t-m:1rem; --t-l:1.25rem;
+  --t-xl:1.625rem; --t-2xl:2.125rem; --t-3xl:3rem;
+  --e-1:4px; --e-2:8px; --e-3:12px; --e-4:20px; --e-5:32px; --e-6:52px; --e-7:84px;
+  --pop:160ms cubic-bezier(.2,1.6,.4,1);
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --papier:#100c14; --papier-2:#1a1420; --encre:#f7f0f5; --texte:#f7f0f5;
+  --texte-2:#b3a3ae; --bord:#f7f0f5; --ombre:#40304a;
+  --rouge:#ff2d4a; --jaune:#ffde3d; --bleu:#3b82ff; --vert:#2bc47e;
+  --orange:#ff8a3d; --violet:#9d5cff; --zamours:#ff5c9e; --zamis:#ffde3d;
+  --valide:#2bc47e; --refuse:#ff5068; --attente:#b3a3ae; --sur-semantique:#15101b;
+  --trame:rgba(255,45,74,.30);
+}}
+:root[data-theme="dark"]{
+  --papier:#100c14; --papier-2:#1a1420; --encre:#f7f0f5; --texte:#f7f0f5;
+  --texte-2:#b3a3ae; --bord:#f7f0f5; --ombre:#40304a;
+  --rouge:#ff2d4a; --jaune:#ffde3d; --bleu:#3b82ff; --vert:#2bc47e;
+  --orange:#ff8a3d; --violet:#9d5cff; --zamours:#ff5c9e; --zamis:#ffde3d;
+  --valide:#2bc47e; --refuse:#ff5068; --attente:#b3a3ae; --sur-semantique:#15101b;
+  --trame:rgba(255,45,74,.30);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--papier); color:var(--texte);
+  font-family:var(--corps); font-size:var(--t-m); line-height:1.6;
+  margin:0; padding:0;
+  -webkit-font-smoothing:antialiased;
+}
+.trame-zamis{
+  background-image:repeating-linear-gradient(45deg,var(--trame) 0 2px,transparent 2px var(--trame-pas));
+}
+.trame{
+  background-image:
+    radial-gradient(var(--trame) var(--trame-point),transparent calc(var(--trame-point) + .1px)),
+    radial-gradient(var(--trame) var(--trame-point),transparent calc(var(--trame-point) + .1px));
+  background-size:var(--trame-pas) var(--trame-pas);
+  background-position:0 0,calc(var(--trame-pas)/2) calc(var(--trame-pas)/2);
+}
+.planche{max-width:1060px; margin:0 auto; padding:0 var(--e-4) var(--e-7)}
+.lettrage{
+  font-family:var(--display); text-transform:uppercase; font-weight:900;
+  letter-spacing:.01em; line-height:.9; text-wrap:balance;
+  -webkit-text-stroke:2px var(--encre); paint-order:stroke fill;
+}
+
+/* ---- Hero ---- */
+header{
+  border-bottom:var(--filet-fort) solid var(--bord);
+  padding:var(--e-6) var(--e-4) var(--e-5);
+  position:relative; overflow:hidden;
+}
+.coeur{
+  position:absolute; right:-70px; top:-40px; width:380px; height:380px;
+  color:var(--zamours); opacity:.9; pointer-events:none;
+}
+.titre-bloc{max-width:720px; position:relative}
+h1{
+  font-family:var(--display); text-transform:uppercase; margin:0;
+  font-size:clamp(2.75rem,10vw,5.5rem); line-height:.86; letter-spacing:.005em;
+  color:var(--zamours); -webkit-text-stroke:3px var(--encre); paint-order:stroke fill;
+  text-shadow:5px 5px 0 var(--bleu);
+}
+h1 em{font-style:normal; color:var(--zamis)}
+.sous{
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+  font-size:var(--t-l); margin:var(--e-4) 0 0; color:var(--texte);
+}
+.source{
+  font-size:var(--t-s); color:var(--texte-2); max-width:62ch;
+  margin:var(--e-3) 0 0; line-height:1.55;
+}
+
+/* ---- Structure ---- */
+section{padding-top:var(--e-6)}
+.narration{
+  display:inline-block; background:var(--jaune); color:#15101b;
+  border:var(--filet) solid #15101b; padding:var(--e-2) var(--e-4);
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.05em;
+  font-size:var(--t-l); transform:rotate(-1.2deg);
+  box-shadow:var(--decalage) var(--decalage) 0 var(--ombre);
+}
+.chapeau{max-width:66ch; margin:var(--e-5) 0 var(--e-4); font-size:var(--t-l); line-height:1.5}
+p{max-width:66ch}
+.grille{display:grid; gap:var(--e-4)}
+.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.c3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.panneau{
+  background:var(--papier); border:var(--filet) solid var(--bord);
+  box-shadow:var(--decalage) var(--decalage) 0 var(--ombre); padding:var(--e-4);
+}
+.panneau h3{
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.04em;
+  margin:0 0 var(--e-2); font-size:var(--t-l);
+}
+.panneau p{margin:0; font-size:var(--t-s); color:var(--texte-2)}
+
+/* ---- Palette ---- */
+.nuances{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:var(--e-3)}
+.nuance{border:var(--filet) solid var(--bord); box-shadow:4px 4px 0 var(--ombre)}
+.nuance .pave{height:92px; display:flex; align-items:flex-end; padding:var(--e-2)}
+.nuance .pave span{
+  font-family:var(--display); text-transform:uppercase; font-size:var(--t-s);
+  letter-spacing:.06em; background:#15101b; color:#fff; padding:2px 6px;
+}
+.nuance .pied{
+  padding:var(--e-2) var(--e-3); border-top:var(--filet) solid var(--bord);
+  background:var(--papier);
+}
+.nuance code{font-family:var(--donnees); font-size:var(--t-xs); display:block}
+.nuance small{color:var(--texte-2); font-size:var(--t-xs); line-height:1.4; display:block; margin-top:2px}
+
+/* ---- Modes ---- */
+.mode{border:var(--filet-fort) solid var(--bord); box-shadow:8px 8px 0 var(--ombre); overflow:hidden}
+.mode .fronton{padding:var(--e-4); display:flex; align-items:center; gap:var(--e-3); border-bottom:var(--filet) solid var(--bord)}
+.mode .fronton svg{flex:none}
+.mode .fronton h3{
+  font-family:var(--display); text-transform:uppercase; margin:0;
+  font-size:var(--t-2xl); letter-spacing:.02em; color:#15101b;
+}
+.mode .corps{padding:var(--e-4); background-color:var(--papier)}
+.mode dl{
+  margin:0; display:grid; grid-template-columns:auto 1fr; gap:var(--e-2) var(--e-3);
+  font-size:var(--t-s); background:var(--papier); padding:var(--e-3);
+  border:1px solid color-mix(in srgb,var(--bord) 20%,transparent);
+}
+.mode dt{
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.05em;
+  color:var(--texte-2); white-space:nowrap;
+}
+.mode dd{margin:0}
+
+/* ---- Spécimen typo ---- */
+.specimen{border:var(--filet) solid var(--bord); box-shadow:var(--decalage) var(--decalage) 0 var(--ombre); background:var(--papier)}
+.ligne{display:flex; align-items:baseline; gap:var(--e-4); padding:var(--e-3) var(--e-4); border-bottom:1px solid color-mix(in srgb,var(--bord) 25%,transparent)}
+.ligne:last-child{border-bottom:0}
+.ligne .jeton{font-family:var(--donnees); font-size:var(--t-xs); color:var(--texte-2); min-width:11ch; flex:none}
+.ligne .ex{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+/* ---- Composants ---- */
+.bulle{position:relative; background:var(--papier); border:var(--filet) solid var(--bord); padding:var(--e-3) var(--e-4); max-width:360px; font-size:var(--t-l); box-shadow:var(--decalage) var(--decalage) 0 var(--ombre)}
+.bulle::after,.bulle::before{content:""; position:absolute; top:100%; left:40px; width:0; height:0; border-style:solid}
+.bulle::before{border-width:22px 18px 0 0; border-color:var(--bord) transparent transparent transparent}
+.bulle::after{margin-top:calc(-1 * var(--filet) - 1px); border-width:18px 14px 0 0; border-color:var(--papier) transparent transparent transparent}
+.bulle strong{font-family:var(--display); text-transform:uppercase; letter-spacing:.03em; display:block; font-size:var(--t-s); color:var(--texte-2)}
+
+.pastille{
+  display:inline-flex; align-items:center; gap:var(--e-2);
+  border:var(--filet) solid var(--bord); padding:var(--e-1) var(--e-3);
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.05em;
+  box-shadow:4px 4px 0 var(--ombre); color:#15101b;
+}
+.score{font-family:var(--donnees); font-variant-numeric:tabular-nums; font-weight:700}
+
+.chrono{
+  display:inline-grid; place-items:center; width:132px; height:132px;
+  border:var(--filet-fort) solid var(--bord); border-radius:50%;
+  background:var(--jaune); color:#15101b; box-shadow:7px 7px 0 var(--ombre);
+}
+.chrono b{font-family:var(--display); font-size:var(--t-3xl); line-height:1; font-variant-numeric:tabular-nums}
+.chrono span{font-family:var(--display); text-transform:uppercase; font-size:var(--t-xs); letter-spacing:.14em}
+
+.verdict{
+  display:inline-flex; align-items:center; gap:var(--e-2); padding:var(--e-2) var(--e-3);
+  border:var(--filet) solid var(--bord); font-family:var(--display);
+  text-transform:uppercase; letter-spacing:.06em; box-shadow:4px 4px 0 var(--ombre);
+}
+.verdict svg{flex:none}
+.v-ok{background:var(--valide); color:var(--sur-semantique)}
+.v-non{background:var(--refuse); color:var(--sur-semantique)}
+.v-att{background:var(--papier-2); color:var(--texte)}
+
+.pastilles-fin{display:flex; gap:var(--e-2); flex-wrap:wrap}
+.pf{width:38px; height:38px; display:grid; place-items:center; border:var(--filet) solid var(--bord); font-family:var(--display); font-size:var(--t-l)}
+
+/* ---- Maquettes ---- */
+.tv{border:var(--filet-fort) solid var(--bord); box-shadow:10px 10px 0 var(--ombre); background:var(--papier-2); overflow:hidden}
+.tv .bandeau{display:flex; justify-content:space-between; align-items:center; gap:var(--e-3); padding:var(--e-3) var(--e-4); border-bottom:var(--filet) solid var(--bord); background:var(--encre); color:var(--papier)}
+.tv .bandeau .marque{font-family:var(--display); text-transform:uppercase; letter-spacing:.06em; color:var(--jaune)}
+.tv .bandeau .phase{font-family:var(--donnees); font-size:var(--t-xs); color:var(--papier); opacity:.75}
+.tv .scene{padding:var(--e-5) var(--e-4); display:grid; gap:var(--e-4); place-items:center; text-align:center}
+.tv .question{font-family:var(--display); text-transform:uppercase; font-size:clamp(1.4rem,3.4vw,2.4rem); line-height:1; max-width:22ch; -webkit-text-stroke:1.5px var(--encre); paint-order:stroke fill; color:var(--jaune); text-shadow:4px 4px 0 var(--bleu)}
+.tv .reveal{display:grid; grid-template-columns:1fr auto 1fr; gap:var(--e-3); align-items:stretch; width:100%; max-width:620px}
+.tv .carte{border:var(--filet) solid var(--bord); background:var(--papier); padding:var(--e-3); text-align:left}
+.tv .carte em{font-family:var(--display); font-style:normal; text-transform:uppercase; font-size:var(--t-xs); letter-spacing:.08em; color:var(--texte-2); display:block}
+.tv .carte b{font-size:var(--t-l)}
+.tv .vs{display:grid; place-items:center; font-family:var(--display); font-size:var(--t-xl); color:var(--rouge)}
+.tv .rangee{display:flex; gap:var(--e-2); flex-wrap:wrap; justify-content:center}
+
+.tel{width:268px; border:var(--filet-fort) solid var(--bord); box-shadow:8px 8px 0 var(--ombre); background:var(--papier); overflow:hidden; flex:none}
+.tel .haut{padding:var(--e-2) var(--e-3); border-bottom:var(--filet) solid var(--bord); display:flex; justify-content:space-between; font-family:var(--donnees); font-size:10px; color:var(--texte-2)}
+.tel .ecran{padding:var(--e-4) var(--e-3); display:grid; gap:var(--e-3)}
+.tel .consigne{font-family:var(--display); text-transform:uppercase; font-size:var(--t-s); letter-spacing:.05em; color:var(--texte-2)}
+.tel .enonce{font-size:var(--t-l); line-height:1.25}
+.btn{
+  display:block; width:100%; text-align:center; cursor:pointer;
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.06em;
+  font-size:var(--t-l); padding:var(--e-3); border:var(--filet) solid var(--bord);
+  background:var(--jaune); color:#15101b; box-shadow:var(--decalage) var(--decalage) 0 var(--ombre);
+  transition:transform var(--pop),box-shadow var(--pop);
+}
+.btn:hover{transform:translate(3px,3px); box-shadow:3px 3px 0 var(--ombre)}
+.btn:active{transform:translate(var(--decalage),var(--decalage)); box-shadow:0 0 0 var(--ombre)}
+.btn:focus-visible{outline:var(--filet) solid var(--bleu); outline-offset:3px}
+.btn.oui{background:var(--valide); color:var(--sur-semantique)}
+.btn.non{background:var(--refuse); color:var(--sur-semantique)}
+.duo{display:flex; gap:var(--e-2)}
+.maquettes{display:flex; gap:var(--e-5); flex-wrap:wrap; align-items:flex-start}
+
+/* ---- Tableaux ---- */
+.tableau-enveloppe{overflow-x:auto; border:var(--filet) solid var(--bord); box-shadow:var(--decalage) var(--decalage) 0 var(--ombre); background:var(--papier)}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:var(--t-s)}
+th,td{text-align:left; padding:var(--e-2) var(--e-3); border-bottom:1px solid color-mix(in srgb,var(--bord) 22%,transparent)}
+th{font-family:var(--display); text-transform:uppercase; letter-spacing:.05em; background:var(--papier-2); border-bottom:var(--filet) solid var(--bord)}
+tbody tr:last-child td{border-bottom:0}
+td code{font-family:var(--donnees); font-size:var(--t-xs)}
+.ratio{font-family:var(--donnees); font-variant-numeric:tabular-nums}
+
+ul.liste{max-width:66ch; padding-left:0; list-style:none; display:grid; gap:var(--e-2)}
+ul.liste li{position:relative; padding-left:26px}
+ul.liste li::before{content:"◆"; position:absolute; left:0; top:0; color:var(--rouge); font-size:var(--t-s)}
+footer{border-top:var(--filet-fort) solid var(--bord); margin-top:var(--e-6); padding:var(--e-4) 0; font-size:var(--t-s); color:var(--texte-2)}
+a{color:var(--rouge)}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+</style>
+
+<header class="trame">
+  <svg class="coeur" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M50 88C28 72 8 56 8 36 8 22 19 12 32 12c8 0 15 4 18 10 3-6 10-10 18-10 13 0 24 10 24 24 0 20-20 36-42 52z"
+          fill="currentColor" stroke="var(--encre)" stroke-width="3"/>
+  </svg>
+  <div class="planche">
+    <div class="titre-bloc">
+      <h1>Les Zamours<br><em>Zamis</em></h1>
+      <p class="sous">Direction artistique</p>
+      <p class="source">Le décor du jeu de France&nbsp;2 était explicitement inspiré de
+      <strong>Roy Lichtenstein</strong> : pop art, couleurs vives, chaque couple sur un canapé
+      <strong>rouge</strong>, <strong>jaune</strong> ou <strong>bleu</strong>, un mur de couples
+      dessinés en aplats, et un énorme cœur au sol portant le logo. Cette DA ne réinterprète pas
+      le jeu télé&nbsp;: elle en reprend le système et l'étend à deux écrans.</p>
+    </div>
+  </div>
+</header>
+
+<div class="planche">
+
+  <section>
+    <span class="narration">Le parti pris</span>
+    <p class="chapeau">Une planche de bande dessinée des années 60, pas une interface.
+    Tout ce qui est à l'écran est <strong>imprimé</strong> : filet noir épais, aplat de couleur
+    franche, trame de points, ombre portée dure. Aucun flou, aucun dégradé, aucun angle arrondi.</p>
+    <div class="grille c3">
+      <div class="panneau">
+        <h3>Le filet fait l'objet</h3>
+        <p>Chaque élément est cerné d'un filet de 3&nbsp;px (5&nbsp;px pour un panneau clé) et posé
+        sur une ombre décalée de 6&nbsp;px, <strong>sans flou</strong>. C'est ce qui donne la
+        matière imprimée plutôt que l'écran.</p>
+      </div>
+      <div class="panneau">
+        <h3>La trame remplace la texture</h3>
+        <p>Les fonds ne sont jamais vides&nbsp;: une trame Ben-Day en deux dégradés radiaux CSS,
+        pas une image. Pas de 50&nbsp;% au comp&nbsp;: on tramait parce qu'on ne pouvait pas
+        imprimer un demi-ton.</p>
+      </div>
+      <div class="panneau">
+        <h3>Le cœur est le logo</h3>
+        <p>Au centre du plateau télé, un cœur géant au sol. Ici, il tient le même rôle&nbsp;:
+        signature de la marque, et motif du mode Zamours. Il ne décore pas les écrans de jeu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Palette</span>
+    <p class="chapeau">Les trois primaires sont les <strong>couleurs des canapés du plateau</strong>.
+    Elles ne sont pas décoratives : ce sont les <strong>couleurs de binôme</strong>, attribuées dans
+    cet ordre. Trois extensions permettent d'aller jusqu'à six binômes sans sortir du registre.</p>
+    <div class="nuances">
+      <div class="nuance"><div class="pave" style="background:var(--rouge)"><span>Binôme 1</span></div>
+        <div class="pied"><code>--rouge · #E8112D</code><small>Le premier canapé. Aussi le verdict négatif, mais jamais dans la même scène.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--jaune)"><span>Binôme 2</span></div>
+        <div class="pied"><code>--jaune · #FFD400</code><small>Le second canapé, et la couleur des boîtes de narration. Texte noir obligatoire.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--bleu)"><span>Binôme 3</span></div>
+        <div class="pied"><code>--bleu · #0B5FD9</code><small>Le troisième canapé. Sert aussi de couleur de focus clavier.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--vert)"><span>Binôme 4</span></div>
+        <div class="pied"><code>--vert · #19A974</code><small>Extension.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--orange)"><span>Binôme 5</span></div>
+        <div class="pied"><code>--orange · #FF6A13</code><small>Extension.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--violet)"><span>Binôme 6</span></div>
+        <div class="pied"><code>--violet · #7B2FF2</code><small>Extension.</small></div></div>
+      <div class="nuance"><div class="pave" style="background:var(--encre)"><span style="background:var(--jaune);color:#15101b">Encre</span></div>
+        <div class="pied"><code>--encre · #15101B</code><small>Jamais du noir pur&nbsp;: un noir violacé, comme l'encre sur papier.</small></div></div>
+      <div class="nuance"><div class="pave trame" style="background:var(--papier)"><span>Papier</span></div>
+        <div class="pied"><code>--papier · #FFFFFF</code><small>Le blanc de l'imprimerie. Tramé dès qu'une surface serait vide.</small></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Les deux modes</span>
+    <p class="chapeau">Un seul système graphique, <strong>deux motifs</strong>. On ne change pas la
+    palette&nbsp;: changer de couleur ferait deux marques. On change le <strong>signe</strong>, la
+    trame et la couleur d'accent du binôme. Un binôme Zamis ne doit jamais voir un cœur.</p>
+    <div class="grille c2">
+      <div class="mode">
+        <div class="fronton" style="background:var(--zamours)">
+          <svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 88C28 72 8 56 8 36 8 22 19 12 32 12c8 0 15 4 18 10 3-6 10-10 18-10 13 0 24 10 24 24 0 20-20 36-42 52z" fill="#fff" stroke="#15101b" stroke-width="5"/>
+          </svg>
+          <h3>Les Zamours</h3>
+        </div>
+        <div class="corps trame">
+          <dl>
+            <dt>Signe</dt><dd>Le cœur plein, cerné. Reprend le cœur au sol du plateau.</dd>
+            <dt>Accent</dt><dd><code>--zamours</code> · rose magenta <code>#FF3D8B</code></dd>
+            <dt>Trame</dt><dd>Points ronds, pas de 7&nbsp;px — le fond de cette case. La trame d'origine.</dd>
+            <dt>Transition</dt><dd>Le cœur bat une fois à la révélation.</dd>
+            <dt>Vocabulaire</dt><dd>« votre couple », « votre rencontre », « vous deux ».</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="mode">
+        <div class="fronton" style="background:var(--zamis)">
+          <svg width="46" height="46" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M58 6 22 54h22l-8 40 40-52H52z" fill="#fff" stroke="#15101b" stroke-width="5" stroke-linejoin="round"/>
+          </svg>
+          <h3>Les Zamis</h3>
+        </div>
+        <div class="corps trame-zamis">
+          <dl>
+            <dt>Signe</dt><dd>L'éclair, emprunté aux onomatopées. Même épaisseur de filet.</dd>
+            <dt>Accent</dt><dd><code>--zamis</code> · jaune <code>#FFD400</code></dd>
+            <dt>Trame</dt><dd>Rayures à 45°, même pas de 7&nbsp;px — le fond de cette case.</dd>
+            <dt>Transition</dt><dd>Un éclat en étoile à la révélation, pas de battement.</dd>
+            <dt>Vocabulaire</dt><dd>« votre duo », « vous deux ». Jamais « couple ».</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Typographie</span>
+    <p class="chapeau">Deux familles, trois rôles. Le lettrage de couverture porte tout ce qui est
+    <strong>crié</strong> — titres, questions, scores, chrono. Le grotesque porte tout ce qui est
+    <strong>lu</strong>. Le monospace porte tout ce qui est <strong>compté</strong>.</p>
+    <div class="specimen">
+      <div class="ligne"><span class="jeton">--display</span><span class="ex lettrage" style="font-size:var(--t-2xl);color:var(--jaune)">Ma réponse, c'est…</span></div>
+      <div class="ligne"><span class="jeton">--corps</span><span class="ex" style="font-size:var(--t-l)">Le questionneur consigne la réponse, puis révèle.</span></div>
+      <div class="ligne"><span class="jeton">--donnees</span><span class="ex" style="font-family:var(--donnees);font-variant-numeric:tabular-nums">100 pts · 0:30 · 4/5</span></div>
+    </div>
+    <div class="grille c2" style="margin-top:var(--e-4)">
+      <div class="panneau">
+        <h3>Les faces à embarquer</h3>
+        <p><strong>Display :</strong> Bangers ou Lilita One (OFL, gratuites), ou CC&nbsp;Wild Words
+        si le budget le permet — c'est la face du lettrage comics. Repli système&nbsp;: Impact.<br>
+        <strong>Corps :</strong> Archivo ou Work Sans (OFL).<br>
+        <strong>Données :</strong> JetBrains Mono.<br>
+        À <strong>auto-héberger</strong> en <code>@font-face</code>&nbsp;: pas de CDN, l'app doit
+        tourner sur le wifi d'un salon.</p>
+      </div>
+      <div class="panneau">
+        <h3>Règles de lettrage</h3>
+        <p>Display toujours en <strong>capitales</strong>, interlignage à 0,9, contour d'encre de
+        2&nbsp;px via <code>-webkit-text-stroke</code> avec
+        <code>paint-order: stroke fill</code>. Ombre portée en <strong>aplat de couleur</strong>,
+        jamais en gris. Jamais d'italique penchée automatiquement&nbsp;: si une inclinaison est
+        voulue, c'est une rotation du bloc entier, entre -2° et +2°.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Composants</span>
+    <p class="chapeau">Sept pièces suffisent à monter les deux écrans. Chacune vient d'un objet de
+    bande dessinée, pas d'une bibliothèque d'interface.</p>
+    <div class="grille c2">
+      <div class="panneau">
+        <h3>Bulle de dialogue</h3>
+        <p style="margin-bottom:var(--e-4)">Le composant central&nbsp;: le jeu est <strong>oral</strong>.
+        Tout ce qu'un joueur dit à voix haute s'affiche dans une bulle à queue.</p>
+        <div class="bulle"><strong>Camille répond</strong>Le côté gauche, évidemment</div>
+      </div>
+      <div class="panneau">
+        <h3>Boîte de narration</h3>
+        <p style="margin-bottom:var(--e-4)">Jaune, filet noir, légèrement inclinée. Porte la voix du
+        jeu&nbsp;: consignes, phases, règles. Jamais une réponse de joueur.</p>
+        <span class="narration" style="font-size:var(--t-m)">Manche 2 · les questions libres</span>
+      </div>
+      <div class="panneau">
+        <h3>Pastille de binôme</h3>
+        <p style="margin-bottom:var(--e-4)">Couleur du canapé + <strong>prénoms</strong> + score en
+        chiffres tabulaires. La couleur ne porte jamais l'information seule.</p>
+        <div style="display:flex;gap:var(--e-2);flex-wrap:wrap">
+          <span class="pastille" style="background:var(--rouge);color:#fff">Sam &amp; Alex <span class="score">45</span></span>
+          <span class="pastille" style="background:var(--jaune)">Camille &amp; Noé <span class="score">60</span></span>
+          <span class="pastille" style="background:var(--bleu);color:#fff">Lou &amp; Ima <span class="score">30</span></span>
+        </div>
+      </div>
+      <div class="panneau">
+        <h3>Carton de verdict</h3>
+        <p style="margin-bottom:var(--e-4)">Après le vote. <strong>Forme + icône + mot</strong>, la
+        couleur ne vient qu'en troisième.</p>
+        <div style="display:flex;gap:var(--e-2);flex-wrap:wrap">
+          <span class="verdict v-ok"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 9l4 4 8-10" fill="none" stroke="currentColor" stroke-width="3"/></svg>Ça compte</span>
+          <span class="verdict v-non"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="3"/></svg>Ça compte pas</span>
+          <span class="verdict v-att">Au vote…</span>
+        </div>
+      </div>
+      <div class="panneau">
+        <h3>Chrono de finale</h3>
+        <p style="margin-bottom:var(--e-4)">Disque jaune, filet fort. Le seul cercle de toute la DA —
+        c'est ce qui le rend impossible à manquer.</p>
+        <div class="chrono"><b>0:30</b><span>Finale</span></div>
+      </div>
+      <div class="panneau">
+        <h3>File des cinq pastilles</h3>
+        <p style="margin-bottom:var(--e-4)">L'état de la finale, lisible à trois mètres&nbsp;:
+        tranchée juste, tranchée fausse, passée, en attente.</p>
+        <div class="pastilles-fin">
+          <span class="pf" style="background:var(--valide);color:var(--sur-semantique)">✓</span>
+          <span class="pf" style="background:var(--valide);color:var(--sur-semantique)">✓</span>
+          <span class="pf" style="background:var(--refuse);color:var(--sur-semantique)">✗</span>
+          <span class="pf" style="background:var(--jaune);color:#15101b">↷</span>
+          <span class="pf trame" style="background:var(--papier)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Les deux écrans</span>
+    <p class="chapeau">L'écran TV est <strong>une planche</strong> : grand lettrage, aplats, lisible
+    à trois mètres sans lire. Le téléphone est <strong>une case</strong> : une seule action à la
+    fois, bouton pleine largeur, pouce atteignable.</p>
+    <div class="maquettes">
+      <div class="tv trame" style="flex:1 1 420px; min-width:320px">
+        <div class="bandeau">
+          <span class="marque">Les Zamours Zamis</span>
+          <span class="phase">manche libre · question 3 / 4</span>
+        </div>
+        <div class="scene">
+          <span class="narration" style="font-size:var(--t-s)">Sam répond sur Alex</span>
+          <p class="question">Quelle tâche ménagère Alex déteste le plus&nbsp;?</p>
+          <div class="reveal">
+            <div class="carte"><em>Sam a dit</em><b>Le repassage</b></div>
+            <div class="vs">≠</div>
+            <div class="carte"><em>Alex avait écrit</em><b>Étendre le linge</b></div>
+          </div>
+          <div class="rangee">
+            <span class="verdict v-att">4 votants · 15 s</span>
+            <span class="pastille" style="background:var(--rouge);color:#fff">Sam &amp; Alex <span class="score">45</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="tel">
+        <div class="haut"><span>19:42</span><span>Camille · binôme jaune</span></div>
+        <div class="ecran">
+          <span class="consigne">Ton tour de voter</span>
+          <p class="enonce">« Le repassage » contre « étendre le linge »&nbsp;: est-ce que ça compte&nbsp;?</p>
+          <div class="duo">
+            <button class="btn oui" type="button">Oui</button>
+            <button class="btn non" type="button">Non</button>
+          </div>
+          <p style="font-size:var(--t-xs);color:var(--texte-2);margin:0">Les votes restent cachés
+          jusqu'à la fin de la fenêtre.</p>
+        </div>
+      </div>
+    </div>
+    <div class="grille c2" style="margin-top:var(--e-4)">
+      <div class="panneau">
+        <h3>Écran TV</h3>
+        <p>Trame en fond permanent. Bandeau d'encre en haut avec la marque et la phase. Une seule
+        chose grande au centre. Les deux réponses se révèlent en <strong>deux cases côte à côte</strong>
+        séparées d'un signe <code>=</code> ou <code>≠</code> — la lecture du résultat est graphique
+        avant d'être textuelle.</p>
+      </div>
+      <div class="panneau">
+        <h3>Téléphone</h3>
+        <p>Pas de trame — le fond reste blanc pour la lisibilité à bout de bras. Un seul bloc
+        d'action par écran. Les boutons s'enfoncent dans leur ombre au clic
+        (<code>translate(6px,6px)</code> + ombre à zéro) : la mécanique du tampon, pas un fondu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Mouvement</span>
+    <p class="chapeau">Le pop art n'a pas d'interpolation. Les transitions sont des
+    <strong>coupes</strong>, pas des fondus.</p>
+    <ul class="liste">
+      <li><strong>Apparition d'une question :</strong> la case arrive d'un coup, avec un
+      <code>steps(3)</code> de 90&nbsp;ms sur l'échelle. Pas d'opacité progressive.</li>
+      <li><strong>Révélation :</strong> un éclat en étoile derrière la case gagnante — cœur qui bat
+      une fois en Zamours, étoile en Zamis.</li>
+      <li><strong>Décompte des votes :</strong> les voix tombent une par une, 120&nbsp;ms d'écart.
+      C'est le seul endroit où l'on fait durer.</li>
+      <li><strong>Chrono de finale :</strong> le disque ne s'anime pas, les chiffres claquent. Sous
+      5&nbsp;secondes, le filet passe au rouge et l'ombre double.</li>
+      <li><strong>Score :</strong> les points défilent en chiffres tabulaires, jamais en fondu.</li>
+      <li><code>prefers-reduced-motion</code> coupe tout : les états finaux restent lisibles
+      sans aucune animation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="narration">Accessibilité</span>
+    <p class="chapeau">Une palette d'aplats saturés se casse vite. Trois contraintes non
+    négociables.</p>
+    <div class="tableau-enveloppe">
+      <table>
+        <thead><tr><th>Règle</th><th>Pourquoi</th><th>Application</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Noir sur jaune, toujours</strong></td><td>Blanc sur <code>#FFD400</code> tombe à <span class="ratio">1,7:1</span> — illisible.</td><td>Encre sur jaune&nbsp;: <span class="ratio">14,2:1</span>. Le jaune ne porte jamais de texte clair.</td></tr>
+          <tr><td><strong>Blanc sur rouge et bleu</strong></td><td>L'encre sur <code>#0B5FD9</code> passe sous le seuil.</td><td>Blanc sur rouge <span class="ratio">4,6:1</span>, sur bleu <span class="ratio">6,3:1</span>. Au-dessus de 4,5.</td></tr>
+          <tr><td><strong>Jamais la couleur seule</strong></td><td>Rouge / jaune / bleu / vert ne se distinguent pas pour tout le monde.</td><td>Un binôme = couleur <em>+</em> prénoms <em>+</em> position. Un verdict = couleur <em>+</em> icône <em>+</em> mot.</td></tr>
+          <tr><td><strong>Focus visible</strong></td><td>Les téléphones peuvent être pilotés au clavier externe.</td><td>Contour bleu de 3&nbsp;px, 3&nbsp;px d'écart, sur tous les éléments actifs.</td></tr>
+          <tr><td><strong>Trame discrète</strong></td><td>Une trame trop contrastée rend le texte vibrant.</td><td>Opacité 0,22 maximum, et jamais sous un paragraphe — seulement sous les vides.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <span class="narration">Le thème sombre</span>
+    <p class="chapeau">Le jeu se joue le soir, l'écran TV dans un salon éteint. Le thème sombre n'est
+    pas une inversion : c'est <strong>le studio la nuit</strong>. Le papier devient
+    <code>#100C14</code>, les filets passent en clair, et les primaires montent en luminosité pour
+    tenir sur fond noir (<code>#E8112D</code> → <code>#FF2D4A</code>). La trame gagne en opacité et
+    se lit comme une enseigne. Basculez le thème de cette page pour voir les deux états.</p>
+  </section>
+
+  <footer>
+    Jetons implémentables&nbsp;: <code>tokens.css</code> — mêmes noms que dans cette page.
+    Règles du jeu&nbsp;: <code>REGLES.md</code>. Banque de questions&nbsp;: <code>questions.json</code>,
+    charte éditoriale dans <code>BANQUE.md</code>.<br>
+    Source de la DA&nbsp;: le décor du jeu télé, inspiré de Roy Lichtenstein — canapés rouge, jaune
+    et bleu, cœur au sol portant le logo.
+  </footer>
+</div>

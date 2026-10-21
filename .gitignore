@@ -1,0 +1,16 @@
+# dépendances et sorties de compilation
+node_modules/
+dist/
+
+# secrets
+.env
+.env.local
+.env.*.local
+
+# copies générées depuis les sources uniques (questions.json, tokens.css)
+app/src/contenu/questions.json
+app/src/styles/tokens.css
+
+# outils locaux
+.claude/settings.local.json
+.DS_Store

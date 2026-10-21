@@ -1,0 +1,67 @@
+/* Socle de l'app. Tout vient des jetons de la DA (tokens.css). */
+@import "./tokens.css";
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #racine { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--texte);
+  font-family: var(--corps);
+  font-size: var(--t-m);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* on ne rebondit pas en scroll sur un plateau de jeu */
+  overscroll-behavior: none;
+}
+
+button { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: var(--filet) solid var(--bleu);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- gabarits ---- */
+.plateau-cadre {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.tel-cadre {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-width: 560px;
+  margin: 0 auto;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pile {
+  display: grid;
+  gap: var(--e-4);
+  align-content: start;
+  padding: var(--e-4);
+}
+
+.centre {
+  display: grid;
+  place-items: center;
+  gap: var(--e-5);
+  padding: var(--e-5) var(--e-4);
+  text-align: center;
+}
+
+.rangee { display: flex; gap: var(--e-2); flex-wrap: wrap; }

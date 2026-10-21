@@ -1,0 +1,4 @@
+# Cloudflare Pages / Netlify : une application à page unique.
+# Sans cette règle, recharger /p/ABCD renvoie un 404 — et un joueur
+# qui recharge son téléphone perd la partie.
+/*  /index.html  200

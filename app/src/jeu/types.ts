@@ -1,0 +1,97 @@
+export type Mode = "zamours" | "zamis";
+export type Couleur = "rouge" | "jaune" | "bleu" | "vert" | "orange" | "violet";
+export type Etat = "lobby" | "prep" | "qcm" | "libre" | "bonus" | "finale" | "palmares";
+export type Manche = "qcm" | "libre" | "bonus";
+export type StatutTour = "attente" | "consigne" | "revele" | "vote" | "juge";
+export type Jugement = "attente" | "juste" | "faux" | "passee";
+
+export interface Partie {
+  id: string;
+  code: string;
+  etat: Etat;
+  plateau_id: string;
+  hote_id: string | null;
+  presentateur_id: string | null;
+  format: "court" | "long";
+  reglages: Reglages;
+  tirage: Record<string, TirageMode>;
+  tour_courant: string | null;
+  en_pause: boolean;
+  pause_motif: string | null;
+}
+
+export interface Reglages {
+  questionsFinale: number;
+  seuilFinale: number;
+  chronoFinaleMs: number;
+  fenetreVoteMs: number;
+  fenetreBonusMs: number;
+  toleranceNumerique: number;
+}
+
+export interface TirageMode {
+  ouvertes: string[];
+  qcm: string[];
+  bonus: string;
+  finale: string;
+  sensibles: boolean;
+  occasions: string[];
+}
+
+export interface Joueur {
+  id: string;
+  partie_id: string;
+  prenom: string;
+  binome_id: string | null;
+  role: "A" | "B" | null;
+  vu_le: string;
+  present: boolean;
+  a_choisi_mode: boolean;
+}
+
+export interface Binome {
+  id: string;
+  partie_id: string;
+  mode: Mode | null;
+  couleur: Couleur;
+  score: number;
+  verrouille: boolean;
+  sensibles: boolean;
+  occasions: string[];
+}
+
+export interface Tour {
+  id: string;
+  partie_id: string;
+  ordre: number;
+  manche: Manche;
+  binome_id: string;
+  question_id: string;
+  repondant_id: string | null;
+  questionneur_id: string | null;
+  statut: StatutTour;
+  vote_fin_at: string | null;
+  verdict: boolean | null;
+  points: number;
+  reponse_donnee: string | null;
+  /** null tant que le tour n'est pas révélé — le serveur ne l'envoie pas. */
+  reponse_revelee: string | null;
+  voix_pour: number | null;
+  voix_contre: number | null;
+  j_ai_vote: boolean;
+}
+
+export interface PassageFinale {
+  id: string;
+  partie_id: string;
+  binome_id: string;
+  ordre: number;
+  joueur_id: string | null;
+  questionneur_id: string | null;
+  serie_id: string | null;
+  jugements: Jugement[];
+  chrono_fin_at: string | null;
+  chrono_restant_ms: number | null;
+  seuil_atteint: boolean | null;
+  points: number;
+}
