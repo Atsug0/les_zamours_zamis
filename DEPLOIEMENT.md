@@ -58,7 +58,7 @@ toi comme pour un robot.
 
 ## 3. Appliquer la base
 
-Dix migrations, dans l'ordre, puis le contenu.
+Onze migrations, dans l'ordre, puis le contenu.
 
 ### 3.1 Avec la CLI (recommandé)
 ```bash
@@ -85,6 +85,7 @@ supabase/migrations/0007_realtime.sql
 supabase/migrations/0008_ping.sql
 supabase/migrations/0009_droits.sql
 supabase/migrations/0010_droits_tables.sql
+supabase/migrations/0011_realtime_et_reprise.sql
 supabase/seed_questions_index.sql
 ```
 
@@ -254,10 +255,18 @@ Si le projet est déjà suspendu, le cron ne le réveille pas : il faut passer p
 
 Si l'étape 3 bloque sur une erreur d'autorisation, retourner au §2.2.
 
-### Le test de fumée, avant même d'ouvrir un navigateur
+### Les deux tests de fumée, avant même d'ouvrir un navigateur
 ```bash
-node tools/fumee.mjs
+node tools/fumee.mjs            # le parcours complet et les tentatives de triche
+node tools/fumee-realtime.mjs   # le temps réel arrive-t-il vraiment au client ?
 ```
+
+Le second est celui qu'on oublie, et c'est le plus traître : le temps réel **ne
+fonctionne que sur les tables, jamais sur les vues**, et une politique RLS trop étroite
+fige le lobby **sans produire la moindre erreur**. Les écrans restent simplement vides.
+C'est ce qui est arrivé ici, et seule une vérification par le client l'a révélé.
+
+
 Monte une partie de 4 joueurs **sur le vrai projet, par l'API HTTP et la clé
 publique** — le chemin exact d'un téléphone. Il vérifie le parcours complet jusqu'au
 lancement, puis rejoue trois tentatives de triche qui doivent toutes être refusées :

@@ -78,6 +78,8 @@ select assert_erreur('update v_joueurs set binome_id = gen_random_uuid() where p
                      'changer de binome a travers v_joueurs');
 select assert_erreur('update v_tours set verdict = true where ordre = -1',
                      'se valider soi-meme a travers v_tours');
+select assert_erreur('select count(*) from sieges',
+                     'lire les PIN de reprise des autres joueurs');
 select assert_erreur('select count(*) from questions_index',
                      'lire l index des questions (le client a deja les textes)');
 reset role;

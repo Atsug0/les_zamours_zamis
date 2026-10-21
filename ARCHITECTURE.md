@@ -149,12 +149,27 @@ C'est **la** contrainte du produit. Le secret des réponses est le jeu lui-même
 - En finale, `rpc_demarrer_passage()` renvoie les 5 réponses attendues **au seul
   questionneur du passage**, et seulement une fois le chrono démarré.
 
-### c. Le temps vit en base, jamais dans le client
+### c. Le temps réel ne marche que sur les tables, jamais sur les vues
+Conséquence directe, et contre-intuitive : **une politique RLS trop étroite fige les
+écrans en silence**. Supabase applique les RLS aux diffusions `postgres_changes`, donc un
+abonné ne reçoit un changement que s'il aurait le droit de lire la ligne **dans la table
+elle-même** — la vue filtrante ne compte pas.
+
+`joueurs` était donc lisible uniquement ligne par ligne (`id = auth.uid()`), le reste
+passant par `v_joueurs` : le plateau ne recevait **aucun** événement sur les joueurs, et
+personne ne voyait personne arriver. Aucune erreur, nulle part — juste un lobby vide.
+
+La règle qui en découle : **toute table dont les changements doivent être diffusés a
+besoin d'une politique de lecture à la bonne largeur**, et ne doit donc contenir aucun
+secret. Le PIN de reprise a été sorti de `joueurs` vers une table `sieges` sans aucun
+droit, précisément pour que `joueurs` puisse s'ouvrir.
+
+### d. Le temps vit en base, jamais dans le client
 Les chronos et fenêtres de vote sont stockés en `fin_at timestamptz`. Les clients
 affichent `fin_at - now()` et n'ont **aucune autorité** : une consignation arrivée après
 `fin_at` est rejetée par la fonction, quelle que soit l'horloge du téléphone.
 
-### d. Pas de tâche planifiée : la télé est l'horloge
+### e. Pas de tâche planifiée : la télé est l'horloge
 Supabase gratuit n'offre pas de job fiable, et un cron pour fermer les fenêtres de vote
 serait une dépense d'architecture pour rien. À la place : **le plateau appelle les RPC de
 clôture** quand son compte à rebours tombe à zéro, et la base **refuse si le délai n'est
@@ -163,7 +178,7 @@ pas réellement écoulé**.
 Le plateau ne décide rien, il déclenche. S'il se déconnecte, le présentateur ou l'hôte
 peut déclencher la même transition — l'état n'est jamais bloqué dans un seul appareil.
 
-### e. Tout le schéma public est une API, qu'on le veuille ou non
+### f. Tout le schéma public est une API, qu'on le veuille ou non
 Deux pièges jumeaux, et les deux ont été des trous réels.
 
 **Les fonctions.** PostgREST publie **comme endpoint REST** chaque fonction de `public`
@@ -197,7 +212,7 @@ tests existent parce que les deux trous étaient réels, et exploitables en une 
 > maintenant : un environnement de test qui est plus sûr que la production ne teste
 > rien.
 
-### f. La banque de questions est dans le bundle, pas en base
+### g. La banque de questions est dans le bundle, pas en base
 `questions.json` (~70 Ko) est importé par l'app. La base ne stocke que des identifiants.
 Conséquences : la base reste minuscule, le contenu se versionne avec le code, et le
 workflow `lint_questions.py` continue de marcher. Les questions n'ont aucun besoin

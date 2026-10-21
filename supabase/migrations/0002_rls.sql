@@ -31,9 +31,10 @@ create policy lire_binomes on binomes for select
   using (est_membre(partie_id));
 
 -- Les prénoms, couleurs et binômes des autres sont publics dans la
--- partie. Le PIN et le choix de mode en attente ne le sont pas :
--- ils sont retirés par la vue v_joueurs ci-dessous, et la table
--- n'est lisible que par son propriétaire.
+-- partie : il faut bien voir qui arrive. La politique est posée ici,
+-- puis REMPLACÉE par 0011 — le temps réel ne fonctionne que sur les
+-- tables, donc une politique trop étroite fige silencieusement le
+-- lobby. Voir l'en-tête de 0011_realtime_et_reprise.sql.
 create policy lire_moi on joueurs for select
   using (id = auth.uid());
 

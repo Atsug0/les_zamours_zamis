@@ -244,6 +244,45 @@ select assert_vrai((select count(*) from tours where manche = 'bonus' and verdic
 select assert_vrai((select sum(points) from tours where manche = 'bonus') = 60,
                    'un bonus concordant vaut 30 points');
 
+\echo '--- reprise de siege en cours de partie ---'
+-- Ce chemin etait casse : rpc_reprendre_siege reattribue joueurs.id, et
+-- les cles etrangeres etaient en NO ACTION. Des qu un joueur avait ecrit
+-- une reponse, la reprise echouait — donc exactement quand on en a besoin.
+reset role;
+select set_config('zz.pin', (select pin from sieges s join joueurs j on j.id = s.joueur_id
+                             where j.prenom = 'Sam'), false);
+select set_config('zz.rep', (select count(*)::text from reponses_prepa
+                             where joueur_id = :p1::uuid), false);
+-- on simule une absence de plus de 30 s
+update joueurs set vu_le = now() - interval '2 minutes' where prenom = 'Sam';
+
+select devenir('dddddddd-0000-0000-0000-00000000000e'::uuid); set role authenticated;
+select assert_erreur(format('select rpc_reprendre_siege(%L, ''Sam'', ''0000'')',
+                            current_setting('zz.code')),
+                     'reprendre un siege avec un mauvais PIN');
+select assert_vrai((rpc_reprendre_siege(current_setting('zz.code'), 'Sam',
+                    current_setting('zz.pin'))->>'reprise')::boolean,
+                   'reprise de siege en cours de partie, avec le bon PIN');
+reset role;
+select assert_vrai((select count(*) from joueurs where prenom = 'Sam'
+                    and id = 'dddddddd-0000-0000-0000-00000000000e'::uuid) = 1,
+                   'le siege a change de session');
+select assert_vrai((select count(*) from reponses_prepa
+                    where joueur_id = 'dddddddd-0000-0000-0000-00000000000e'::uuid)
+                   = current_setting('zz.rep')::int,
+                   'les reponses de preparation ont suivi le joueur');
+select assert_vrai((select count(*) from joueurs where id = :p1::uuid) = 0,
+                   'l ancienne session ne detient plus rien');
+
+-- le siege occupe ne se vole pas, meme avec le bon PIN
+select set_config('zz.pinalex', (select pin from sieges s join joueurs j on j.id = s.joueur_id
+                                 where j.prenom = 'Alex'), false);
+select devenir('dddddddd-0000-0000-0000-00000000000f'::uuid); set role authenticated;
+select assert_erreur(format('select rpc_reprendre_siege(%L, ''Alex'', %L)',
+                            current_setting('zz.code'), current_setting('zz.pinalex')),
+                     'voler le siege de quelqu un qui joue a cote');
+reset role;
+
 \echo '--- la finale ---'
 select assert_vrai((select etat from parties) = 'finale', 'on passe en finale');
 select assert_vrai((select count(*) from passages_finale) = 2, 'un passage par binome');

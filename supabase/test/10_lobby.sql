@@ -86,7 +86,15 @@ select assert_vrai((select count(*) from binomes where mode = 'zamis') = 1, 'un 
 
 \echo '--- RLS ---'
 select devenir(:p1::uuid); set role authenticated;
-select assert_vrai((select count(*) from joueurs) = 1, 'un joueur ne lit que sa propre ligne joueurs (pin inclus)');
+-- joueurs est lisible par toute la partie : le temps reel ne marche que
+-- sur les tables, et sans ca personne ne voit personne arriver (0011).
+select assert_vrai((select count(*) from joueurs) = 5,
+                   'un joueur voit les 5 joueurs de sa partie');
+select assert_vrai((select count(*) from information_schema.columns
+                    where table_name = 'joueurs' and column_name = 'pin') = 0,
+                   'aucun secret ne reste dans joueurs : le PIN a sa propre table');
+select assert_erreur('select count(*) from sieges',
+                     'les PIN de reprise restent illisibles');
 select assert_vrai((select count(*) from v_joueurs) = 5, 'la vue publique montre les 5 joueurs');
 select assert_erreur('select count(*) from reponses_prepa', 'reponses_prepa : aucun droit de lecture');
 select assert_erreur('select count(*) from votes', 'votes : aucun droit de lecture');
