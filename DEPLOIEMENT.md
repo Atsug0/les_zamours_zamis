@@ -58,7 +58,7 @@ toi comme pour un robot.
 
 ## 3. Appliquer la base
 
-Neuf migrations, dans l'ordre, puis le contenu.
+Dix migrations, dans l'ordre, puis le contenu.
 
 ### 3.1 Avec la CLI (recommandé)
 ```bash
@@ -84,12 +84,21 @@ supabase/migrations/0006_finale.sql
 supabase/migrations/0007_realtime.sql
 supabase/migrations/0008_ping.sql
 supabase/migrations/0009_droits.sql
+supabase/migrations/0010_droits_tables.sql
 supabase/seed_questions_index.sql
 ```
 
-L'ordre n'est pas négociable : 0002 dépend des tables de 0001, le seed des colonnes
-de 0001, et **0009 doit passer en dernier** — c'est elle qui ferme les droits sur les
-fonctions, et elle doit voir toutes les fonctions déjà créées.
+L'ordre n'est pas négociable : 0002 dépend des tables de 0001, le seed des colonnes de
+0001, et **0009 puis 0010 doivent passer en dernier** — elles ferment les droits sur les
+fonctions puis sur les tables et les vues, et doivent donc voir tout ce qui existe.
+
+> `0010` corrige un trou trouvé en déployant pour de vrai. Supabase accorde par défaut
+> **tous** les droits sur toute table du schéma `public` à `anon` et `authenticated`.
+> Les migrations plus anciennes révoquaient une liste **nommée** de tables — mais les
+> **vues** sont créées après, et restaient donc écrivables. Or une vue
+> non-`security_invoker` s'exécute avec les droits de son *propriétaire* : écrire à
+> travers elle **contournait entièrement les RLS**. `update v_recap set points = 9999`
+> falsifiait les scores. 0010 repart de zéro par motif, jamais par liste nominative.
 
 ### 3.3 Vérifier que la base est saine
 Dans **SQL Editor** :
@@ -244,6 +253,18 @@ Si le projet est déjà suspendu, le cron ne le réveille pas : il faut passer p
    continue, l'état n'a pas bougé.
 
 Si l'étape 3 bloque sur une erreur d'autorisation, retourner au §2.2.
+
+### Le test de fumée, avant même d'ouvrir un navigateur
+```bash
+node tools/fumee.mjs
+```
+Monte une partie de 4 joueurs **sur le vrai projet, par l'API HTTP et la clé
+publique** — le chemin exact d'un téléphone. Il vérifie le parcours complet jusqu'au
+lancement, puis rejoue trois tentatives de triche qui doivent toutes être refusées :
+lire `reponses_prepa`, falsifier un score à travers une vue, appeler `juger_tour`
+directement. La partie de test expire seule au bout de 12 h.
+
+C'est le test à lancer en premier : s'il passe, le dos de l'application est sain.
 
 ---
 

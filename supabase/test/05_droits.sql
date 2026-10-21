@@ -51,4 +51,35 @@ select assert_vrai(est_membre(gen_random_uuid()) is false,
 select assert_vrai(nb_questions_prepa(gen_random_uuid()) is null,
                    'nb_questions_prepa reste appelable et ne rend qu un compte');
 reset role;
+
+\echo '--- droits sur les tables et les vues ---'
+-- Le trou historique : Supabase accorde ALL par defaut, et les VUES
+-- echappaient aux revoke nommes. Une vue tourne avec les droits de son
+-- proprietaire : y ecrire contourne les RLS.
+select assert_vrai((
+  select count(*) = 0 from information_schema.role_table_grants
+  where grantee in ('anon','authenticated') and table_schema = 'public'
+    and privilege_type in ('INSERT','UPDATE','DELETE','TRUNCATE','REFERENCES')
+), 'aucune relation du schema public n est modifiable depuis le navigateur');
+
+select assert_vrai((
+  select array_agg(distinct table_name::text order by table_name::text) = array[
+    'binomes','joueurs','parties','v_joueurs','v_palmares',
+    'v_passages_finale','v_progression','v_recap','v_tours']
+  from information_schema.role_table_grants
+  where grantee = 'authenticated' and table_schema = 'public' and privilege_type = 'SELECT'
+), 'exactement 3 tables et 6 vues sont lisibles, pas une de plus');
+
+-- l exploit concret, teste a travers la vue
+set role authenticated;
+select assert_erreur('update v_recap set points = 9999 where ordre = -1',
+                     'falsifier les scores a travers v_recap');
+select assert_erreur('update v_joueurs set binome_id = gen_random_uuid() where prenom = ''__x__''',
+                     'changer de binome a travers v_joueurs');
+select assert_erreur('update v_tours set verdict = true where ordre = -1',
+                     'se valider soi-meme a travers v_tours');
+select assert_erreur('select count(*) from questions_index',
+                     'lire l index des questions (le client a deja les textes)');
+reset role;
+
 \echo '=== DROITS : OK ==='

@@ -163,9 +163,11 @@ pas réellement écoulé**.
 Le plateau ne décide rien, il déclenche. S'il se déconnecte, le présentateur ou l'hôte
 peut déclencher la même transition — l'état n'est jamais bloqué dans un seul appareil.
 
-### e. Toute fonction du schéma public est une API, qu'on le veuille ou non
-PostgREST publie **comme endpoint REST** chaque fonction de `public` exécutable par
-`anon` ou `authenticated`. Ce n'est pas une option : c'est le fonctionnement normal de
+### e. Tout le schéma public est une API, qu'on le veuille ou non
+Deux pièges jumeaux, et les deux ont été des trous réels.
+
+**Les fonctions.** PostgREST publie **comme endpoint REST** chaque fonction de `public`
+exécutable par `anon` ou `authenticated`. Ce n'est pas une option : c'est le fonctionnement normal de
 Supabase, et ça transforme le moindre helper oublié en porte d'entrée.
 
 `0009_droits.sql` est donc la source unique de vérité sur les droits : elle révoque
@@ -178,9 +180,22 @@ nécessités techniques, pas des choix :
 - dans une **vue** non-`security_invoker`, Postgres vérifie l'accès aux *tables* avec
   les droits du propriétaire, mais l'exécution des *fonctions* avec ceux de l'appelant.
 
-`supabase/test/05_droits.sql` échoue si une fonction sort de cette liste. Le test
-existe parce que le trou était réel : `juger_tour(tour, verdict)` écrit des points
-sans aucune validation, et elle était joignable sans session.
+**Les tables, et surtout les vues.** Supabase accorde par défaut **tous** les droits sur
+toute table de `public` à `anon` et `authenticated`. Révoquer une liste *nommée* ne
+suffit pas : les **vues** sont créées après, et une vue non-`security_invoker` s'exécute
+avec les droits de son **propriétaire**. Y écrire contourne donc les RLS entièrement —
+`update v_recap set points = 9999` falsifiait les scores, et `update v_joueurs set
+binome_id = …` changeait de binôme. `0010_droits_tables.sql` révoque donc **par motif**
+(`all tables in schema public`), ajuste aussi les *default privileges* pour les objets
+futurs, puis rouvre la seule lecture nécessaire.
+
+`supabase/test/05_droits.sql` échoue si quoi que ce soit sort de ces listes. Les deux
+tests existent parce que les deux trous étaient réels, et exploitables en une requête.
+
+> Le second n'avait pas été vu en local, parce qu'un Postgres nu n'a pas les *default
+> privileges* permissifs de Supabase. `supabase/test/00_shim.sql` les reproduit
+> maintenant : un environnement de test qui est plus sûr que la production ne teste
+> rien.
 
 ### f. La banque de questions est dans le bundle, pas en base
 `questions.json` (~70 Ko) est importé par l'app. La base ne stocke que des identifiants.

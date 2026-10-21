@@ -25,7 +25,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | Code | |
 |---|---|
 | `supabase/migrations/` | le schéma, les RLS, les 24 fonctions RPC |
-| `supabase/test/` | 124 assertions, dont une partie complète jouée de bout en bout |
+| `supabase/test/` | 130 assertions, dont une partie complète jouée de bout en bout |
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
 | `tokens.css` | **les jetons de la DA — source unique** |
@@ -78,7 +78,8 @@ Ouvrir ensuite deux fenêtres : `localhost:5173/tv/CODE` d'un côté,
 
 ```bash
 python3 lint_questions.py     # refuse une question genrée ou non concordable
-./tools/db_local.sh           # 124 assertions SQL
+./tools/db_local.sh           # 130 assertions SQL
+node tools/fumee.mjs          # une vraie partie sur le vrai projet, par l'API HTTP
 cd app && npm run build       # types stricts + les QR se décodent vraiment
 ```
 

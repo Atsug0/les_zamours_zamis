@@ -15,3 +15,13 @@ create or replace function devenir(p uuid) returns void language sql as $$
 $$;
 grant usage on schema public to anon, authenticated;
 grant usage on schema auth to anon, authenticated;
+
+-- IMPORTANT : Supabase accorde par défaut TOUS les droits sur toute table
+-- du schéma public à anon et authenticated, et le fait aussi pour les
+-- objets créés plus tard. Sans reproduire cette permissivité ici, les
+-- tests locaux passent alors que la production est grande ouverte — c'est
+-- exactement ce qui est arrivé : les VUES, créées après les revoke nommés
+-- des migrations, restaient écrivables, et une vue tourne avec les droits
+-- de son propriétaire, donc en contournant les RLS.
+grant all on all tables in schema public to anon, authenticated;
+alter default privileges in schema public grant all on tables to anon, authenticated;
