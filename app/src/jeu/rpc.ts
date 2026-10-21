@@ -147,6 +147,22 @@ export const rpc = {
       p_concordes: concordes,
     }),
 
+  /**
+   * Duel seulement : il n'y a aucun votant, donc la concordance est
+   * calculée mécaniquement. Celui qui n'est pas d'accord conteste une
+   * fois, et l'adversaire tranche.
+   */
+  contester: (tour: string) =>
+    appel<{ statut: string; contestee: boolean; arbitre: string }>("rpc_contester", {
+      p_tour: tour,
+    }),
+
+  trancherContestation: (tour: string, accepte: boolean) =>
+    appel<{ statut: string; verdict: boolean }>("rpc_trancher_contestation", {
+      p_tour: tour,
+      p_accepte: accepte,
+    }),
+
   // ---- présence et pause ----
   pouls: () => appel<{ partie_id: string | null }>("rpc_pouls"),
   geler: (motif = "absence") => appel<{ en_pause: boolean }>("rpc_geler", { p_motif: motif }),

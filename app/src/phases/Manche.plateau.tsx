@@ -1,7 +1,7 @@
 import { formater, useChrono } from "../jeu/chrono";
 import { question as texteQuestion } from "../jeu/banque";
 import { Lettrage, Narration, PastilleBinome, Trame, Verdict } from "../ui";
-import { membres, type Etat } from "../jeu/usePartie";
+import { membres, modeDuel, type Etat } from "../jeu/usePartie";
 import type { Tour } from "../jeu/types";
 
 /**
@@ -18,6 +18,7 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
 
   const q = texteQuestion(tour.question_id, prepare?.prenom ?? "ton binôme");
   const chrono = useChrono(tour.vote_fin_at, null);
+  const duel = modeDuel(e);
 
   const signe =
     tour.statut === "juge" ? (tour.verdict ? "=" : "≠") : tour.statut === "vote" ? "?" : "";
@@ -78,7 +79,13 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
 
         {tour.statut === "attente" && (
           <Lettrage taille="var(--t-xl)" couleur="var(--zamours)">
-            {bonus ? "Roulement…" : tour.manche === "citez3" ? "Trois réponses !" : "À voix haute !"}
+            {bonus
+              ? "Roulement…"
+              : tour.manche === "citez3"
+                ? "Trois réponses !"
+                : duel
+                  ? "À voix haute, puis tape-la"
+                  : "À voix haute !"}
           </Lettrage>
         )}
         {tour.statut === "consigne" && (
@@ -119,6 +126,10 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
               liste={tour.manche === "citez3"}
             />
           </div>
+        )}
+
+        {duel && tour.contestee && tour.statut === "revele" && (
+          <Narration>Contestation — l'autre tranche</Narration>
         )}
 
         {tour.statut === "vote" && (

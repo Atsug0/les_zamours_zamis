@@ -167,6 +167,10 @@ export function modeSujet(e: Etat): boolean {
   return e.partie?.mode_jeu === "sujet";
 }
 
+export function modeDuel(e: Etat): boolean {
+  return e.partie?.mode_jeu === "duel";
+}
+
 export function suisJePresentateur(e: Etat): boolean {
   return !!e.moi && e.partie?.presentateur_id === e.moi;
 }
