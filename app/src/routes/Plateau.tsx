@@ -63,7 +63,7 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
     case "citez3":
     case "bonus":
       if (!tour) return <Attente />;
-      return e.partie.mode_jeu === "sujet"
+      return e.partie.mode_jeu === "sujet" || e.partie.mode_jeu === "tournoi"
         ? SujetPlateau({ e, tour })
         : manchePlateau({ e, tour });
     case "finale":

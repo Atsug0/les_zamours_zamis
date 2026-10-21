@@ -16,6 +16,7 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
   const [mariage, setMariage] = useState(false);
   const [format, setFormat] = useState<"court" | "long">("court");
   const [citez3, setCitez3] = useState(false);
+  const [modeJeu, setModeJeu] = useState<"binomes" | "paris">("binomes");
   const moi = monJoueur(e);
   const binome = monBinome(e);
   const autre = partenaire(e);
@@ -133,6 +134,23 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
             >
               Je suis le sujet
             </BoutonTampon>
+
+            {peutOrchestrer(e) && e.joueurs.length >= 3 && (
+              <>
+                <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)", marginTop: "var(--e-4)" }}>
+                  <strong>Le tournoi.</strong> Chacun passe sur le gril à son tour, et marque des
+                  points en devinant les autres le reste du temps. Un seul classement : qui connaît
+                  le mieux le groupe.
+                </p>
+                <BoutonTampon
+                  ton="neutre"
+                  disabled={occupe}
+                  onClick={() => void faire(() => rpc.lancerTournoi(format))}
+                >
+                  Lancer un tournoi
+                </BoutonTampon>
+              </>
+            )}
           </Panneau>
 
           {seulSansBinome && (
@@ -288,6 +306,28 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
               dit="3 ouvertes + 2 QCM, finale à 7 questions en 45 s. Le double de temps."
             />
           </div>
+          {!sujet && e.binomes.length >= 2 && (
+            <div style={{ display: "grid", gap: "var(--e-2)", marginBottom: "var(--e-3)" }}>
+              <ChoixFormat
+                actif={modeJeu === "binomes"}
+                onClick={() => void faire(async () => {
+                  setModeJeu("binomes");
+                  await rpc.choisirModeJeu("binomes");
+                })}
+                titre="Binômes classiques"
+                dit="Les autres binômes votent sur les réponses libres."
+              />
+              <ChoixFormat
+                actif={modeJeu === "paris"}
+                onClick={() => void faire(async () => {
+                  setModeJeu("paris");
+                  await rpc.choisirModeJeu("paris");
+                })}
+                titre="Tous contre le binôme"
+                dit="À chaque question, le reste de la salle parie sur la concordance avant la révélation. 5 points par pari juste. Le public a quelque chose à faire à chaque tour."
+              />
+            </div>
+          )}
           <div style={{ marginBottom: "var(--e-3)", display: sujet ? "none" : "block" }}>
             <Bascule
               active={citez3}

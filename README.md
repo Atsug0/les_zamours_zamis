@@ -25,7 +25,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | Code | |
 |---|---|
 | `supabase/migrations/` | le schéma, les RLS, les 24 fonctions RPC |
-| `supabase/test/` | 217 assertions, dont une partie complète jouée dans chaque mode |
+| `supabase/test/` | 254 assertions, dont une partie complète jouée dans chacun des cinq modes |
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
 | `tokens.css` | **les jetons de la DA — source unique** |
@@ -46,17 +46,28 @@ manches QCM et libres, question bonus, finale chronométrée, palmarès et mort 
 des deux côtés, télé et téléphone, avec l'orchestration par le plateau. Navigable à la
 télécommande, en plein écran.
 
-### Trois façons de jouer
+### Cinq façons de jouer
 
 | Mode | Qui joue | Comment on juge |
 |---|---|---|
 | **Binômes** | 2 à 6 binômes, Zamours ou Zamis | les autres binômes votent à la majorité |
-| **Duel** | exactement deux personnes, qui connaît le mieux l'autre | concordance calculée, contestation possible une fois |
-| **Sujet** | une personne qu'on doit deviner, tous les autres s'affrontent | le sujet valide — c'est lui qui sait |
+| **Tous contre le binôme** | idem, mais le public **parie** à chaque question | concordance calculée ; seul le présentateur peut corriger |
+| **Duel** | exactement deux personnes | concordance calculée, contestation possible une fois |
+| **Sujet** | une personne qu'on doit deviner, les autres s'affrontent | le sujet valide — c'est lui qui sait |
+| **Tournoi** | 3 à 6 joueurs, chacun est le sujet à son tour | le sujet du moment valide |
 
-Le duel s'active de lui-même : deux joueurs, un binôme, on lance. Le mode sujet se
-choisit au lobby et n'a **aucune phase de préparation** — le sujet répond en secret
-juste avant les autres, question par question.
+Quelques conséquences de conception :
+
+- **Le duel s'active de lui-même** : deux joueurs, un binôme, on lance. Et comme il n'y
+  a plus aucun votant, la concordance y est calculée mécaniquement — celui qui n'est pas
+  d'accord conteste une fois, et l'autre tranche.
+- **Les modes sujet et tournoi n'ont aucune phase de préparation.** Le sujet répond en
+  secret juste avant les autres, question par question : zéro temps mort, et sa réponse
+  est verrouillée avant que quiconque réponde.
+- **Dans le mode paris, le public ne juge pas.** On ne peut pas à la fois parier sur un
+  résultat et le décider : qui a parié « ça va rater » aurait intérêt à refuser la
+  réponse. Le verdict est donc mécanique, et seul le présentateur — qui ne parie pas —
+  peut le corriger.
 
 Polices auto-hébergées, format court ou long, catégories sensibles et bloc mariage,
 variante « cite 3 », reprise du plateau depuis un téléphone. Reste à héberger le site.
@@ -94,7 +105,7 @@ Ouvrir ensuite deux fenêtres : `localhost:5173/tv/CODE` d'un côté,
 
 ```bash
 python3 lint_questions.py     # refuse une question genrée ou non concordable
-./tools/db_local.sh           # 217 assertions SQL
+./tools/db_local.sh           # 254 assertions SQL
 node tools/fumee.mjs          # une vraie partie sur le vrai projet, par l'API HTTP
 node tools/fumee-realtime.mjs # le temps réel arrive-t-il vraiment au client ?
 cd app && npm run build       # types stricts + les QR se décodent vraiment

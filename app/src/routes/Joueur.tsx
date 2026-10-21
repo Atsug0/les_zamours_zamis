@@ -72,7 +72,7 @@ function Pupitre({ e, pin }: { e: ReturnType<typeof usePartie>; pin: string | nu
     case "citez3":
     case "bonus":
       if (!tour) return <div className="centre">Un instant…</div>;
-      return e.partie?.mode_jeu === "sujet"
+      return e.partie?.mode_jeu === "sujet" || e.partie?.mode_jeu === "tournoi"
         ? SujetJoueur({ e, tour })
         : mancheJoueur({ e, tour });
     case "finale":

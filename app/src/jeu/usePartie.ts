@@ -171,6 +171,27 @@ export function modeDuel(e: Etat): boolean {
   return e.partie?.mode_jeu === "duel";
 }
 
+export function modeTournoi(e: Etat): boolean {
+  return e.partie?.mode_jeu === "tournoi";
+}
+
+export function modeParis(e: Etat): boolean {
+  return e.partie?.mode_jeu === "paris";
+}
+
+/** Le sujet est une propriété du TOUR en tournoi, de la partie en mode sujet. */
+export function sujetDuTour(e: Etat, t: Tour | null): Joueur | null {
+  const id = t?.sujet_id ?? e.partie?.sujet_id ?? null;
+  return id ? (e.joueurs.find((j) => j.id === id) ?? null) : null;
+}
+
+/** Les parieurs d'un tour : tout le monde sauf le binôme en jeu et le présentateur. */
+export function suisJeParieur(e: Etat, t: Tour | null): boolean {
+  const j = monJoueur(e);
+  if (!t || !j?.binome_id) return false;
+  return j.binome_id !== t.binome_id && j.id !== e.partie?.presentateur_id;
+}
+
 export function suisJePresentateur(e: Etat): boolean {
   return !!e.moi && e.partie?.presentateur_id === e.moi;
 }

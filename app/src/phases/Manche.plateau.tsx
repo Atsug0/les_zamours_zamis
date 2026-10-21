@@ -1,7 +1,7 @@
 import { formater, useChrono } from "../jeu/chrono";
 import { question as texteQuestion } from "../jeu/banque";
 import { Lettrage, Narration, PastilleBinome, Trame, Verdict } from "../ui";
-import { membres, modeDuel, type Etat } from "../jeu/usePartie";
+import { membres, modeDuel, modeParis, type Etat } from "../jeu/usePartie";
 import type { Tour } from "../jeu/types";
 
 /**
@@ -19,6 +19,10 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
   const q = texteQuestion(tour.question_id, prepare?.prenom ?? "ton binôme");
   const chrono = useChrono(tour.vote_fin_at, null);
   const duel = modeDuel(e);
+  const paris = modeParis(e);
+  const parieurs = e.joueurs.filter(
+    (j) => j.binome_id && j.binome_id !== tour.binome_id && j.id !== e.partie?.presentateur_id
+  ).length;
 
   const signe =
     tour.statut === "juge" ? (tour.verdict ? "=" : "≠") : tour.statut === "vote" ? "?" : "";
@@ -88,10 +92,29 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
                   : "À voix haute !"}
           </Lettrage>
         )}
-        {tour.statut === "consigne" && (
+        {tour.statut === "consigne" && !paris && (
           <Lettrage taille="var(--t-xl)" couleur="var(--zamours)">
             Réponse consignée…
           </Lettrage>
+        )}
+
+        {tour.statut === "consigne" && paris && (
+          <>
+            <Case qui={`${repondant?.prenom ?? "?"} a répondu`} quoi={tour.reponse_donnee} />
+            <Narration>Ça va concorder ? Pariez !</Narration>
+            <span
+              style={{
+                fontFamily: "var(--donnees)",
+                fontSize: "var(--t-2xl)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {tour.reponses_recues} / {parieurs}
+            </span>
+            <span style={{ color: "var(--texte-2)", fontSize: "var(--t-s)" }}>
+              paris secrets · 5 points à qui lit juste
+            </span>
+          </>
         )}
 
         {(tour.statut === "vote" || tour.statut === "juge") && (
@@ -168,6 +191,11 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
               <Lettrage taille="var(--t-2xl)" couleur="var(--valide)">
                 +{tour.points}
               </Lettrage>
+            )}
+            {paris && (
+              <span style={{ color: "var(--texte-2)", fontSize: "var(--t-s)" }}>
+                et 5 points à chaque pari juste
+              </span>
             )}
           </div>
         )}

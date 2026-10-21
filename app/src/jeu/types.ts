@@ -6,7 +6,7 @@ export type Manche = "qcm" | "libre" | "citez3" | "bonus";
 export type StatutTour = "attente" | "consigne" | "revele" | "vote" | "juge";
 export type Jugement = "attente" | "juste" | "faux" | "passee";
 
-export type ModeJeu = "binomes" | "sujet" | "duel";
+export type ModeJeu = "binomes" | "sujet" | "duel" | "tournoi" | "paris";
 
 export interface Partie {
   id: string;
@@ -104,6 +104,8 @@ export interface Tour {
   j_ai_repondu: boolean;
   /** duel : une contestation a déjà été utilisée sur ce tour */
   contestee: boolean;
+  /** tournoi : le sujet de CE tour. Null = le sujet de la partie. */
+  sujet_id: string | null;
 }
 
 export interface ReponseManche {

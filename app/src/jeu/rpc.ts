@@ -72,11 +72,36 @@ export const rpc = {
       p_passee: passee,
     }),
 
+  /** Choisit le mode de jeu au lobby : binômes classiques, ou avec paris du public. */
+  choisirModeJeu: (mode: "binomes" | "paris") =>
+    appel<{ mode_jeu: string }>("rpc_choisir_mode_jeu", { p_mode: mode }),
+
+  /** « Tous contre le binôme » : le public parie sur la concordance. */
+  parier: (tour: string, concorde: boolean) =>
+    appel<{ paris: number; total: number; tous_ont_parie: boolean }>("rpc_parier", {
+      p_tour: tour,
+      p_concorde: concorde,
+    }),
+
+  /** Clôt un tour de paris. Le verdict n'est corrigeable que par qui ne parie pas. */
+  cloreParis: (tour: string, verdict?: boolean) =>
+    appel<{
+      statut: string;
+      verdict: boolean;
+      reponse_revelee: string;
+      paris_justes: number;
+      points_binome: number;
+    }>("rpc_clore_paris", { p_tour: tour, p_verdict: verdict ?? null }),
+
   // ---- mode « qui connaît le mieux X » ----
   devenirSujet: () => appel<{ sujet_id: string }>("rpc_devenir_sujet"),
 
   lancerSujet: (format: "court" | "long" = "court") =>
     appel<{ etat: string; tours: number }>("rpc_lancer_sujet", { p_format: format }),
+
+  /** Le tournoi : chacun est le sujet à son tour. */
+  lancerTournoi: (format: "court" | "long" = "court") =>
+    appel<{ etat: string; tours: number }>("rpc_lancer_tournoi", { p_format: format }),
 
   /** Le sujet répond en secret, avant tout le monde. */
   sujetRepond: (tour: string, valeur: string) =>

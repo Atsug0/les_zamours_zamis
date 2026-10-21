@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { rpc } from "../jeu/rpc";
 import { question as texteQuestion } from "../jeu/banque";
 import { BoutonTampon, Erreur, Narration, Panneau } from "../ui";
-import { monJoueur, suisJeSujet, type Etat } from "../jeu/usePartie";
+import { monJoueur, sujetDuTour, type Etat } from "../jeu/usePartie";
 import type { Tour } from "../jeu/types";
 
 /** Mode sujet, sur le téléphone. */
@@ -11,9 +11,10 @@ export default function SujetJoueur({ e, tour }: { e: Etat; tour: Tour }) {
   const [occupe, setOccupe] = useState(false);
   const [saisie, setSaisie] = useState("");
   const moi = monJoueur(e);
-  const jeSuisLeSujet = suisJeSujet(e);
-  const sujet = e.joueurs.find((j) => j.id === e.partie?.sujet_id);
-  const challengers = e.joueurs.filter((j) => j.id !== e.partie?.sujet_id);
+  // en tournoi, le sujet change à chaque bloc de questions
+  const sujet = sujetDuTour(e, tour);
+  const jeSuisLeSujet = !!moi && moi.id === sujet?.id;
+  const challengers = e.joueurs.filter((j) => j.id !== sujet?.id);
   const q = texteQuestion(tour.question_id, sujet?.prenom ?? "lui");
   const reponses = e.reponsesManche.filter((r) => r.tour_id === tour.id);
   const maReponse = reponses.find((r) => r.joueur_id === moi?.id);

@@ -4,7 +4,8 @@ import { question as texteQuestion } from "../jeu/banque";
 import { formater, useChrono } from "../jeu/chrono";
 import { BoutonTampon, Erreur, Narration, Panneau } from "../ui";
 import {
-  membres, modeDuel, monJoueur, peutOrchestrer, suisJeVotant, type Etat,
+  membres, modeDuel, modeParis, monJoueur, peutOrchestrer, suisJeParieur, suisJeVotant,
+  type Etat,
 } from "../jeu/usePartie";
 import type { Tour } from "../jeu/types";
 
@@ -22,10 +23,12 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
   const moi = monJoueur(e);
   const equipe = membres(e, tour.binome_id);
   const prepare = equipe.find((j) => j.id !== tour.repondant_id);
+  const repondant = e.joueurs.find((j) => j.id === tour.repondant_id);
   const q = texteQuestion(tour.question_id, prepare?.prenom ?? "ton binôme");
   const chrono = useChrono(tour.vote_fin_at, null);
 
   const duel = modeDuel(e);
+  const paris = modeParis(e);
   const monTour = moi?.binome_id === tour.binome_id;
   const jeRepond = moi?.id === tour.repondant_id;
   const jeQuestionne = moi?.id === tour.questionneur_id;
@@ -61,6 +64,89 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
       )}
     </div>
   );
+
+  // ================= PARIS =================
+  // Le public parie AVANT la révélation. Il ne juge pas : on ne peut
+  // pas à la fois parier sur un résultat et le décider (0020).
+  if (paris && tour.statut === "consigne" && suisJeParieur(e, tour) && !tour.j_ai_repondu) {
+    return cadre(
+      <>
+        <Narration petit>Ton pari — ça va concorder ?</Narration>
+        <Panneau>
+          <p style={{ margin: 0, fontSize: "var(--t-s)", color: "var(--texte-2)" }}>
+            {equipe.map((j) => j.prenom).join(" & ")} · {q?.jeu}
+          </p>
+          <div style={{ fontSize: "var(--t-xs)", color: "var(--texte-2)", marginTop: "var(--e-2)" }}>
+            {repondant?.prenom} a répondu
+          </div>
+          <div style={{ fontSize: "var(--t-xl)" }}>{tour.reponse_donnee}</div>
+        </Panneau>
+        <div className="duo">
+          <BoutonTampon ton="valide" disabled={occupe} onClick={() => void faire(() => rpc.parier(tour.id, true))}>
+            Ça concorde
+          </BoutonTampon>
+          <BoutonTampon ton="refuse" disabled={occupe} onClick={() => void faire(() => rpc.parier(tour.id, false))}>
+            Ça rate
+          </BoutonTampon>
+        </div>
+        <p style={{ margin: 0, fontSize: "var(--t-xs)", color: "var(--texte-2)" }}>
+          5 points pour ton binôme si tu lis juste. Les paris sont secrets.
+        </p>
+      </>
+    );
+  }
+
+  if (paris && tour.statut === "consigne" && (jeQuestionne || peutOrchestrer(e))) {
+    const parieurs = e.joueurs.filter(
+      (j) => j.binome_id && j.binome_id !== tour.binome_id && j.id !== e.partie?.presentateur_id
+    ).length;
+    const tous = tour.reponses_recues >= parieurs;
+    return cadre(
+      <>
+        <Narration petit>
+          {tour.reponses_recues} / {parieurs} ont parié
+        </Narration>
+        {tour.j_ai_repondu && (
+          <p style={{ margin: 0, fontSize: "var(--t-xs)", color: "var(--texte-2)" }}>
+            Ton pari est enregistré.
+          </p>
+        )}
+        <BoutonTampon
+          ton={tous ? "jaune" : "neutre"}
+          disabled={occupe}
+          onClick={() => void faire(() => rpc.cloreParis(tour.id))}
+        >
+          Révéler et compter
+        </BoutonTampon>
+        {peutOrchestrer(e) && (
+          <>
+            <p style={{ margin: 0, fontSize: "var(--t-xs)", color: "var(--texte-2)" }}>
+              Tu ne paries pas : toi seul peux imposer un verdict si la comparaison
+              automatique est injuste.
+            </p>
+            <div className="duo">
+              <BoutonTampon
+                large={false}
+                ton="valide"
+                disabled={occupe}
+                onClick={() => void faire(() => rpc.cloreParis(tour.id, true))}
+              >
+                Ça compte
+              </BoutonTampon>
+              <BoutonTampon
+                large={false}
+                ton="refuse"
+                disabled={occupe}
+                onClick={() => void faire(() => rpc.cloreParis(tour.id, false))}
+              >
+                Ça compte pas
+              </BoutonTampon>
+            </div>
+          </>
+        )}
+      </>
+    );
+  }
 
   // ================= DUEL =================
   // Aucun votant : chacun saisit sa propre réponse, la concordance est

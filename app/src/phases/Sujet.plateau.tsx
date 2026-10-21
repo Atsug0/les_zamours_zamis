@@ -1,6 +1,6 @@
 import { question as texteQuestion } from "../jeu/banque";
 import { Lettrage, Narration, PastilleBinome, Trame } from "../ui";
-import { membres, type Etat } from "../jeu/usePartie";
+import { membres, sujetDuTour, type Etat } from "../jeu/usePartie";
 import type { Tour } from "../jeu/types";
 
 /**
@@ -11,8 +11,9 @@ import type { Tour } from "../jeu/types";
  * jeu à binômes : chaque question est jouée par toute la salle.
  */
 export default function SujetPlateau({ e, tour }: { e: Etat; tour: Tour }) {
-  const sujet = e.joueurs.find((j) => j.id === e.partie?.sujet_id);
-  const challengers = e.joueurs.filter((j) => j.id !== e.partie?.sujet_id);
+  // en tournoi, le sujet change à chaque bloc de questions
+  const sujet = sujetDuTour(e, tour);
+  const challengers = e.joueurs.filter((j) => j.id !== sujet?.id);
   const q = texteQuestion(tour.question_id, sujet?.prenom ?? "lui");
   const reponses = e.reponsesManche.filter((r) => r.tour_id === tour.id);
 
