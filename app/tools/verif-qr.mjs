@@ -35,6 +35,8 @@ function rasteriser(valeur) {
 }
 
 const cas = [
+  // l'URL réellement en production : celle que le QR du plateau encode
+  "https://les-zamours-zamis.web.app/p/ABCD",
   "https://leszamours.app/p/ABCD",
   "https://les-zamours-zamis.pages.dev/p/WQKP",
   // le pire cas réaliste : un sous-domaine d'hébergeur, bien plus long

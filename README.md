@@ -3,6 +3,8 @@
 Un jeu de complicité **web + mobile**, librement inspiré des *Z'amours*. Deux écrans :
 la télé fait le **plateau**, les téléphones font les **pupitres**.
 
+**→ https://les-zamours-zamis.web.app**
+
 Un binôme répond à des questions sur lui-même avant la partie ; pendant la partie,
 chacun doit retrouver ce que son partenaire a répondu. On ne juge jamais si une réponse
 est *vraie* — seulement si elle **correspond**.
@@ -70,7 +72,8 @@ Quelques conséquences de conception :
   peut le corriger.
 
 Polices auto-hébergées, format court ou long, catégories sensibles et bloc mariage,
-variante « cite 3 », reprise du plateau depuis un téléphone. Reste à héberger le site.
+variante « cite 3 », reprise du plateau depuis un téléphone. Le site est déployé sur
+Firebase Hosting.
 
 ### Trois invariants, tenus par le serveur et non par le client
 

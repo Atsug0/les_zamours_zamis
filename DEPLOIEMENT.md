@@ -190,14 +190,34 @@ Ou par l'interface : **Workers & Pages → Create → Pages → Connect to Git**
 répertoire racine `app`, commande `npm run build`, dossier de sortie `dist`. Ne pas
 oublier d'y déclarer les deux variables `VITE_*` — le build tourne chez eux.
 
-### 5.2 Firebase Hosting
-`app/firebase.json` contient déjà la réécriture et les en-têtes de cache.
+### 5.2 Firebase Hosting — ce qui est en place
+Le site tourne sur **https://les-zamours-zamis.web.app** (projet
+`les-zamours-zamis`). `app/firebase.json` et `app/.firebaserc` sont dans le dépôt, donc
+un déploiement se résume à :
 
 ```bash
-npm i -g firebase-tools
-cd app && firebase login && firebase init hosting   # garder le firebase.json existant
-firebase deploy --only hosting
+cd app && npm run build && firebase deploy --only hosting
 ```
+
+Pour repartir de zéro sur un autre compte :
+```bash
+npm i -g firebase-tools
+firebase login
+firebase projects:create mon-projet --display-name "Les Zamours Zamis"
+# puis remplacer l'id dans app/.firebaserc
+```
+
+> **Le piège des en-têtes.** Firebase compare le `source` d'une règle `headers` au
+> **chemin demandé**, pas au fichier finalement servi. Une règle sur `/index.html` ne
+> s'applique donc **jamais** à `/`, `/tv/CODE` ou `/p/CODE`, qui passent par la
+> réécriture : le document héritait du cache par défaut d'une heure, et un joueur
+> pouvait garder une vieille version du jeu. La configuration met donc un fourre-tout
+> `**` en `no-cache` d'abord, et les règles précises ensuite — les dernières l'emportent
+> sur la même clé. Vérifiable en une commande :
+>
+> ```bash
+> curl -sSI https://les-zamours-zamis.web.app/p/ABCD | grep -i cache-control
+> ```
 
 Plafond à connaître : **360 Mo de transfert par jour**. Le bundle fait **143 Ko
 gzip**, soit environ **2 500 chargements quotidiens**. Largement suffisant, mais

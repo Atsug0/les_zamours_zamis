@@ -1,7 +1,12 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "_redirects"
+    ],
     "rewrites": [
       {
         "comment": "Application à page unique : /tv/ABCD et /p/ABCD doivent survivre à un rechargement.",
@@ -11,13 +16,34 @@
     ],
     "headers": [
       {
-        "source": "/assets/**",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+        "comment": "Le document (/, /tv/CODE, /p/CODE) ne doit jamais être caché : sinon un joueur garde une vieille version du jeu et se désynchronise. Firebase matche le chemin demandé, pas le fichier servi — d'où ce fourre-tout.",
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
       },
       {
-        "comment": "Jamais de cache sur le document : sinon un joueur garde une vieille version du jeu.",
-        "source": "/index.html",
-        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+        "comment": "Les assets portent un hash dans leur nom : cache définitif.",
+        "source": "/assets/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "comment": "Les polices n'ont pas de hash : cache long mais pas immuable, pour qu'une régénération finisse par passer.",
+        "source": "/polices/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=604800"
+          }
+        ]
       }
     ]
   }
