@@ -103,3 +103,28 @@ export interface PassageFinale {
   seuil_atteint: boolean | null;
   points: number;
 }
+
+export interface LignePalmares {
+  partie_id: string;
+  binome_id: string;
+  couleur: Couleur;
+  mode: Mode | null;
+  score: number;
+  rang: number;
+  prenoms: string[];
+  points_finale: number | null;
+  seuil_atteint: boolean | null;
+}
+
+export interface LigneRecap {
+  partie_id: string;
+  ordre: number;
+  manche: Manche;
+  binome_id: string;
+  question_id: string;
+  reponse_donnee: string | null;
+  reponse_revelee: string | null;
+  verdict: boolean | null;
+  points: number;
+  repondant: string | null;
+}

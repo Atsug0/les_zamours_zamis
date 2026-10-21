@@ -6,7 +6,8 @@ import { rpc } from "../jeu/rpc";
 import LobbyJoueur from "../phases/Lobby.joueur";
 import PrepJoueur from "../phases/Prep.joueur";
 import mancheJoueur from "../phases/Manche.joueur";
-import EnConstruction from "../phases/EnConstruction";
+import FinaleJoueur from "../phases/Finale.joueur";
+import PalmaresJoueur from "../phases/Palmares.joueur";
 
 /** La vue téléphone : une seule action à la fois. */
 export default function Joueur({ code }: { code: string }) {
@@ -69,8 +70,12 @@ function Pupitre({ e, pin }: { e: ReturnType<typeof usePartie>; pin: string | nu
     case "libre":
     case "bonus":
       return tour ? mancheJoueur({ e, tour }) : <div className="centre">Un instant…</div>;
+    case "finale":
+      return <FinaleJoueur e={e} />;
+    case "palmares":
+      return <PalmaresJoueur e={e} />;
     default:
-      return <EnConstruction e={e} cote="joueur" />;
+      return <div className="centre">Un instant…</div>;
   }
 }
 

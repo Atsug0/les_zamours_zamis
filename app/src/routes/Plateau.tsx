@@ -7,7 +7,8 @@ import { Erreur, Lettrage, Narration, Trame } from "../ui";
 import LobbyPlateau from "../phases/Lobby.plateau";
 import PrepPlateau from "../phases/Prep.plateau";
 import manchePlateau from "../phases/Manche.plateau";
-import EnConstruction from "../phases/EnConstruction";
+import FinalePlateau from "../phases/Finale.plateau";
+import PalmaresPlateau from "../phases/Palmares.plateau";
 import { rpc as api } from "../jeu/rpc";
 
 /** La vue télé. C'est aussi l'horloge de la partie (ARCHITECTURE.md §3.d). */
@@ -50,8 +51,12 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
     case "libre":
     case "bonus":
       return tour ? manchePlateau({ e, tour }) : <Attente />;
+    case "finale":
+      return <FinalePlateau e={e} />;
+    case "palmares":
+      return <PalmaresPlateau e={e} />;
     default:
-      return <EnConstruction e={e} cote="plateau" />;
+      return <Attente />;
   }
 }
 

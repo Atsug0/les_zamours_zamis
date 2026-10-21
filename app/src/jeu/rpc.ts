@@ -113,10 +113,18 @@ export const rpc = {
       p_joueur: joueur,
     }),
 
+  /**
+   * Idempotent : rappelée après un rechargement, elle rend les mêmes
+   * réponses sans relancer le chrono. Le questionneur est le seul à les
+   * détenir, et elles ne vivent que dans son navigateur.
+   */
   demarrerPassage: (passage: string) =>
     appel<{
-      chrono_fin_at: string;
+      chrono_fin_at: string | null;
+      chrono_restant_ms?: number | null;
       serie_id: string;
+      reprise: boolean;
+      jugements?: Jugement[];
       questions: { question_id: string; attendue: string | null; passee: boolean | null }[];
     }>("rpc_demarrer_passage", { p_passage: passage }),
 
@@ -132,6 +140,10 @@ export const rpc = {
       "rpc_clore_passage",
       { p_passage: passage }
     ),
+
+  /** Départage une égalité au sommet. Le jeu est oral, le départage aussi. */
+  mortSubite: (binome: string) =>
+    appel<{ vainqueur: string; score: number }>("rpc_mort_subite", { p_binome: binome }),
 
   // ---- machine à états ----
   suivant: () => appel<{ etat: string; tour_id?: string; passage_courant?: string }>("rpc_suivant"),

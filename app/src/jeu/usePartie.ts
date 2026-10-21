@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "./supabase";
 import { rpc } from "./rpc";
-import type { Binome, Joueur, Partie, PassageFinale, Progression, Tour } from "./types";
+import type {
+  Binome, Joueur, LignePalmares, LigneRecap, Partie, PassageFinale, Progression, Tour,
+} from "./types";
 
 export interface Etat {
   partie: Partie | null;
@@ -10,6 +12,8 @@ export interface Etat {
   tours: Tour[];
   passages: PassageFinale[];
   progression: Progression | null;
+  palmares: LignePalmares[];
+  recap: LigneRecap[];
   moi: string | null;
   chargement: boolean;
   erreur: string | null;
@@ -22,6 +26,8 @@ const vide: Etat = {
   tours: [],
   passages: [],
   progression: null,
+  palmares: [],
+  recap: [],
   moi: null,
   chargement: true,
   erreur: null,
@@ -55,13 +61,15 @@ export function usePartie(code: string | null, moi: string | null) {
     }
     partieId.current = p.id;
 
-    const [j, b, t, f, g] = await Promise.all([
+    const [j, b, t, f, g, pal, rec] = await Promise.all([
       supabase.from("v_joueurs").select("*").eq("partie_id", p.id),
       supabase.from("binomes").select("*").eq("partie_id", p.id).order("couleur"),
       supabase.from("v_tours").select("*").eq("partie_id", p.id).order("ordre"),
       supabase.from("v_passages_finale").select("*").eq("partie_id", p.id).order("ordre"),
       // dérivée de joueurs.prepa_faites, donc rafraîchie par le temps réel (0012)
       supabase.from("v_progression").select("*").eq("partie_id", p.id).maybeSingle(),
+      supabase.from("v_palmares").select("*").eq("partie_id", p.id).order("rang"),
+      supabase.from("v_recap").select("*").eq("partie_id", p.id).order("ordre"),
     ]);
 
     setEtat({
@@ -71,6 +79,8 @@ export function usePartie(code: string | null, moi: string | null) {
       tours: (t.data ?? []) as Tour[],
       passages: (f.data ?? []) as PassageFinale[],
       progression: (g.data ?? null) as Progression | null,
+      palmares: (pal.data ?? []) as LignePalmares[],
+      recap: (rec.data ?? []) as LigneRecap[],
       moi,
       chargement: false,
       erreur: null,

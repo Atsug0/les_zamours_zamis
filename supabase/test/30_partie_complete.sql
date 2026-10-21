@@ -321,6 +321,12 @@ select assert_vrai(jsonb_array_length(rpc_demarrer_passage(current_setting('zz.f
 select assert_vrai((select count(*) from unnest(
                       (select jugements from passages_finale where id = current_setting('zz.f')::uuid)
                     ) x where x = 'attente') = 5, 'cinq pastilles en attente');
+-- un telephone qui se recharge en pleine finale doit retrouver les reponses
+select assert_vrai((rpc_demarrer_passage(current_setting('zz.f')::uuid)->>'reprise')::boolean,
+                   'relancer le passage rend les memes reponses sans toucher au chrono');
+select assert_vrai(jsonb_array_length(
+                     rpc_demarrer_passage(current_setting('zz.f')::uuid)->'questions') = 5,
+                   'les 5 reponses attendues sont bien rendues a la reprise');
 
 -- 3 justes sur 5 : le seuil est atteint
 do $$
@@ -374,6 +380,26 @@ select assert_vrai((
 ), 'le score de chaque binome est exactement manches + finale');
 select assert_erreur('select count(*) from tours',
                      'les tables de jeu restent fermees en lecture directe');
+
+\echo '--- mort subite ---'
+reset role;
+-- on force une egalite au sommet
+update binomes set score = (select max(score) from binomes);
+select devenir(:p5::uuid); set role authenticated;
+select assert_vrai((select count(*) from v_palmares where rang = 1) = 2,
+                   'egalite au sommet : deux binomes premiers');
+select set_config('zz.b1', (select id::text from binomes order by couleur limit 1), false);
+reset role; select devenir(:p1::uuid); set role authenticated;
+select assert_erreur(format('select rpc_mort_subite(%L)', current_setting('zz.b1')),
+                     'un joueur ne se declare pas vainqueur');
+reset role; select devenir(:p5::uuid); set role authenticated;
+select assert_vrai((rpc_mort_subite(current_setting('zz.b1')::uuid)->>'vainqueur')
+                   = current_setting('zz.b1'),
+                   'le presentateur departage a la mort subite');
+select assert_vrai((select count(*) from v_palmares where rang = 1) = 1,
+                   'il ne reste qu un seul premier');
+select assert_erreur(format('select rpc_mort_subite(%L)', current_setting('zz.b1')),
+                     'plus de mort subite sans egalite');
 
 reset role;
 \echo '=== PARTIE COMPLETE : OK ==='
