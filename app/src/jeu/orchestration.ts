@@ -15,6 +15,46 @@ const PAUSE_VERDICT_MS = 4500;
  *   - fenêtre de vote écoulée -> clore ;
  *   - verdict affiché assez longtemps -> avancer.
  */
+/**
+ * En partie de démonstration, les bots jouent leur part toutes les
+ * deux secondes : on peut dérouler une partie entière tout seul.
+ * C'est le plateau qui les pilote, comme il pilote déjà le reste.
+ */
+export function useBots(e: Etat) {
+  const encours = useRef(false);
+  useEffect(() => {
+    if (!e.partie?.demo || !suisJePlateau(e) || e.partie.en_pause) return;
+    const battre = async () => {
+      if (encours.current) return;
+      encours.current = true;
+      try {
+        await rpc.botsAgir(e.partie!.id);
+        // En démo, le plateau enchaîne aussi les phases qui attendent
+        // d'ordinaire un geste humain : tout l'intérêt est de dérouler
+        // une partie sans personne en face.
+        if (e.partie!.etat === "prep") {
+          const total = e.progression?.total ?? 0;
+          if (total > 0 && e.progression?.termines === total) await rpc.suivant();
+        }
+      } catch {
+        // un refus est normal : il n'y avait rien à faire pour un bot
+      } finally {
+        encours.current = false;
+      }
+    };
+    void battre();
+    const t = setInterval(() => void battre(), 2000);
+    return () => clearInterval(t);
+  }, [
+    e.partie?.id,
+    e.partie?.demo,
+    e.partie?.en_pause,
+    e.partie?.etat,
+    e.progression?.termines,
+    e.moi,
+  ]);
+}
+
 export function useOrchestration(e: Etat) {
   const faits = useRef(new Set<string>());
   const minuteur = useRef<number | null>(null);

@@ -125,6 +125,11 @@ begin
   perform rpc_suivant();
 end $$;
 select set_config('zz.t', (select tour_courant::text from parties), false);
+-- Le questionneur peut se trouver etre aussi l hote, qui a le droit de
+-- corriger : on rend le test explicite en donnant le role d hote au
+-- plateau, qui n est pas un joueur. On teste ainsi le garde-fou, pas le
+-- hasard du tirage.
+update parties set hote_id = null;
 select assert_vrai((select count(*) from tours t join joueurs j on j.id = t.questionneur_id
                     where t.id = current_setting('zz.t')::uuid
                       and j.id in (select parieurs(t.id))) = 1,
@@ -151,9 +156,6 @@ select assert_vrai((rpc_clore_paris(current_setting('zz.t')::uuid)->>'verdict'):
 select assert_vrai((rpc_clore_paris(current_setting('zz.t')::uuid)->>'deja')::boolean,
                    'un tour clos ne se reclot pas');
 reset role;
--- et l hote, qui ne joue pas de tour, peut corriger
-select assert_vrai((select count(*) from parties where hote_id is not null) = 1,
-                   'la partie a bien un hote');
 
 \echo '--- les paris demandent un public ---'
 select remise_a_zero();

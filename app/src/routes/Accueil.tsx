@@ -11,6 +11,7 @@ export default function Accueil() {
   const [prenom, setPrenom] = useState("");
   const [erreur, setErreur] = useState<string | null>(null);
   const [occupe, setOccupe] = useState(false);
+  const [demo, setDemo] = useState(false);
   const derniere = memoire.lire();
   useTelecommande(true);
 
@@ -104,6 +105,49 @@ export default function Accueil() {
               Rejoindre
             </BoutonTampon>
           </div>
+        </Panneau>
+
+        <Panneau style={{ width: "min(420px, 100%)", textAlign: "left" }}>
+          <Narration petit>Tout seul, pour voir</Narration>
+          <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)", margin: "var(--e-3) 0" }}>
+            Une partie peuplée de bots : ils jouent leur part, tu joues la tienne, et tu peux
+            dérouler une partie entière sans attendre personne.
+          </p>
+          {demo ? (
+            <div style={{ display: "grid", gap: "var(--e-2)" }}>
+              {(
+                [
+                  ["binomes", "Binômes", 3],
+                  ["paris", "Tous contre le binôme", 3],
+                  ["duel", "Duel", 1],
+                  ["sujet", "Qui me connaît le mieux", 3],
+                  ["tournoi", "Tournoi", 3],
+                ] as const
+              ).map(([m, titre, bots]) => (
+                <BoutonTampon
+                  key={m}
+                  ton="neutre"
+                  disabled={occupe}
+                  onClick={() =>
+                    void faire(async () => {
+                      const r = await rpc.creerDemo(m, bots);
+                      memoire.ecrire(r.code, "plateau");
+                      aller(`/tv/${r.code}`);
+                    })
+                  }
+                >
+                  {titre}
+                </BoutonTampon>
+              ))}
+              <p style={{ fontSize: "var(--t-xs)", color: "var(--texte-2)", margin: 0 }}>
+                Ouvre ensuite <code>/p/CODE</code> dans un autre onglet pour jouer ton rôle.
+              </p>
+            </div>
+          ) : (
+            <BoutonTampon ton="neutre" disabled={occupe} onClick={() => setDemo(true)}>
+              Partie de démonstration
+            </BoutonTampon>
+          )}
         </Panneau>
 
         <Panneau style={{ width: "min(420px, 100%)", textAlign: "left" }}>

@@ -183,6 +183,29 @@ export default function PrepJoueur({ e }: { e: Etat }) {
       <BoutonTampon ton="neutre" disabled={occupe} onClick={() => void envoyer(true)}>
         Passer cette question
       </BoutonTampon>
+      {e.partie?.demo && (
+        <BoutonTampon
+          ton="neutre"
+          disabled={occupe}
+          onClick={() =>
+            void (async () => {
+              setOccupe(true);
+              try {
+                await rpc.remplirMaPrepa();
+                const r = await rpc.mesReponses();
+                setReponses(r);
+                setIndex(null);
+              } catch (ex) {
+                setErreur(ex instanceof Error ? ex.message : String(ex));
+              } finally {
+                setOccupe(false);
+              }
+            })()
+          }
+        >
+          Démo · remplir tout au hasard
+        </BoutonTampon>
+      )}
       <p style={{ margin: 0, fontSize: "var(--t-xs)", color: "var(--texte-2)" }}>
         Passer ne coûte que le point. Aucune question n'est obligatoire.
       </p>

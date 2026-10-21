@@ -49,6 +49,26 @@ export default function Joueur({ code }: { code: string }) {
         <span>{j?.prenom ?? "plateau"}</span>
       </header>
 
+      {e.partie.demo && e.partie.plateau_id !== moi && (
+        <div style={{ padding: "var(--e-2) var(--e-3) 0" }}>
+          <button
+            type="button"
+            onClick={() => void rpc.botsAgir(e.partie!.id).catch(() => {})}
+            style={{
+              width: "100%",
+              border: "var(--filet) solid var(--bord)",
+              background: "var(--papier-2)",
+              color: "var(--texte-2)",
+              padding: "var(--e-1)",
+              fontSize: "var(--t-xs)",
+              cursor: "pointer",
+            }}
+          >
+            démo · faire jouer les bots
+          </button>
+        </div>
+      )}
+
       {e.partie.en_pause && (
         <div style={{ padding: "var(--e-3)" }}>
           <Narration petit>En pause — on attend quelqu'un</Narration>

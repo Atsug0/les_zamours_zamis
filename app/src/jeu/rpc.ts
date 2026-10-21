@@ -234,6 +234,26 @@ export const rpc = {
   mortSubite: (binome: string) =>
     appel<{ vainqueur: string; score: number }>("rpc_mort_subite", { p_binome: binome }),
 
+  // ---- démonstration ----
+  /** Crée une partie peuplée de bots, et t'y place comme joueur. */
+  creerDemo: (
+    modeJeu: "binomes" | "paris" | "sujet" | "tournoi" | "duel",
+    bots: number,
+    mode: "zamours" | "zamis" = "zamis"
+  ) =>
+    appel<{ partie_id: string; code: string; mode_jeu: string; bots: number }>("rpc_creer_demo", {
+      p_mode_jeu: modeJeu,
+      p_bots: bots,
+      p_mode: mode,
+    }),
+
+  /** Fait jouer les bots. Le plateau l'appelle en boucle en mode démo. */
+  botsAgir: (partie?: string) =>
+    appel<{ actions: string[]; etat: string }>("rpc_bots_agir", { p_partie: partie ?? null }),
+
+  /** Remplit sa propre préparation au hasard — démo seulement. */
+  remplirMaPrepa: () => appel<{ remplies: number }>("rpc_remplir_ma_prepa"),
+
   // ---- machine à états ----
   suivant: () => appel<{ etat: string; tour_id?: string; passage_courant?: string }>("rpc_suivant"),
 };

@@ -27,7 +27,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | Code | |
 |---|---|
 | `supabase/migrations/` | le schéma, les RLS, les 24 fonctions RPC |
-| `supabase/test/` | 254 assertions, dont une partie complète jouée dans chacun des cinq modes |
+| `supabase/test/` | 265 assertions, dont une partie complète jouée dans chacun des cinq modes |
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
 | `tools/db_prod.sh` | migrations et contrôles sur la base de production |
@@ -61,7 +61,13 @@ télécommande, en plein écran.
 
 Quelques conséquences de conception :
 
-- **Le duel s'active de lui-même** : deux joueurs, un binôme, on lance. Et comme il n'y
+- ****Pour essayer seul**, l'accueil propose une **partie de démonstration** : elle est
+peuplée de bots qui jouent leur part — y compris la préparation — pendant que tu joues
+la tienne. Les bots empruntent exactement les mêmes fonctions qu'un humain, en endossant
+leur identité le temps de l'action : une partie de démo est donc aussi un test
+d'intégration qui se joue tout seul.
+
+Le duel s'active de lui-même** : deux joueurs, un binôme, on lance. Et comme il n'y
   a plus aucun votant, la concordance y est calculée mécaniquement — celui qui n'est pas
   d'accord conteste une fois, et l'autre tranche.
 - **Les modes sujet et tournoi n'ont aucune phase de préparation.** Le sujet répond en
@@ -108,12 +114,20 @@ Ouvrir ensuite deux fenêtres : `localhost:5173/tv/CODE` d'un côté,
 ### Vérifier avant de pousser
 
 ```bash
-python3 lint_questions.py     # refuse une question genrée ou non concordable
-./tools/db_local.sh           # 254 assertions SQL
-node tools/fumee.mjs          # une vraie partie sur le vrai projet, par l'API HTTP
-node tools/fumee-realtime.mjs # le temps réel arrive-t-il vraiment au client ?
-cd app && npm run build       # types stricts + les QR se décodent vraiment
+python3 lint_questions.py       # refuse une question genrée ou non concordable
+./tools/db_local.sh             # 265 assertions SQL
+node tools/fumee.mjs            # une vraie partie sur le vrai projet, par HTTP
+node tools/fumee-realtime.mjs   # le temps réel arrive-t-il vraiment au client ?
+cd app
+npm run build                   # types stricts + les QR se décodent vraiment
+npm run mise-en-page            # aucune page ne déborde, de 320 à 1920 px
+npm run demo                    # une partie de démo dans un vrai navigateur
 ```
+
+Les trois derniers tournent dans un navigateur sans tête. Ils existent parce que trois
+bugs sont passés à travers tout le reste : des champs qui sortaient du cadre, du jaune
+illisible sur blanc, et une partie gelée parce que les bots n'envoient pas de pouls —
+aucun n'était visible dans un typage ni dans une assertion SQL.
 
 Le build **échoue** si un QR code ne se décode pas : on le vérifie en le redécodant
 avec un décodeur indépendant de l'encodeur, parce qu'un QR cassé est invisible à l'œil.

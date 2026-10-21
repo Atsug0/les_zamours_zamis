@@ -9,7 +9,8 @@
     "build": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs && vite build",
     "verif": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs",
     "polices": "python3 tools/polices.py",
-    "mise-en-page": "npm run build && node tools/verif-mise-en-page.mjs"
+    "mise-en-page": "npm run build && node tools/verif-mise-en-page.mjs",
+    "demo": "npm run build && node tools/verif-demo.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0",

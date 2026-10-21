@@ -20,7 +20,9 @@ set -a; source .env.local; set +a
 : "${SUPABASE_DB_HOST:?absent de .env.local}" "${SUPABASE_DB_PASSWORD:?absent de .env.local}"
 
 export PGPASSWORD="$SUPABASE_DB_PASSWORD"
-prod() { psql -h "$SUPABASE_DB_HOST" -p 5432 -U postgres -d postgres -v ON_ERROR_STOP=1 "$@"; }
+# </dev/null : sans -f ni -c, psql attend sur l'entrée standard et le
+# script reste bloqué indéfiniment. Une erreur d'usage ne doit pas pendre.
+prod() { psql -h "$SUPABASE_DB_HOST" -p 5432 -U postgres -d postgres -v ON_ERROR_STOP=1 "$@" </dev/null; }
 
 echo "→ $SUPABASE_DB_HOST (PRODUCTION)"
 
@@ -57,6 +59,13 @@ case "${1:-}" in
     exit 1
     ;;
   *)
-    prod "$@"
+    # Un nom de fichier doit passer par -f : psql ignore silencieusement
+    # un argument positionnel, et la migration ne s'applique jamais.
+    if [[ -f "$1" ]]; then
+      prod -q -f "$1"
+      echo "  appliqué  $(basename "$1")"
+    else
+      prod "$@"
+    fi
     ;;
 esac

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { session } from "../jeu/supabase";
 import { tourCourant, usePartie } from "../jeu/usePartie";
-import { useOrchestration } from "../jeu/orchestration";
+import { useBots, useOrchestration } from "../jeu/orchestration";
 import { usePleinEcran, useTelecommande } from "../jeu/telecommande";
 import { rpc } from "../jeu/rpc";
 import { Erreur, Lettrage, Narration, Trame } from "../ui";
@@ -22,6 +22,7 @@ export default function Plateau({ code }: { code: string }) {
 
   const e = usePartie(code, moi);
   useOrchestration(e);
+  useBots(e);
   useTelecommande(true);
   const { plein, basculer, possible } = usePleinEcran();
 
@@ -42,6 +43,7 @@ export default function Plateau({ code }: { code: string }) {
         code={e.partie.code}
         phase={e.partie.etat}
         enPause={e.partie.en_pause}
+        demo={e.partie.demo}
         plein={plein}
         basculer={basculer}
         possible={possible}
@@ -75,10 +77,11 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
   }
 }
 
-function Bandeau({ code, phase, enPause, plein, basculer, possible }: {
+function Bandeau({ code, phase, enPause, demo, plein, basculer, possible }: {
   code: string;
   phase: string;
   enPause: boolean;
+  demo: boolean;
   plein: boolean;
   basculer: () => void;
   possible: boolean;
@@ -119,6 +122,7 @@ function Bandeau({ code, phase, enPause, plein, basculer, possible }: {
         {code} · {noms[phase] ?? phase}
       </span>
       {enPause && <Narration petit>En pause</Narration>}
+      {demo && <Narration petit>Démo</Narration>}
       {possible && !plein && (
         <button
           type="button"

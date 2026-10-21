@@ -23,6 +23,8 @@ export interface Partie {
   tirage: Record<string, TirageMode>;
   tour_courant: string | null;
   avec_citez3: boolean;
+  /** partie de démonstration : des bots jouent les autres rôles */
+  demo: boolean;
   en_pause: boolean;
   pause_motif: string | null;
 }
@@ -55,6 +57,7 @@ export interface Joueur {
   present: boolean;
   a_choisi_mode: boolean;
   prepa_faites: number;
+  bot: boolean;
   /** choix en attente d'accord du partenaire — pas un secret, les deux doivent s'aligner */
   mode_choisi: Mode | null;
   sensibles_choisi: boolean;
