@@ -12,7 +12,7 @@ select assert_vrai((
     and not exists (select 1 from pg_depend d where d.objid = p.oid and d.deptype = 'e')
     and p.proname not like 'rpc\_%'
     -- les seules exceptions, justifiees une par une dans 0009_droits.sql
-    and p.proname not in ('ping','est_membre','nb_questions_prepa')
+    and p.proname not in ('ping','est_membre')
     and p.proname not in ('assert_vrai','assert_erreur','remise_a_zero','devenir')
     and (has_function_privilege('anon', p.oid, 'execute')
       or has_function_privilege('authenticated', p.oid, 'execute'))
@@ -44,12 +44,13 @@ select assert_erreur('select fabriquer_tours(gen_random_uuid())',
 select assert_erreur('select tirer_pin()', 'tirer_pin : fabriquer un code de reprise');
 -- est_membre reste joignable : les politiques RLS en ont besoin. Elle ne
 -- repond que sur soi-meme, donc elle ne divulgue rien.
--- est_membre et nb_questions_prepa restent joignables : les politiques RLS
--- et la vue v_progression en ont besoin. Elles ne divulguent rien.
+-- est_membre reste joignable : les politiques RLS en ont besoin, et elle ne
+-- repond que sur soi-meme.
 select assert_vrai(est_membre(gen_random_uuid()) is false,
                    'est_membre reste appelable mais ne repond que sur soi-meme');
-select assert_vrai(nb_questions_prepa(gen_random_uuid()) is null,
-                   'nb_questions_prepa reste appelable et ne rend qu un compte');
+-- refermee par 0012 : v_progression ne l appelle plus
+select assert_erreur('select nb_questions_prepa(gen_random_uuid())',
+                     'nb_questions_prepa : refermee, la vue ne l appelle plus');
 reset role;
 
 \echo '--- droits sur les tables et les vues ---'

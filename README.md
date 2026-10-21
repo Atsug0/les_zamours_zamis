@@ -41,9 +41,9 @@ Ne jamais éditer leurs copies dans `app/src/`.
 manche QCM, manche libre avec vote, question bonus, finale chronométrée, palmarès, gel
 des chronos sur déconnexion, reprise de siège par PIN.
 
-**Le front** : l'accueil, le plateau et le lobby des deux côtés, avec le QR code.
-Les écrans de prépa, manches, bonus, finale et palmarès **restent à écrire** — le
-serveur sait déjà les jouer, il ne manque que l'interface.
+**Le front** : l'accueil, le lobby, la préparation et les manches (QCM, libre, bonus)
+des deux côtés, avec le QR code et l'orchestration par le plateau. Les écrans de
+**finale et de palmarès restent à écrire** — le serveur sait déjà les jouer.
 
 ### Trois invariants, tenus par le serveur et non par le client
 

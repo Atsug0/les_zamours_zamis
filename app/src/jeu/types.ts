@@ -47,6 +47,14 @@ export interface Joueur {
   vu_le: string;
   present: boolean;
   a_choisi_mode: boolean;
+  prepa_faites: number;
+}
+
+export interface Progression {
+  partie_id: string;
+  termines: number;
+  total: number;
+  questions_par_joueur: number;
 }
 
 export interface Binome {

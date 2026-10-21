@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { session } from "../jeu/supabase";
-import { usePartie } from "../jeu/usePartie";
+import { tourCourant, usePartie } from "../jeu/usePartie";
+import { useOrchestration } from "../jeu/orchestration";
 import { rpc } from "../jeu/rpc";
 import { Erreur, Lettrage, Narration, Trame } from "../ui";
 import LobbyPlateau from "../phases/Lobby.plateau";
+import PrepPlateau from "../phases/Prep.plateau";
+import manchePlateau from "../phases/Manche.plateau";
 import EnConstruction from "../phases/EnConstruction";
+import { rpc as api } from "../jeu/rpc";
 
 /** La vue télé. C'est aussi l'horloge de la partie (ARCHITECTURE.md §3.d). */
 export default function Plateau({ code }: { code: string }) {
@@ -14,6 +18,7 @@ export default function Plateau({ code }: { code: string }) {
   }, []);
 
   const e = usePartie(code, moi);
+  useOrchestration(e);
 
   // Le plateau surveille la présence du joueur attendu et gèle les
   // chronos s'il disparaît. Aucun job planifié n'est nécessaire.
@@ -29,9 +34,25 @@ export default function Plateau({ code }: { code: string }) {
   return (
     <div className="plateau-cadre">
       <Bandeau code={e.partie.code} phase={e.partie.etat} enPause={e.partie.en_pause} />
-      {e.partie.etat === "lobby" ? <LobbyPlateau e={e} /> : <EnConstruction e={e} cote="plateau" />}
+      <Scene e={e} />
     </div>
   );
+}
+
+function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
+  const tour = tourCourant(e);
+  switch (e.partie?.etat) {
+    case "lobby":
+      return <LobbyPlateau e={e} />;
+    case "prep":
+      return <PrepPlateau e={e} onSuivant={() => void api.suivant().catch(() => {})} />;
+    case "qcm":
+    case "libre":
+    case "bonus":
+      return tour ? manchePlateau({ e, tour }) : <Attente />;
+    default:
+      return <EnConstruction e={e} cote="plateau" />;
+  }
 }
 
 function Bandeau({ code, phase, enPause }: { code: string; phase: string; enPause: boolean }) {

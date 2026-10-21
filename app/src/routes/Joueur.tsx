@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { session } from "../jeu/supabase";
-import { monJoueur, usePartie } from "../jeu/usePartie";
+import { monJoueur, tourCourant, usePartie } from "../jeu/usePartie";
 import { BoutonTampon, Erreur, Narration, Panneau } from "../ui";
 import { rpc } from "../jeu/rpc";
 import LobbyJoueur from "../phases/Lobby.joueur";
+import PrepJoueur from "../phases/Prep.joueur";
+import mancheJoueur from "../phases/Manche.joueur";
 import EnConstruction from "../phases/EnConstruction";
 
 /** La vue téléphone : une seule action à la fois. */
@@ -51,13 +53,25 @@ export default function Joueur({ code }: { code: string }) {
         </div>
       )}
 
-      {e.partie.etat === "lobby" ? (
-        <LobbyJoueur e={e} pin={pin} />
-      ) : (
-        <EnConstruction e={e} cote="joueur" />
-      )}
+      <Pupitre e={e} pin={pin} />
     </div>
   );
+}
+
+function Pupitre({ e, pin }: { e: ReturnType<typeof usePartie>; pin: string | null }) {
+  const tour = tourCourant(e);
+  switch (e.partie?.etat) {
+    case "lobby":
+      return <LobbyJoueur e={e} pin={pin} />;
+    case "prep":
+      return <PrepJoueur e={e} />;
+    case "qcm":
+    case "libre":
+    case "bonus":
+      return tour ? mancheJoueur({ e, tour }) : <div className="centre">Un instant…</div>;
+    default:
+      return <EnConstruction e={e} cote="joueur" />;
+  }
 }
 
 /** Reprise de siège par PIN (ARCHITECTURE.md §10.b). */

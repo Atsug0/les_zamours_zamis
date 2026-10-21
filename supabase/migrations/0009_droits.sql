@@ -39,7 +39,7 @@
 do $$
 declare
   f record;
-  requis text[] := array['est_membre', 'nb_questions_prepa'];
+  requis text[] := array['est_membre', 'nb_questions_prepa'];  -- la 2e est refermée par 0012
 begin
   for f in
     select p.oid::regprocedure as sig, p.proname
