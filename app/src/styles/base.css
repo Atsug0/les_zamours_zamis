@@ -20,7 +20,27 @@ body {
   overscroll-behavior: none;
 }
 
-button { font: inherit; color: inherit; }
+/* ---- Champs de saisie ----
+   Un <input> se dimensionne sur son attribut `size` (≈20 caractères),
+   PAS sur son conteneur : avec une grosse police et de l'interlettrage,
+   il déborde du cadre quoi qu'on mette autour. C'est la cause des
+   champs qui sortaient de la page d'accueil. */
+input, textarea, select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font: inherit;
+}
+
+button { font: inherit; color: inherit; max-width: 100%; }
+
+/* Un enfant de grille ou de flex a min-width:auto par défaut, donc il
+   refuse de se réduire sous la taille de son contenu — et c'est lui qui
+   fait déborder la page, pas le conteneur. */
+.pile > *, .centre > *, .rangee > * { min-width: 0; }
+
+/* Un mot très long (un prénom, une URL) ne doit pas élargir la page. */
+body { overflow-wrap: break-word; }
 
 :focus-visible {
   outline: var(--filet) solid var(--bleu);

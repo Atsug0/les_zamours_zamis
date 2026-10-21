@@ -33,11 +33,11 @@ export default function Accueil() {
         <div style={{ display: "grid", gap: "var(--e-3)", justifyItems: "center" }}>
           <Coeur taille={72} />
           <h1 style={{ margin: 0 }}>
-            <Lettrage taille="clamp(2.5rem, 9vw, 4.5rem)" couleur="var(--zamours)" ombre="var(--bleu)">
+            <Lettrage taille="clamp(2.2rem, 8vw, 4.2rem)" ombre="var(--zamours)">
               Les Zamours
             </Lettrage>
             <br />
-            <Lettrage taille="clamp(2.5rem, 9vw, 4.5rem)" couleur="var(--zamis)" ombre="var(--bleu)">
+            <Lettrage taille="clamp(2.2rem, 8vw, 4.2rem)" ombre="var(--bleu)">
               Zamis
             </Lettrage>
           </h1>

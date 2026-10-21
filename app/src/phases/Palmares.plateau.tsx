@@ -39,7 +39,7 @@ export default function PalmaresPlateau({ e }: { e: Etat }) {
             {classement[0] && (
               <div style={{ display: "grid", gap: "var(--e-2)", justifyItems: "center" }}>
                 {classement[0].mode === "zamours" ? <Coeur taille={64} /> : <Eclair taille={64} />}
-                <Lettrage taille="clamp(2rem,6vw,4rem)" couleur="var(--jaune)" ombre="var(--rouge)">
+                <Lettrage taille="clamp(2rem,6vw,4rem)" ombre="var(--jaune)">
                   {classement[0].prenoms.join(" & ")}
                 </Lettrage>
                 <span style={{ fontFamily: "var(--donnees)", fontSize: "var(--t-2xl)" }}>

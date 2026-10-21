@@ -26,16 +26,22 @@ export default function LobbyPlateau({ e }: { e: Etat }) {
           }}
         >
           <div style={{ display: "grid", gap: "var(--e-2)" }}>
+            {/* Jaune sur aplat d'encre : 13:1. Sur le papier blanc il
+                tombait à 1,43:1 — illisible dès que -webkit-text-stroke
+                ne s'applique pas. */}
             <div
               style={{
+                display: "inline-block",
+                background: "var(--encre)",
+                border: "var(--filet-fort) solid var(--bord)",
+                boxShadow: "10px 10px 0 var(--bleu)",
+                padding: "var(--e-2) var(--e-4)",
                 fontFamily: "var(--display)",
-                fontSize: "clamp(4rem, 14vw, 10rem)",
+                fontSize: "clamp(3.2rem, 13vw, 9rem)",
                 letterSpacing: ".08em",
-                lineHeight: 1,
+                lineHeight: 1.05,
                 color: "var(--jaune)",
-                WebkitTextStroke: "4px var(--encre)",
-                paintOrder: "stroke fill",
-                textShadow: "8px 8px 0 var(--bleu)",
+                maxWidth: "100%",
               }}
             >
               {p.code}

@@ -68,10 +68,28 @@ export function Narration({ children, petit = false }: { children: ReactNode; pe
   );
 }
 
-export function Lettrage({ children, taille = "var(--t-2xl)", couleur = "var(--jaune)", ombre }: {
+/**
+ * Lettrage de couverture.
+ *
+ * RÈGLE DE LISIBILITÉ, apprise en cassant la DA : le remplissage est
+ * TOUJOURS `--texte` sur fond papier. Le jaune est une couleur de FOND,
+ * pas de texte : #ffd400 sur blanc donne 1,43:1 quand il en faut 4,5.
+ *
+ * On avait fait reposer le contraste sur `-webkit-text-stroke`, qui est
+ * non standard : là où elle ne s'applique pas, il ne reste que du jaune
+ * sur du blanc. Le contour est désormais une DÉCORATION, et la couleur
+ * vient de l'ombre portée — qui n'a aucun rôle de contraste.
+ *
+ * `couleur` ne doit être forcée que sur un fond d'encre (le bandeau).
+ * Les accents (rose, bleu, rouge) restent admissibles en GRAND texte —
+ * le seuil y est de 3:1 et ils le passent — mais jamais le jaune.
+ */
+export function Lettrage({ children, taille = "var(--t-2xl)", couleur = "var(--texte)", ombre }: {
   children: ReactNode;
   taille?: string;
+  /** à ne changer que sur un fond sombre */
   couleur?: string;
+  /** l'aplat de couleur, décalé : c'est lui qui porte la DA */
   ombre?: string;
 }) {
   return (
@@ -84,9 +102,39 @@ export function Lettrage({ children, taille = "var(--t-2xl)", couleur = "var(--j
         lineHeight: 0.92,
         fontSize: taille,
         color: couleur,
-        WebkitTextStroke: "2px var(--encre)",
-        paintOrder: "stroke fill",
         ...(ombre ? { textShadow: `4px 4px 0 ${ombre}` } : {}),
+        textWrap: "balance",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+/**
+ * Le même lettrage, mais posé sur un aplat d'encre : c'est le SEUL
+ * endroit où le jaune peut porter du texte (13:1 sur l'encre).
+ */
+export function LettrageSurEncre({ children, taille = "var(--t-2xl)", couleur = "var(--jaune)" }: {
+  children: ReactNode;
+  taille?: string;
+  couleur?: string;
+}) {
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        background: "var(--encre)",
+        border: "var(--filet) solid var(--bord)",
+        boxShadow: "var(--decalage) var(--decalage) 0 var(--ombre)",
+        padding: "var(--e-2) var(--e-4)",
+        fontFamily: "var(--display)",
+        textTransform: "uppercase",
+        fontWeight: 900,
+        letterSpacing: ".02em",
+        lineHeight: 1,
+        fontSize: taille,
+        color: couleur,
         textWrap: "balance",
       }}
     >

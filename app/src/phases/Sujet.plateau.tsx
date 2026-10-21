@@ -32,10 +32,10 @@ export default function SujetPlateau({ e, tour }: { e: Etat; tour: Tour }) {
             lineHeight: 1.05,
             margin: 0,
             maxWidth: "24ch",
-            color: "var(--jaune)",
-            WebkitTextStroke: "2px var(--encre)",
-            paintOrder: "stroke fill",
-            textShadow: "5px 5px 0 var(--bleu)",
+            /* encre sur papier : 18,7:1 dans les deux thèmes, et la
+               couleur passe dans l'ombre, qui ne porte aucun contraste */
+            color: "var(--texte)",
+            textShadow: "5px 5px 0 var(--jaune)",
             textWrap: "balance",
           }}
         >

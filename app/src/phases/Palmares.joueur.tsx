@@ -52,7 +52,7 @@ export default function PalmaresJoueur({ e }: { e: Etat }) {
       <Narration petit>{ligne?.rang === 1 ? "Vous gagnez" : "C'est fini"}</Narration>
       {ligne && (
         <Panneau>
-          <Lettrage taille="var(--t-2xl)" couleur={`var(--${ligne.couleur})`}>
+          <Lettrage taille="var(--t-2xl)" ombre={`var(--${ligne.couleur})`}>
             {ligne.prenoms.join(" & ")}
           </Lettrage>
           <div
