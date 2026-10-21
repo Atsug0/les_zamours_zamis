@@ -47,11 +47,20 @@ export const rpc = {
     appel<{ partie_id: string; plateau_id: string }>("rpc_reclamer_plateau", { p_code: code }),
 
   // ---- lancement et préparation ----
-  lancer: (format: "court" | "long" = "court") =>
-    appel<{ etat: string; tours: number }>("rpc_lancer", { p_format: format }),
+  lancer: (format: "court" | "long" = "court", citez3 = false) =>
+    appel<{ etat: string; tours: number }>("rpc_lancer", {
+      p_format: format,
+      p_citez3: citez3,
+    }),
 
   mesQuestions: () =>
-    appel<{ role: "A" | "B"; mode: Mode; questions: string[]; total: number }>("rpc_mes_questions"),
+    appel<{
+      role: "A" | "B";
+      mode: Mode;
+      questions: string[];
+      citez3: string | null;
+      total: number;
+    }>("rpc_mes_questions"),
 
   mesReponses: () =>
     appel<Record<string, { valeur: string; passee: boolean }>>("rpc_mes_reponses"),
@@ -98,6 +107,14 @@ export const rpc = {
     appel<{ statut: string; verdict: boolean }>("rpc_arbitrer", { p_tour: tour, p_pour: pour }),
 
   sauterTour: (tour: string) => appel<{ saute: boolean }>("rpc_sauter_tour", { p_tour: tour }),
+
+  /** « Cite 3 » : le questionneur consigne les trois réponses et annonce combien ont concordé. */
+  jugerCitez3: (tour: string, valeurs: string[], concordes: number) =>
+    appel<{ concordes: number; points: number; reponse_revelee: string }>("rpc_juger_citez3", {
+      p_tour: tour,
+      p_valeurs: valeurs,
+      p_concordes: concordes,
+    }),
 
   // ---- présence et pause ----
   pouls: () => appel<{ partie_id: string | null }>("rpc_pouls"),

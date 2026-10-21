@@ -1,4 +1,5 @@
 /* Socle de l'app. Tout vient des jetons de la DA (tokens.css). */
+@import "./polices.css";
 @import "./tokens.css";
 
 *,

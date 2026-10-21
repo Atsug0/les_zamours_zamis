@@ -68,6 +68,7 @@ function Pupitre({ e, pin }: { e: ReturnType<typeof usePartie>; pin: string | nu
       return <PrepJoueur e={e} />;
     case "qcm":
     case "libre":
+    case "citez3":
     case "bonus":
       return tour ? mancheJoueur({ e, tour }) : <div className="centre">Un instant…</div>;
     case "finale":

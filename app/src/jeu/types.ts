@@ -1,7 +1,8 @@
 export type Mode = "zamours" | "zamis";
 export type Couleur = "rouge" | "jaune" | "bleu" | "vert" | "orange" | "violet";
-export type Etat = "lobby" | "prep" | "qcm" | "libre" | "bonus" | "finale" | "palmares";
-export type Manche = "qcm" | "libre" | "bonus";
+export type Etat =
+  | "lobby" | "prep" | "qcm" | "libre" | "citez3" | "bonus" | "finale" | "palmares";
+export type Manche = "qcm" | "libre" | "citez3" | "bonus";
 export type StatutTour = "attente" | "consigne" | "revele" | "vote" | "juge";
 export type Jugement = "attente" | "juste" | "faux" | "passee";
 
@@ -16,6 +17,7 @@ export interface Partie {
   reglages: Reglages;
   tirage: Record<string, TirageMode>;
   tour_courant: string | null;
+  avec_citez3: boolean;
   en_pause: boolean;
   pause_motif: string | null;
 }
@@ -48,6 +50,10 @@ export interface Joueur {
   present: boolean;
   a_choisi_mode: boolean;
   prepa_faites: number;
+  /** choix en attente d'accord du partenaire — pas un secret, les deux doivent s'aligner */
+  mode_choisi: Mode | null;
+  sensibles_choisi: boolean;
+  occasions_choisies: string[];
 }
 
 export interface Progression {

@@ -35,7 +35,7 @@ export function useOrchestration(e: Etat) {
     const etat = e.partie.etat;
     const tour = tourCourant(e);
 
-    if (["qcm", "libre", "bonus"].includes(etat) && !tour) {
+    if (["qcm", "libre", "citez3", "bonus"].includes(etat) && !tour) {
       unefois(`avancer:${etat}:${e.tours.filter((t) => t.statut === "juge").length}`, rpc.suivant);
       return;
     }

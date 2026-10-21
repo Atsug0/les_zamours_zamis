@@ -34,6 +34,7 @@ create table parties (
   id              uuid primary key default gen_random_uuid(),
   code            char(4) not null unique,
   etat            text not null default 'lobby'
+                  -- 'citez3' est ajouté par 0015 : rpc_suivant écrit « etat = manche »
                   check (etat in ('lobby','prep','qcm','libre','bonus','finale','palmares')),
   plateau_id      uuid not null,                  -- l'appareil qui tient la télé
   hote_id         uuid,                           -- premier joueur arrivé

@@ -15,6 +15,8 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
   const [erreur, setErreur] = useState<string | null>(null);
   const [occupe, setOccupe] = useState(false);
   const [consigne, setConsigne] = useState("");
+  const [trois, setTrois] = useState(["", "", ""]);
+  const [concordes, setConcordes] = useState<number | null>(null);
   const moi = monJoueur(e);
   const equipe = membres(e, tour.binome_id);
   const prepare = equipe.find((j) => j.id !== tour.repondant_id);
@@ -27,7 +29,11 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
   const jeVote = suisJeVotant(e, tour);
   const jeSuisPresentateur = e.partie?.presentateur_id === moi?.id;
 
-  useEffect(() => setConsigne(""), [tour.id]);
+  useEffect(() => {
+    setConsigne("");
+    setTrois(["", "", ""]);
+    setConcordes(null);
+  }, [tour.id]);
 
   const faire = async (f: () => Promise<unknown>) => {
     setErreur(null);
@@ -52,6 +58,62 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
       )}
     </div>
   );
+
+  // ---- « Cite 3 » : trois réponses, puis le questionneur annonce
+  //      combien ont concordé. Pas de vote : trois votes d'affilée
+  //      casseraient le rythme (règles §9.3).
+  if (jeQuestionne && tour.manche === "citez3" && tour.statut !== "juge") {
+    const remplies = trois.filter((x) => x.trim().length > 0).length;
+    return cadre(
+      <>
+        <Narration petit>Cite 3 — note les trois réponses</Narration>
+        <Panneau>
+          <p style={{ margin: 0, fontSize: "var(--t-l)" }}>{q?.jeu}</p>
+        </Panneau>
+        {trois.map((v, i) => (
+          <input
+            key={i}
+            value={v}
+            onChange={(ev) =>
+              setTrois((t) => t.map((x, k) => (k === i ? ev.target.value.slice(0, 40) : x)))
+            }
+            placeholder={`réponse ${i + 1}`}
+            style={{
+              border: "var(--filet) solid var(--bord)",
+              padding: "var(--e-2) var(--e-3)",
+              fontSize: "var(--t-l)",
+              background: "var(--papier)",
+              color: "var(--texte)",
+            }}
+          />
+        ))}
+        <p style={{ margin: 0, fontSize: "var(--t-s)", color: "var(--texte-2)" }}>
+          Révèle les trois réponses enregistrées, puis dis combien ont concordé. 5 points chacune.
+        </p>
+        <div className="rangee">
+          {[0, 1, 2, 3].map((n) => (
+            <BoutonTampon
+              key={n}
+              large={false}
+              ton={concordes === n ? "valide" : "neutre"}
+              disabled={occupe}
+              onClick={() => setConcordes(n)}
+            >
+              {n}
+            </BoutonTampon>
+          ))}
+        </div>
+        <BoutonTampon
+          disabled={occupe || remplies === 0 || concordes === null}
+          onClick={() =>
+            void faire(() => rpc.jugerCitez3(tour.id, trois, concordes ?? 0))
+          }
+        >
+          {concordes === null ? "Choisis d'abord le nombre" : `Valider · ${concordes * 5} points`}
+        </BoutonTampon>
+      </>
+    );
+  }
 
   // ---- QCM : le joueur annonce son choix à voix haute, puis le tape ----
   if (jeRepond && tour.manche === "qcm" && tour.statut === "attente") {
@@ -213,7 +275,12 @@ export default function mancheJoueur({ e, tour }: { e: Etat; tour: Tour }) {
       <>
         <Narration petit>C'est à vous</Narration>
         <p style={{ margin: 0, color: "var(--texte-2)" }}>
-          Regarde la télé. {jeRepond ? "À toi de répondre, à voix haute." : null}
+          Regarde la télé.{" "}
+          {jeRepond
+            ? tour.manche === "citez3"
+              ? "Donne tes trois réponses à voix haute."
+              : "À toi de répondre, à voix haute."
+            : null}
         </p>
       </>
     );

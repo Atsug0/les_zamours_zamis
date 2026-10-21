@@ -49,6 +49,7 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
       return <PrepPlateau e={e} onSuivant={() => void api.suivant().catch(() => {})} />;
     case "qcm":
     case "libre":
+    case "citez3":
     case "bonus":
       return tour ? manchePlateau({ e, tour }) : <Attente />;
     case "finale":
@@ -66,6 +67,7 @@ function Bandeau({ code, phase, enPause }: { code: string; phase: string; enPaus
     prep: "préparation",
     qcm: "manche 1 · QCM",
     libre: "manche 2 · questions libres",
+    citez3: "manche « cite 3 »",
     bonus: "question bonus",
     finale: "finale",
     palmares: "palmarès",

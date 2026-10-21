@@ -25,7 +25,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | Code | |
 |---|---|
 | `supabase/migrations/` | le schéma, les RLS, les 24 fonctions RPC |
-| `supabase/test/` | 146 assertions, dont une partie complète jouée de bout en bout |
+| `supabase/test/` | 166 assertions, dont une partie complète jouée de bout en bout |
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
 | `tokens.css` | **les jetons de la DA — source unique** |
@@ -45,9 +45,8 @@ des chronos sur déconnexion, reprise de siège par PIN.
 manches QCM et libres, question bonus, finale chronométrée, palmarès et mort subite —
 des deux côtés, télé et téléphone, avec l'orchestration par le plateau.
 
-Restent les finitions : polices auto-hébergées (la page tourne sur Impact en repli),
-format long et catégories sensibles sans interface, variante « cite 3 », et le site
-n'est pas encore hébergé.
+Polices auto-hébergées, format court ou long, catégories sensibles et bloc mariage,
+variante « cite 3 », reprise du plateau depuis un téléphone. Reste à héberger le site.
 
 ### Trois invariants, tenus par le serveur et non par le client
 
@@ -82,7 +81,7 @@ Ouvrir ensuite deux fenêtres : `localhost:5173/tv/CODE` d'un côté,
 
 ```bash
 python3 lint_questions.py     # refuse une question genrée ou non concordable
-./tools/db_local.sh           # 146 assertions SQL
+./tools/db_local.sh           # 166 assertions SQL
 node tools/fumee.mjs          # une vraie partie sur le vrai projet, par l'API HTTP
 node tools/fumee-realtime.mjs # le temps réel arrive-t-il vraiment au client ?
 cd app && npm run build       # types stricts + les QR se décodent vraiment

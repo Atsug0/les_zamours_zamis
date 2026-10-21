@@ -55,6 +55,7 @@ const paires = new Map<string, Paire>();
 for (const p of [...banque.paires_ouvertes, ...banque.paires_qcm]) paires.set(p.id, p);
 const bonus = new Map(banque.bonus.map((b) => [b.id, b]));
 const series = new Map(banque.series_finale.map((s) => [s.id, s]));
+const citez3 = new Map(banque.citez_trois.map((c) => [c.id, c]));
 
 export const version = banque.version;
 
@@ -109,6 +110,23 @@ export function question(id: string, prenom = "{P}"): Question | null {
     if (q) {
       return { id, prepa: q.prepa, jeu: avecPrenom(q.jeu, prenom), verifiable: false };
     }
+    // « cite 3 » : le même énoncé, trois sous-réponses. On numérote pour
+    // que la prépa reste lisible, une case à la fois.
+    const c = citez3.get(m[1]);
+    if (c) {
+      const n = Number(m[2]);
+      return {
+        id,
+        prepa: `${avecPrenom(c.enonce, prenom)} — réponse ${n} sur 3`,
+        jeu: avecPrenom(c.enonce, prenom),
+        verifiable: false,
+      };
+    }
+  }
+
+  const c = citez3.get(id);
+  if (c) {
+    return { id, prepa: avecPrenom(c.enonce, prenom), jeu: avecPrenom(c.enonce, prenom), verifiable: false };
   }
   return null;
 }

@@ -31,7 +31,9 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
         <Narration petit>
           {bonus
             ? `Question bonus · ${equipe.map((j) => j.prenom).join(" & ")}`
-            : `${repondant?.prenom ?? "?"} répond sur ${prepare?.prenom ?? "?"}`}
+            : tour.manche === "citez3"
+              ? `Cite 3 · ${repondant?.prenom ?? "?"} devine ce que ${prepare?.prenom ?? "?"} a dit`
+              : `${repondant?.prenom ?? "?"} répond sur ${prepare?.prenom ?? "?"}`}
         </Narration>
 
         <p
@@ -76,7 +78,7 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
 
         {tour.statut === "attente" && (
           <Lettrage taille="var(--t-xl)" couleur="var(--zamours)">
-            {bonus ? "Roulement…" : "À voix haute !"}
+            {bonus ? "Roulement…" : tour.manche === "citez3" ? "Trois réponses !" : "À voix haute !"}
           </Lettrage>
         )}
         {tour.statut === "consigne" && (
@@ -98,6 +100,7 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
             <Case
               qui={bonus ? (equipe[0]?.prenom ?? "A") : `${repondant?.prenom ?? "?"} a dit`}
               quoi={tour.reponse_donnee}
+              liste={tour.manche === "citez3"}
             />
             <div
               style={{
@@ -113,6 +116,7 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
             <Case
               qui={bonus ? (equipe[1]?.prenom ?? "B") : `${prepare?.prenom ?? "?"} avait écrit`}
               quoi={tour.reponse_revelee}
+              liste={tour.manche === "citez3"}
             />
           </div>
         )}
@@ -173,7 +177,8 @@ export default function manchePlateau({ e, tour }: { e: Etat; tour: Tour }) {
   );
 }
 
-function Case({ qui, quoi }: { qui: string; quoi: string | null }) {
+function Case({ qui, quoi, liste = false }: { qui: string; quoi: string | null; liste?: boolean }) {
+  const trois = liste && quoi ? quoi.split(" · ") : null;
   return (
     <div
       style={{
@@ -199,9 +204,19 @@ function Case({ qui, quoi }: { qui: string; quoi: string | null }) {
       >
         {qui}
       </em>
-      <strong style={{ fontSize: "var(--t-xl)", lineHeight: 1.2 }}>
-        {quoi && quoi.length > 0 ? quoi : <span style={{ color: "var(--texte-2)" }}>— passée —</span>}
-      </strong>
+      {trois ? (
+        <ol style={{ margin: 0, paddingLeft: "1.2em", fontSize: "var(--t-l)", lineHeight: 1.35 }}>
+          {trois.map((x, i) => (
+            <li key={i}>
+              <strong>{x}</strong>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <strong style={{ fontSize: "var(--t-xl)", lineHeight: 1.2 }}>
+          {quoi && quoi.length > 0 ? quoi : <span style={{ color: "var(--texte-2)" }}>— passée —</span>}
+        </strong>
+      )}
     </div>
   );
 }

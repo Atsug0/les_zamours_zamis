@@ -42,8 +42,9 @@ export default function PrepJoueur({ e }: { e: Etat }) {
   const courante = useMemo(() => {
     if (!questions || index === null) return null;
     const id = questions[index];
-    return id ? { id, q: texteQuestion(id) } : null;
-  }, [questions, index]);
+    // les énoncés « cite 3 » parlent du partenaire : il faut son prénom
+    return id ? { id, q: texteQuestion(id, autre?.prenom ?? "ton binôme") } : null;
+  }, [questions, index, autre?.prenom]);
 
   useEffect(() => {
     if (!courante) return;
@@ -85,7 +86,7 @@ export default function PrepJoueur({ e }: { e: Etat }) {
         </p>
         <div style={{ display: "grid", gap: "var(--e-2)" }}>
           {questions.map((id, i) => {
-            const q = texteQuestion(id);
+            const q = texteQuestion(id, autre?.prenom ?? "ton binôme");
             const r = reponses[id];
             return (
               <button

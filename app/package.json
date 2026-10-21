@@ -7,7 +7,8 @@
     "contenu": "node tools/copier-contenu.mjs",
     "dev": "npm run contenu && vite",
     "build": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs && vite build",
-    "verif": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs"
+    "verif": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs",
+    "polices": "python3 tools/polices.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0",

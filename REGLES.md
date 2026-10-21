@@ -362,11 +362,22 @@ les deux membres répondent **vrai / faux simultanément** sur leur téléphone 
 manche sans oral, justement pour la vitesse). Concordance = 5 points, zéro arbitrage.
 
 ### 9.3 Manche « cite 3 »
-Reprise du principe des questions finales du jeu d'origine. L'écran affiche
-« Cite 3 défauts de {prénom} » ; le joueur en donne trois à voix haute, le questionneur
-les consigne, puis on révèle les trois qu'avait écrites le partenaire.
-**5 points par réponse commune**, soit 15 au maximum. Se place juste avant le bonus.
-Énoncés disponibles dans `questions.json` → `citez_trois`.
+Reprise du principe des questions finales du jeu d'origine, activable au lancement.
+
+En **préparation**, chaque joueur cite **trois choses sur son partenaire** — « cite 3
+défauts de Sam ». Pendant la manche, le partenaire doit retrouver les trois, à voix
+haute. Le questionneur les note, révèle les trois enregistrées, puis **annonce combien
+ont concordé**.
+
+- **5 points par réponse commune**, soit 15 par passage.
+- **Deux passages par binôme**, un par sens : la manche est ainsi symétrique avec toutes
+  les autres, et réutilise les paires et les sets croisés. Maximum **30 points**.
+- **Jugée par le questionneur, pas par un vote.** Faire voter trois réponses une par une
+  casserait le rythme ; la salle voit les deux triplets côte à côte et le questionneur
+  tranche. C'est le seul endroit des manches où le vote ne décide pas.
+- Se place **juste avant le bonus**, et allonge la partie d'environ un quart d'heure.
+
+Énoncés dans `questions.json` → `citez_trois`.
 
 ### 9.4 Mise
 Avant chaque question libre, le binôme mise **0, 5 ou 10 points** de son capital.
