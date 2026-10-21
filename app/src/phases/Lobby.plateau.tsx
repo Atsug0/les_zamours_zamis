@@ -1,6 +1,6 @@
 import { Coeur, Eclair, Lettrage, Narration, Panneau, PastilleBinome, Trame } from "../ui";
 import { QR } from "../ui/QR";
-import { membres, type Etat } from "../jeu/usePartie";
+import { membres, modeSujet, type Etat } from "../jeu/usePartie";
 
 /** Le lobby vu de la télé : le code en grand, les binômes qui se forment. */
 export default function LobbyPlateau({ e }: { e: Etat }) {
@@ -59,7 +59,37 @@ export default function LobbyPlateau({ e }: { e: Etat }) {
           </div>
         </div>
 
-        {e.joueurs.length === 0 ? (
+        {modeSujet(e) ? (
+          <div style={{ display: "grid", gap: "var(--e-3)", justifyItems: "center" }}>
+            <Narration>
+              Qui connaît le mieux{" "}
+              {e.joueurs.find((j) => j.id === p.sujet_id)?.prenom ?? "?"} ?
+            </Narration>
+            <p style={{ margin: 0, color: "var(--texte-2)" }}>
+              Pas de binôme : chacun joue pour soi, et le sujet valide.
+            </p>
+            <div className="rangee" style={{ justifyContent: "center" }}>
+              {e.joueurs
+                .filter((j) => j.id !== p.sujet_id)
+                .map((j) => (
+                  <span
+                    key={j.id}
+                    style={{
+                      border: "var(--filet) solid var(--bord)",
+                      background: "var(--papier)",
+                      padding: "var(--e-1) var(--e-3)",
+                      fontFamily: "var(--display)",
+                      textTransform: "uppercase",
+                      boxShadow: "4px 4px 0 var(--ombre)",
+                      opacity: j.present ? 1 : 0.5,
+                    }}
+                  >
+                    {j.prenom}
+                  </span>
+                ))}
+            </div>
+          </div>
+        ) : e.joueurs.length === 0 ? (
           <p style={{ color: "var(--texte-2)" }}>Personne n'est encore arrivé.</p>
         ) : (
           <div style={{ display: "grid", gap: "var(--e-4)", width: "min(900px, 100%)" }}>

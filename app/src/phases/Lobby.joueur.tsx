@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { rpc } from "../jeu/rpc";
 import { BoutonTampon, Coeur, Eclair, Erreur, Narration, Panneau } from "../ui";
-import { monBinome, monJoueur, partenaire, peutOrchestrer, type Etat } from "../jeu/usePartie";
+import {
+  modeSujet, monBinome, monJoueur, partenaire, peutOrchestrer, suisJeSujet, type Etat,
+} from "../jeu/usePartie";
 import type { Mode } from "../jeu/types";
 import { aller } from "../routeur";
 
@@ -35,6 +37,9 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
   const libres = e.joueurs.filter(
     (j) => !j.binome_id && j.id !== e.moi && j.id !== p.presentateur_id
   );
+  const sujet = modeSujet(e);
+  const jeSuisLeSujet = suisJeSujet(e);
+  const challengers = e.joueurs.filter((j) => j.id !== p.sujet_id);
   const seulSansBinome =
     !moi?.binome_id &&
     e.joueurs.filter((j) => !j.binome_id).length === 1 &&
@@ -62,7 +67,32 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
         </Panneau>
       )}
 
-      {jeSuisPresentateur ? (
+      {sujet ? (
+        jeSuisLeSujet ? (
+          <Panneau>
+            <Narration petit>Tu es le sujet</Narration>
+            <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)" }}>
+              Tout le monde va essayer de te deviner. Tu réponds en secret juste avant eux,
+              question par question — <strong>aucune préparation</strong> — et c'est toi qui dis
+              si une réponse compte. Tu ne marques pas de points : tu es la ligne d'arrivée.
+            </p>
+            <p style={{ fontSize: "var(--t-s)", margin: 0 }}>
+              {challengers.length} challenger{challengers.length > 1 ? "s" : ""} :{" "}
+              {challengers.map((j) => j.prenom).join(", ") || "personne encore"}
+            </p>
+          </Panneau>
+        ) : (
+          <Panneau>
+            <Narration petit>
+              Qui connaît le mieux {e.joueurs.find((j) => j.id === p.sujet_id)?.prenom ?? "?"} ?
+            </Narration>
+            <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)", marginBottom: 0 }}>
+              Pas de binôme dans ce mode : tu joues pour toi. À chaque question, tout le monde
+              répond en même temps et le sujet dit qui a trouvé.
+            </p>
+          </Panneau>
+        )
+      ) : jeSuisPresentateur ? (
         <Panneau>
           <Narration petit>Tu présentes</Narration>
           <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)" }}>
@@ -90,6 +120,21 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
               ))}
             </div>
           )}
+          <Panneau style={{ background: "var(--papier-2)" }}>
+            <Narration petit>Ou un autre jeu</Narration>
+            <p style={{ fontSize: "var(--t-s)", color: "var(--texte-2)" }}>
+              <strong>Qui connaît le mieux… toi ?</strong> Tu réponds à tout, les autres
+              s'affrontent pour te deviner. Sans binôme, et sans préparation.
+            </p>
+            <BoutonTampon
+              ton="neutre"
+              disabled={occupe}
+              onClick={() => void faire(() => rpc.devenirSujet())}
+            >
+              Je suis le sujet
+            </BoutonTampon>
+          </Panneau>
+
           {seulSansBinome && (
             <>
               <p style={{ color: "var(--texte-2)", fontSize: "var(--t-s)", margin: 0 }}>
@@ -243,7 +288,7 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
               dit="3 ouvertes + 2 QCM, finale à 7 questions en 45 s. Le double de temps."
             />
           </div>
-          <div style={{ marginBottom: "var(--e-3)" }}>
+          <div style={{ marginBottom: "var(--e-3)", display: sujet ? "none" : "block" }}>
             <Bascule
               active={citez3}
               onChange={setCitez3}
@@ -251,7 +296,12 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
               dit="Chacun cite trois choses sur l'autre en prépa, le partenaire doit les retrouver. 5 points par réponse commune. Allonge la partie d'un quart d'heure."
             />
           </div>
-          <BoutonTampon disabled={occupe} onClick={() => void faire(() => rpc.lancer(format, citez3))}>
+          <BoutonTampon
+            disabled={occupe}
+            onClick={() =>
+              void faire(() => (sujet ? rpc.lancerSujet(format) : rpc.lancer(format, citez3)))
+            }
+          >
             Lancer la partie
           </BoutonTampon>
           <button

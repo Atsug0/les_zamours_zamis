@@ -8,6 +8,7 @@ import PrepJoueur from "../phases/Prep.joueur";
 import mancheJoueur from "../phases/Manche.joueur";
 import FinaleJoueur from "../phases/Finale.joueur";
 import PalmaresJoueur from "../phases/Palmares.joueur";
+import SujetJoueur from "../phases/Sujet.joueur";
 
 /** La vue téléphone : une seule action à la fois. */
 export default function Joueur({ code }: { code: string }) {
@@ -70,7 +71,10 @@ function Pupitre({ e, pin }: { e: ReturnType<typeof usePartie>; pin: string | nu
     case "libre":
     case "citez3":
     case "bonus":
-      return tour ? mancheJoueur({ e, tour }) : <div className="centre">Un instant…</div>;
+      if (!tour) return <div className="centre">Un instant…</div>;
+      return e.partie?.mode_jeu === "sujet"
+        ? SujetJoueur({ e, tour })
+        : mancheJoueur({ e, tour });
     case "finale":
       return <FinaleJoueur e={e} />;
     case "palmares":

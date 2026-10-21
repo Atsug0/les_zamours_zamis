@@ -72,6 +72,37 @@ export const rpc = {
       p_passee: passee,
     }),
 
+  // ---- mode « qui connaît le mieux X » ----
+  devenirSujet: () => appel<{ sujet_id: string }>("rpc_devenir_sujet"),
+
+  lancerSujet: (format: "court" | "long" = "court") =>
+    appel<{ etat: string; tours: number }>("rpc_lancer_sujet", { p_format: format }),
+
+  /** Le sujet répond en secret, avant tout le monde. */
+  sujetRepond: (tour: string, valeur: string) =>
+    appel<{ statut: string }>("rpc_sujet_repond", { p_tour: tour, p_valeur: valeur }),
+
+  defier: (tour: string, valeur: string) =>
+    appel<{ faits: number; total: number; tous_ont_repondu: boolean }>("rpc_defier", {
+      p_tour: tour,
+      p_valeur: valeur,
+    }),
+
+  revelerDefis: (tour: string) =>
+    appel<{ statut: string; reponse: string }>("rpc_reveler_defis", { p_tour: tour }),
+
+  jugerDefi: (tour: string, joueur: string, juste: boolean) =>
+    appel<{ joueur_id: string; juste: boolean }>("rpc_juger_defi", {
+      p_tour: tour,
+      p_joueur: joueur,
+      p_juste: juste,
+    }),
+
+  cloreDefis: (tour: string) =>
+    appel<{ statut: string; justes: number; points_chacun: number }>("rpc_clore_defis", {
+      p_tour: tour,
+    }),
+
   // ---- manches ----
   consigner: (tour: string, valeur: string) =>
     appel<{ statut: string; verdict?: boolean; reponse_revelee?: string }>("rpc_consigner", {

@@ -10,6 +10,7 @@ import PrepPlateau from "../phases/Prep.plateau";
 import manchePlateau from "../phases/Manche.plateau";
 import FinalePlateau from "../phases/Finale.plateau";
 import PalmaresPlateau from "../phases/Palmares.plateau";
+import SujetPlateau from "../phases/Sujet.plateau";
 import { rpc as api } from "../jeu/rpc";
 
 /** La vue télé. C'est aussi l'horloge de la partie (ARCHITECTURE.md §3.d). */
@@ -61,7 +62,10 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
     case "libre":
     case "citez3":
     case "bonus":
-      return tour ? manchePlateau({ e, tour }) : <Attente />;
+      if (!tour) return <Attente />;
+      return e.partie.mode_jeu === "sujet"
+        ? SujetPlateau({ e, tour })
+        : manchePlateau({ e, tour });
     case "finale":
       return <FinalePlateau e={e} />;
     case "palmares":

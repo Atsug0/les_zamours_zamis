@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "./supabase";
 import { rpc } from "./rpc";
 import type {
-  Binome, Joueur, LignePalmares, LigneRecap, Partie, PassageFinale, Progression, Tour,
+  Binome, Joueur, LignePalmares, LigneRecap, Partie, PassageFinale, Progression,
+  ReponseManche, Tour,
 } from "./types";
 
 export interface Etat {
@@ -14,6 +15,7 @@ export interface Etat {
   progression: Progression | null;
   palmares: LignePalmares[];
   recap: LigneRecap[];
+  reponsesManche: ReponseManche[];
   moi: string | null;
   chargement: boolean;
   erreur: string | null;
@@ -28,6 +30,7 @@ const vide: Etat = {
   progression: null,
   palmares: [],
   recap: [],
+  reponsesManche: [],
   moi: null,
   chargement: true,
   erreur: null,
@@ -61,7 +64,7 @@ export function usePartie(code: string | null, moi: string | null) {
     }
     partieId.current = p.id;
 
-    const [j, b, t, f, g, pal, rec] = await Promise.all([
+    const [j, b, t, f, g, pal, rec, rm] = await Promise.all([
       supabase.from("v_joueurs").select("*").eq("partie_id", p.id),
       supabase.from("binomes").select("*").eq("partie_id", p.id).order("couleur"),
       supabase.from("v_tours").select("*").eq("partie_id", p.id).order("ordre"),
@@ -70,6 +73,11 @@ export function usePartie(code: string | null, moi: string | null) {
       supabase.from("v_progression").select("*").eq("partie_id", p.id).maybeSingle(),
       supabase.from("v_palmares").select("*").eq("partie_id", p.id).order("rang"),
       supabase.from("v_recap").select("*").eq("partie_id", p.id).order("ordre"),
+      // mode sujet : relues à chaque changement de tours, puisque
+      // reponses_manche n'est pas diffusée (0017)
+      p.mode_jeu === "sujet" && p.tour_courant
+        ? supabase.from("v_reponses_manche").select("*").eq("tour_id", p.tour_courant)
+        : Promise.resolve({ data: [] as ReponseManche[] }),
     ]);
 
     setEtat({
@@ -81,6 +89,7 @@ export function usePartie(code: string | null, moi: string | null) {
       progression: (g.data ?? null) as Progression | null,
       palmares: (pal.data ?? []) as LignePalmares[],
       recap: (rec.data ?? []) as LigneRecap[],
+      reponsesManche: (rm.data ?? []) as ReponseManche[],
       moi,
       chargement: false,
       erreur: null,
@@ -147,6 +156,15 @@ export function membres(e: Etat, binomeId: string): Joueur[] {
 export function tourCourant(e: Etat): Tour | null {
   if (!e.partie?.tour_courant) return null;
   return e.tours.find((t) => t.id === e.partie!.tour_courant) ?? null;
+}
+
+/** En mode sujet : la personne qu'on doit deviner, et qui valide. */
+export function suisJeSujet(e: Etat): boolean {
+  return !!e.moi && e.partie?.sujet_id === e.moi;
+}
+
+export function modeSujet(e: Etat): boolean {
+  return e.partie?.mode_jeu === "sujet";
 }
 
 export function suisJePresentateur(e: Etat): boolean {

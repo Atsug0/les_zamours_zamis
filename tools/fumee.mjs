@@ -223,6 +223,67 @@ ok(palmares.length === 2 && palmares[0].rang === 1, "le palmarès classe les bin
 const recap = await lire(tv, `v_recap?partie_id=eq.${partie.partie_id}&select=ordre`);
 ok(recap.length === 14, "le récap de soirée contient les 14 tours");
 
+// ---------------------------------------------------------------
+// Mode « qui connaît le mieux X », par HTTP lui aussi.
+// ---------------------------------------------------------------
+{
+  const tv2 = await session("plateau2");
+  const p2 = await rpc(tv2, "rpc_creer_partie");
+  const gens = [];
+  for (const nom of ["Sujet", "Chall1", "Chall2"]) {
+    const j = await session(nom);
+    const r = await rpc(j, "rpc_rejoindre", { p_code: p2.code, p_prenom: nom });
+    gens.push({ nom, jeton: j, id: r.joueur_id });
+  }
+  const sujet = gens[0];
+  await rpc(sujet.jeton, "rpc_devenir_sujet");
+  const lance = await rpc(tv2, "rpc_lancer_sujet", { p_format: "court" });
+  ok(lance.tours === 12, "mode sujet : 12 questions, sans préparation", `(${lance.tours})`);
+
+  const [t1] = await lire(tv2, `v_tours?partie_id=eq.${p2.partie_id}&order=ordre&limit=1`);
+  ok(t1.binome_id === null, "un tour du mode sujet n'appartient à aucune équipe");
+
+  const avant = await lire(gens[1].jeton, `v_tours?id=eq.${t1.id}&select=reponse_revelee`);
+  ok(avant[0].reponse_revelee === null, "la réponse du sujet est invisible avant révélation");
+
+  await rpc(sujet.jeton, "rpc_sujet_repond", { p_tour: t1.id, p_valeur: "bleu" });
+  await rpc(gens[1].jeton, "rpc_defier", { p_tour: t1.id, p_valeur: "bleu" });
+  const d2 = await rpc(gens[2].jeton, "rpc_defier", { p_tour: t1.id, p_valeur: "vert" });
+  ok(d2.tous_ont_repondu === true, "les deux challengers ont répondu");
+
+  const vu = await lire(gens[1].jeton, `v_reponses_manche?tour_id=eq.${t1.id}&select=valeur`);
+  ok(
+    vu.every((r) => r.valeur === null),
+    "aucune réponse de challenger lisible avant la révélation"
+  );
+
+  await rpc(sujet.jeton, "rpc_reveler_defis", { p_tour: t1.id });
+  const apres = await lire(tv2, `v_reponses_manche?tour_id=eq.${t1.id}&select=prenom,juste`);
+  ok(
+    apres.filter((r) => r.juste).length === 1,
+    "le jugement est pré-rempli par comparaison normalisée"
+  );
+  const clos = await rpc(sujet.jeton, "rpc_clore_defis", { p_tour: t1.id });
+  ok(clos.justes === 1, "une seule bonne réponse comptée");
+  const eq = await lire(tv2, `binomes?partie_id=eq.${p2.partie_id}&select=score`);
+  ok(
+    eq.filter((b) => b.score === 5).length === 1,
+    "les points vont au bon challenger, et à lui seul"
+  );
+
+  // un challenger ne peut pas usurper le rôle du sujet
+  const vol = await fetch(`${URL_BASE}/rest/v1/rpc/rpc_reveler_defis`, {
+    method: "POST",
+    headers: {
+      apikey: CLE,
+      Authorization: `Bearer ${gens[1].jeton}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ p_tour: t1.id }),
+  });
+  ok(!vol.ok, "un challenger ne révèle pas à la place du sujet", `HTTP ${vol.status}`);
+}
+
 console.log(
   ko
     ? `\n${ko} vérification(s) en échec.`

@@ -90,6 +90,10 @@ reset role;
 select assert_vrai((select count(*) from reponses_manche
                     where tour_id = current_setting('zz.t')::uuid) = 3,
                    'les trois challengers ont repondu');
+-- le compteur doit remonter : reponses_manche est muette par conception
+select assert_vrai((select reponses_recues from tours
+                    where id = current_setting('zz.t')::uuid) = 3,
+                   'le compteur sur tours remonte, lui, en temps reel');
 
 -- personne ne lit les reponses des autres avant la revelation
 select devenir(:c1::uuid); set role authenticated;
@@ -109,8 +113,14 @@ select assert_vrai((select count(*) from reponses_manche
 
 -- le sujet corrige un cas limite
 select devenir(:s::uuid); set role authenticated;
+-- lu via la vue : ca prouve au passage qu elle expose bien la revision
+select set_config('zz.rev', (select revision::text from v_tours
+                             where id = current_setting('zz.t')::uuid), false);
 select assert_vrai((rpc_juger_defi(current_setting('zz.t')::uuid, :c3::uuid, true)->>'juste')::boolean,
                    'le sujet peut valider une reponse formulee autrement');
+select assert_vrai((select revision from v_tours where id = current_setting('zz.t')::uuid)
+                   > current_setting('zz.rev')::int,
+                   'un jugement incremente la revision, sinon rien ne serait diffuse');
 select assert_vrai((rpc_clore_defis(current_setting('zz.t')::uuid)->>'justes')::int = 3,
                    'cloture : trois justes apres correction');
 reset role;

@@ -6,10 +6,15 @@ export type Manche = "qcm" | "libre" | "citez3" | "bonus";
 export type StatutTour = "attente" | "consigne" | "revele" | "vote" | "juge";
 export type Jugement = "attente" | "juste" | "faux" | "passee";
 
+export type ModeJeu = "binomes" | "sujet";
+
 export interface Partie {
   id: string;
   code: string;
   etat: Etat;
+  mode_jeu: ModeJeu;
+  /** en mode sujet : la personne qu'on doit deviner, et qui valide */
+  sujet_id: string | null;
   plateau_id: string;
   hote_id: string | null;
   presentateur_id: string | null;
@@ -93,6 +98,20 @@ export interface Tour {
   voix_pour: number | null;
   voix_contre: number | null;
   j_ai_vote: boolean;
+  /** mode sujet : compteurs diffusés, car reponses_manche est muette */
+  reponses_recues: number;
+  revision: number;
+  j_ai_repondu: boolean;
+}
+
+export interface ReponseManche {
+  tour_id: string;
+  joueur_id: string;
+  prenom: string;
+  /** null tant que le tour n'est pas révélé */
+  valeur: string | null;
+  juste: boolean | null;
+  c_est_moi: boolean;
 }
 
 export interface PassageFinale {
