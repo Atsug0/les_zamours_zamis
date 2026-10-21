@@ -126,6 +126,7 @@ export default function PalmaresPlateau({ e }: { e: Etat }) {
               <button
                 key={l.binome_id}
                 type="button"
+                data-tc=""
                 disabled={occupe}
                 onClick={() => {
                   setOccupe(true);

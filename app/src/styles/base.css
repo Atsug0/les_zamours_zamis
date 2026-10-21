@@ -27,6 +27,21 @@ button { font: inherit; color: inherit; }
   outline-offset: 3px;
 }
 
+/* ---- télécommande ----
+   Le focus doit se voir depuis le canapé : un liseré fin ne suffit pas
+   sur une télé. On double le contour et on décale l'ombre. */
+[data-tc]:focus-visible,
+[data-tc]:focus {
+  outline: 6px solid var(--bleu);
+  outline-offset: 5px;
+  box-shadow: var(--decalage) var(--decalage) 0 var(--ombre), 0 0 0 12px rgba(11, 95, 217, 0.25);
+}
+
+/* En plein écran, on lit de loin : tout ce qui est en rem grossit. */
+.plein-ecran { font-size: 125%; }
+.plein-ecran body { cursor: none; }
+.plein-ecran .masquer-en-plein { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -3,6 +3,7 @@ import { rpc } from "../jeu/rpc";
 import { memoire, session } from "../jeu/supabase";
 import { BoutonTampon, Coeur, Erreur, Lettrage, Narration, Panneau, Trame } from "../ui";
 import { aller } from "../routeur";
+import { useTelecommande } from "../jeu/telecommande";
 
 /** Page d'entrée : créer une partie sur la télé, ou rejoindre avec un code. */
 export default function Accueil() {
@@ -11,6 +12,7 @@ export default function Accueil() {
   const [erreur, setErreur] = useState<string | null>(null);
   const [occupe, setOccupe] = useState(false);
   const derniere = memoire.lire();
+  useTelecommande(true);
 
   const faire = async (f: () => Promise<void>) => {
     setErreur(null);

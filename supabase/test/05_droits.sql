@@ -66,10 +66,10 @@ select assert_vrai((
 select assert_vrai((
   select array_agg(distinct table_name::text order by table_name::text) = array[
     'binomes','joueurs','parties','v_joueurs','v_palmares',
-    'v_passages_finale','v_progression','v_recap','v_tours']
+    'v_passages_finale','v_progression','v_recap','v_reponses_manche','v_tours']
   from information_schema.role_table_grants
   where grantee = 'authenticated' and table_schema = 'public' and privilege_type = 'SELECT'
-), 'exactement 3 tables et 6 vues sont lisibles, pas une de plus');
+), 'exactement 3 tables et 7 vues sont lisibles, pas une de plus');
 
 -- l exploit concret, teste a travers la vue
 set role authenticated;
@@ -79,6 +79,8 @@ select assert_erreur('update v_joueurs set binome_id = gen_random_uuid() where p
                      'changer de binome a travers v_joueurs');
 select assert_erreur('update v_tours set verdict = true where ordre = -1',
                      'se valider soi-meme a travers v_tours');
+select assert_erreur('select count(*) from reponses_manche',
+                     'lire les reponses des challengers avant revelation');
 select assert_erreur('select count(*) from sieges',
                      'lire les PIN de reprise des autres joueurs');
 select assert_erreur('select count(*) from questions_index',

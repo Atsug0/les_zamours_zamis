@@ -21,3 +21,9 @@ end $$;
 create or replace function remise_a_zero() returns void language sql as $$
   truncate parties cascade;
 $$;
+
+-- Le harnais tourne APRÈS les migrations, dont 0009_droits.sql qui
+-- referme toutes les fonctions non-rpc_ — y compris `devenir`, créée
+-- par le shim. On la rouvre ici : c'est l'outillage de test, jamais
+-- déployé en production (0009 reste la source de vérité là-bas).
+grant execute on function devenir(uuid) to anon, authenticated;

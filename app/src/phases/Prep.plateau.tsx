@@ -104,6 +104,8 @@ export default function PrepPlateau({ e, onSuivant }: { e: Etat; onSuivant: () =
         {tousPrets && peutOrchestrer(e) && (
           <button
             type="button"
+            data-tc=""
+            autoFocus
             onClick={onSuivant}
             style={{
               fontFamily: "var(--display)",

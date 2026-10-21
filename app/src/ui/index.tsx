@@ -162,12 +162,14 @@ export function PastilleBinome({ couleur, prenoms, score, present = true }: {
 }
 
 /** Le bouton s'enfonce dans son ombre : la mécanique du tampon. */
-export function BoutonTampon({ children, onClick, ton = "jaune", disabled, large = true }: {
+export function BoutonTampon({ children, onClick, ton = "jaune", disabled, large = true, tc = false }: {
   children: ReactNode;
   onClick?: () => void;
   ton?: "jaune" | "valide" | "refuse" | "neutre";
   disabled?: boolean;
   large?: boolean;
+  /** navigable à la télécommande (écran plateau) */
+  tc?: boolean;
 }) {
   const fonds: Record<string, [string, string]> = {
     jaune: ["var(--jaune)", "#15101b"],
@@ -181,6 +183,7 @@ export function BoutonTampon({ children, onClick, ton = "jaune", disabled, large
       type="button"
       onClick={onClick}
       disabled={disabled}
+      {...(tc ? { "data-tc": "" } : {})}
       style={{
         width: large ? "100%" : "auto",
         textAlign: "center",

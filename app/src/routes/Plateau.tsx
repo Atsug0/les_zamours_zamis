@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { session } from "../jeu/supabase";
 import { tourCourant, usePartie } from "../jeu/usePartie";
 import { useOrchestration } from "../jeu/orchestration";
+import { usePleinEcran, useTelecommande } from "../jeu/telecommande";
 import { rpc } from "../jeu/rpc";
 import { Erreur, Lettrage, Narration, Trame } from "../ui";
 import LobbyPlateau from "../phases/Lobby.plateau";
@@ -20,6 +21,8 @@ export default function Plateau({ code }: { code: string }) {
 
   const e = usePartie(code, moi);
   useOrchestration(e);
+  useTelecommande(true);
+  const { plein, basculer, possible } = usePleinEcran();
 
   // Le plateau surveille la présence du joueur attendu et gèle les
   // chronos s'il disparaît. Aucun job planifié n'est nécessaire.
@@ -34,7 +37,14 @@ export default function Plateau({ code }: { code: string }) {
 
   return (
     <div className="plateau-cadre">
-      <Bandeau code={e.partie.code} phase={e.partie.etat} enPause={e.partie.en_pause} />
+      <Bandeau
+        code={e.partie.code}
+        phase={e.partie.etat}
+        enPause={e.partie.en_pause}
+        plein={plein}
+        basculer={basculer}
+        possible={possible}
+      />
       <Scene e={e} />
     </div>
   );
@@ -61,7 +71,14 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
   }
 }
 
-function Bandeau({ code, phase, enPause }: { code: string; phase: string; enPause: boolean }) {
+function Bandeau({ code, phase, enPause, plein, basculer, possible }: {
+  code: string;
+  phase: string;
+  enPause: boolean;
+  plein: boolean;
+  basculer: () => void;
+  possible: boolean;
+}) {
   const noms: Record<string, string> = {
     lobby: "en attente des joueurs",
     prep: "préparation",
@@ -98,6 +115,27 @@ function Bandeau({ code, phase, enPause }: { code: string; phase: string; enPaus
         {code} · {noms[phase] ?? phase}
       </span>
       {enPause && <Narration petit>En pause</Narration>}
+      {possible && !plein && (
+        <button
+          type="button"
+          data-tc=""
+          onClick={basculer}
+          className="masquer-en-plein"
+          style={{
+            border: "var(--filet) solid var(--papier)",
+            background: "transparent",
+            color: "var(--papier)",
+            fontFamily: "var(--display)",
+            textTransform: "uppercase",
+            letterSpacing: ".06em",
+            fontSize: "var(--t-xs)",
+            padding: "2px var(--e-2)",
+            cursor: "pointer",
+          }}
+        >
+          Plein écran
+        </button>
+      )}
     </header>
   );
 }
