@@ -30,6 +30,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | `supabase/test/` | 254 assertions, dont une partie complète jouée dans chacun des cinq modes |
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
+| `tools/db_prod.sh` | migrations et contrôles sur la base de production |
 | `tokens.css` | **les jetons de la DA — source unique** |
 
 Les deux fichiers marqués *source unique* sont copiés dans le bundle à la compilation.

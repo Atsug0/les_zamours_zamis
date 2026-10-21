@@ -38,10 +38,36 @@ Récupère ensuite dans **Project Settings → API** :
 - l'**URL du projet** (`https://xxxx.supabase.co`),
 - la clé **anon public**.
 
-> La clé anon est **publique par conception** : elle part dans le bundle du site.
-> Toute la sécurité tient dans les RLS et les fonctions `SECURITY DEFINER`
-> (ARCHITECTURE.md §3). La clé `service_role`, elle, ne doit **jamais** quitter
-> tes secrets — elle contourne tout.
+> La clé publishable est **publique par conception** : elle part dans le bundle du
+> site. Toute la sécurité tient dans les RLS et les fonctions `SECURITY DEFINER`
+> (ARCHITECTURE.md §3). La clé **secrète**, elle, contourne tout — y compris les
+> réponses de préparation.
+
+### 2.1.1 Où ranger les secrets
+Copier `.env.example` **à la racine** en `.env.local` et le remplir. Ce fichier est
+ignoré par git et lu par le seul `tools/db_prod.sh`.
+
+**Pas dans `app/.env.local`** : ce fichier-là est lu par Vite, et tout ce qui y porte le
+préfixe `VITE_` finit dans le bundle public. Une clé secrète n'a rien à faire dans le
+même fichier que la configuration du navigateur — il suffirait d'un renommage pour la
+publier à tous les visiteurs.
+
+```bash
+cp .env.example .env.local && chmod 600 .env.local
+```
+
+Ensuite tout passe par un seul outil :
+
+```bash
+./tools/db_prod.sh --migrations                     # applique tout, puis le contenu
+./tools/db_prod.sh --controle                       # rejoue les contrôles du §3.3
+./tools/db_prod.sh supabase/migrations/0021_x.sql   # une migration précise
+./tools/db_prod.sh -c 'select count(*) from parties'
+```
+
+Le mot de passe passe par `PGPASSWORD` : il ne transite donc jamais par la ligne de
+commande, et n'a pas besoin d'être encodé en URL — celui de Supabase contient souvent
+des `/` et des `@` qui cassent une chaîne de connexion.
 
 ### 2.2 Activer la connexion anonyme — ÉTAPE OBLIGATOIRE
 **Authentication → Sign In / Providers → Anonymous sign-ins → Enable.**
@@ -60,7 +86,14 @@ toi comme pour un robot.
 
 Onze migrations, dans l'ordre, puis le contenu.
 
-### 3.1 Avec la CLI (recommandé)
+### 3.1 Le plus simple
+```bash
+./tools/db_prod.sh --migrations
+```
+Applique les onze migrations dans l'ordre puis charge le contenu, en s'arrêtant à la
+première erreur. C'est la commande à utiliser.
+
+### 3.2 Avec la CLI Supabase
 ```bash
 supabase login
 supabase link --project-ref <ref-du-projet>   # la ref est dans l'URL du dashboard
@@ -71,7 +104,7 @@ psql "$DATABASE_URL" -f supabase/seed_questions_index.sql
 `DATABASE_URL` se trouve dans **Project Settings → Database → Connection string**
 (prendre le mode *session*). Sans `psql` sous la main, voir §3.2 pour le seed.
 
-### 3.2 Sans la CLI, par copier-coller
+### 3.3 Sans rien, par copier-coller
 Dans **SQL Editor**, exécuter dans cet ordre exact, un fichier par onglet :
 
 ```
@@ -101,7 +134,8 @@ fonctions puis sur les tables et les vues, et doivent donc voir tout ce qui exis
 > travers elle **contournait entièrement les RLS**. `update v_recap set points = 9999`
 > falsifiait les scores. 0010 repart de zéro par motif, jamais par liste nominative.
 
-### 3.3 Vérifier que la base est saine
+### 3.4 Vérifier que la base est saine
+`./tools/db_prod.sh --controle` enchaîne les trois contrôles qui comptent. À la main :
 Dans **SQL Editor** :
 
 ```sql
