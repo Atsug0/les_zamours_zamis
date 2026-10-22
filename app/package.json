@@ -10,7 +10,9 @@
     "verif": "npm run contenu && tsc --noEmit && node tools/verif-qr.mjs",
     "polices": "python3 tools/polices.py",
     "mise-en-page": "npm run build && node tools/verif-mise-en-page.mjs",
-    "demo": "npm run build && node tools/verif-demo.mjs"
+    "demo": "npm run build && node tools/verif-demo.mjs",
+    "scenario": "npm run build && node tools/scenario.mjs",
+    "planche": "node tools/scenario.mjs && node tools/planche.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.58.0",

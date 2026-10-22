@@ -32,8 +32,13 @@ export default function Joueur({ code }: { code: string }) {
   // Session perdue (autre navigateur, données effacées) : reprise par PIN.
   if (!j && e.partie.plateau_id !== moi) return <Reprise code={code} />;
 
+  const tour = tourCourant(e);
   return (
-    <div className="tel-cadre">
+    <div
+      className="tel-cadre"
+      data-phase={e.partie.etat}
+      data-statut={tour?.statut ?? ""}
+    >
       <header
         style={{
           display: "flex",

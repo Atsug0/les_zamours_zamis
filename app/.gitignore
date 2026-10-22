@@ -1,5 +1,5 @@
-node_modules
-dist
 .env.local
-src/contenu/questions.json
 captures/
+dist
+node_modules
+src/contenu/questions.json

@@ -31,6 +31,7 @@ Ce n'est pas une nuance de ton : le mode change le pool de questions.
 | `app/` | le front React + Vite |
 | `questions.json` | **la banque de questions — source unique** |
 | `tools/db_prod.sh` | migrations et contrôles sur la base de production |
+| `app/src/jeu/sons.ts` | les sons du plateau, synthétisés — aucun fichier |
 | `tokens.css` | **les jetons de la DA — source unique** |
 
 Les deux fichiers marqués *source unique* sont copiés dans le bundle à la compilation.
@@ -122,7 +123,17 @@ cd app
 npm run build                   # types stricts + les QR se décodent vraiment
 npm run mise-en-page            # aucune page ne déborde, de 320 à 1920 px
 npm run demo                    # une partie de démo dans un vrai navigateur
+npm run planche                 # le déroulé complet, capturé des deux côtés
 ```
+
+`npm run planche` joue une partie entière dans deux navigateurs côte à côte — la télé et
+un téléphone — capture **chaque étape des deux points de vue**, et assemble le tout en
+une page autonome à feuilleter. Un mode au choix :
+`node tools/scenario.mjs paris|duel|sujet|tournoi`.
+
+C'est le seul test qui vérifie ce qu'un joueur **voit**. Les assertions SQL disent que
+l'état est correct ; celui-ci dit que les deux écrans racontent la même histoire, au
+même moment.
 
 Les trois derniers tournent dans un navigateur sans tête. Ils existent parce que trois
 bugs sont passés à travers tout le reste : des champs qui sortaient du cadre, du jaune

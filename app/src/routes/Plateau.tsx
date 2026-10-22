@@ -3,6 +3,8 @@ import { session } from "../jeu/supabase";
 import { tourCourant, usePartie } from "../jeu/usePartie";
 import { useBots, useOrchestration } from "../jeu/orchestration";
 import { usePleinEcran, useTelecommande } from "../jeu/telecommande";
+import { useSons } from "../jeu/useSons";
+import { basculerLeSon, estMuet } from "../jeu/sons";
 import { rpc } from "../jeu/rpc";
 import { Erreur, Lettrage, Narration, Trame } from "../ui";
 import LobbyPlateau from "../phases/Lobby.plateau";
@@ -23,7 +25,9 @@ export default function Plateau({ code }: { code: string }) {
   const e = usePartie(code, moi);
   useOrchestration(e);
   useBots(e);
+  useSons(e);
   useTelecommande(true);
+  const [muet, setMuet] = useState(() => estMuet());
   const { plein, basculer, possible } = usePleinEcran();
 
   // Le plateau surveille la présence du joueur attendu et gèle les
@@ -37,13 +41,23 @@ export default function Plateau({ code }: { code: string }) {
   if (e.chargement) return <Attente />;
   if (e.erreur || !e.partie) return <div className="centre"><Erreur>{e.erreur ?? "Partie introuvable."}</Erreur></div>;
 
+  const tour = tourCourant(e);
   return (
-    <div className="plateau-cadre">
+    <div
+      className="plateau-cadre"
+      data-phase={e.partie.etat}
+      data-mode={e.partie.mode_jeu}
+      data-tour={tour?.ordre ?? ""}
+      data-statut={tour?.statut ?? ""}
+      data-pause={e.partie.en_pause ? "1" : ""}
+    >
       <Bandeau
         code={e.partie.code}
         phase={e.partie.etat}
         enPause={e.partie.en_pause}
         demo={e.partie.demo}
+        muet={muet}
+        couperLeSon={() => setMuet(basculerLeSon())}
         plein={plein}
         basculer={basculer}
         possible={possible}
@@ -77,11 +91,13 @@ function Scene({ e }: { e: ReturnType<typeof usePartie> }) {
   }
 }
 
-function Bandeau({ code, phase, enPause, demo, plein, basculer, possible }: {
+function Bandeau({ code, phase, enPause, demo, muet, couperLeSon, plein, basculer, possible }: {
   code: string;
   phase: string;
   enPause: boolean;
   demo: boolean;
+  muet: boolean;
+  couperLeSon: () => void;
   plein: boolean;
   basculer: () => void;
   possible: boolean;
@@ -123,6 +139,37 @@ function Bandeau({ code, phase, enPause, demo, plein, basculer, possible }: {
       </span>
       {enPause && <Narration petit>En pause</Narration>}
       {demo && <Narration petit>Démo</Narration>}
+      <button
+        type="button"
+        data-tc=""
+        onClick={couperLeSon}
+        aria-label={muet ? "Remettre le son" : "Couper le son"}
+        style={{
+          border: "var(--filet) solid var(--papier)",
+          background: "transparent",
+          color: "var(--papier)",
+          fontSize: "var(--t-s)",
+          lineHeight: 1,
+          padding: "4px 8px",
+          cursor: "pointer",
+        }}
+      >
+        {/* une icône dessinée plutôt qu'un emoji : tous les navigateurs
+            n'embarquent pas de police emoji, et une télé encore moins */}
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />
+          {muet ? (
+            <path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" strokeWidth="2" fill="none" />
+          ) : (
+            <path
+              d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+            />
+          )}
+        </svg>
+      </button>
       {possible && !plein && (
         <button
           type="button"

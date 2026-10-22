@@ -1,4 +1,5 @@
 import { formater, useChrono } from "../jeu/chrono";
+import { useTicTac } from "../jeu/useSons";
 import { titreSerie } from "../jeu/banque";
 import { Lettrage, Narration, PastilleBinome, Trame } from "../ui";
 import { membres, type Etat } from "../jeu/usePartie";
@@ -30,6 +31,7 @@ export default function FinalePlateau({ e }: { e: Etat }) {
   const finaliste = e.joueurs.find((j) => j.id === passage.joueur_id);
   const questionneur = e.joueurs.find((j) => j.id === passage.questionneur_id);
   const chrono = useChrono(passage.chrono_fin_at, passage.chrono_restant_ms);
+  useTicTac(chrono.ms, !chrono.gele && !!passage.chrono_fin_at);
   const justes = passage.jugements.filter((j) => j === "juste").length;
   const urgence = chrono.ms > 0 && chrono.ms < 5000;
 
