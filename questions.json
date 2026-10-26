@@ -11,7 +11,8 @@
     "sensible": "n'est tirée que si le binôme a activé les catégories sensibles au lobby",
     "occasion": "absente = question du fonds commun. Sinon, bloc optionnel activé par le binôme au lobby (ex. mariage). Un bloc d'occasion n'est jamais tiré par défaut.",
     "jumeau": "id de la paire équivalente dans l'autre mode. Même sujet, formulation adaptée au lien. Permet de jouer le même emplacement en zamours et en zamis.",
-    "verifiable": "la réponse est consultable en direct sur le téléphone du joueur (temps d'écran, emoji le plus utilisé, titre le plus écouté…). L'app invite à vérifier à la révélation : la preuve à l'écran vaut mieux qu'un vote."
+    "verifiable": "la réponse est consultable en direct sur le téléphone du joueur (temps d'écran, emoji le plus utilisé, titre le plus écouté…). L'app invite à vérifier à la révélation : la preuve à l'écran vaut mieux qu'un vote.",
+    "piquant": "1 = tout public · 2 = ça pique un peu · 3 = croustillant, et alors réservé aux binômes ayant activé les catégories sensibles. Le piquant n'est PAS la difficulté : une question peut être facile et gênante."
   },
   "paires_ouvertes": [
     {
@@ -21,17 +22,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
-      "tol": "±1 h",
       "a": {
-        "prepa": "À quelle heure tu te lèves le samedi ?",
-        "jeu": "À quelle heure {P} se lève le samedi ?"
+        "prepa": "Qu'est-ce que tu fais quand tu es seul et que personne ne te voit ?",
+        "jeu": "Qu'est-ce que {P} fait quand personne ne le voit ?"
       },
       "b": {
-        "prepa": "À quelle heure tu te couches en semaine ?",
-        "jeu": "À quelle heure {P} se couche en semaine ?"
-      }
+        "prepa": "Qu'est-ce que tu remets à demain depuis des mois ?",
+        "jeu": "Qu'est-ce que {P} remet à demain depuis des mois ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-02",
@@ -43,13 +44,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel est ton tout premier geste au réveil ?",
-        "jeu": "Quel est le tout premier geste de {P} au réveil ?"
+        "prepa": "Quelle est la dernière chose que tu as cassée ?",
+        "jeu": "Quelle est la dernière chose que {P} a cassée ?"
       },
       "b": {
-        "prepa": "Quel est ton dernier geste avant de dormir ?",
-        "jeu": "Quel est le dernier geste de {P} avant de dormir ?"
-      }
+        "prepa": "Qu'est-ce que tu as jeté sans le dire à personne ?",
+        "jeu": "Qu'est-ce que {P} a jeté sans le dire à personne ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-03",
@@ -60,15 +62,15 @@
       ],
       "diff": 2,
       "sensible": false,
-      "tol": "±5 min",
       "a": {
-        "prepa": "Combien de temps tu passes sous la douche ?",
-        "jeu": "Combien de temps {P} passe sous la douche ?"
+        "prepa": "Qu'est-ce qui te met de mauvaise humeur en dix secondes ?",
+        "jeu": "Qu'est-ce qui met {P} de mauvaise humeur en dix secondes ?"
       },
       "b": {
-        "prepa": "Combien de temps il te faut pour être prêt le matin ?",
-        "jeu": "Combien de temps il faut à {P} pour être prêt le matin ?"
-      }
+        "prepa": "Qu'est-ce qui te calme à tous les coups ?",
+        "jeu": "Qu'est-ce qui calme {P} à tous les coups ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-04",
@@ -76,16 +78,17 @@
       "modes": [
         "zamours"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "De quel côté du lit tu dors ?",
-        "jeu": "De quel côté du lit dort {P} ?"
+        "prepa": "De quoi tu te vantes alors que ce n'est pas tout à fait vrai ?",
+        "jeu": "De quoi {P} se vante alors que ce n'est pas tout à fait vrai ?"
       },
       "b": {
-        "prepa": "Combien d'oreillers il te faut pour dormir ?",
-        "jeu": "Combien d'oreillers il faut à {P} pour dormir ?"
-      }
+        "prepa": "Quel talent tu te prêtes et que tu n'as pas du tout ?",
+        "jeu": "Quel talent {P} se prête et qu'il n'a pas du tout ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-05",
@@ -103,7 +106,8 @@
       "b": {
         "prepa": "Quelle tâche ménagère tu fais sans râler ?",
         "jeu": "Quelle tâche ménagère {P} fait sans râler ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "quo-06",
@@ -121,7 +125,8 @@
       "b": {
         "prepa": "Qu'est-ce qu'on ne trouvera jamais dans tes placards ?",
         "jeu": "Qu'est-ce qu'on ne trouvera jamais dans les placards de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "quo-07",
@@ -133,13 +138,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel est ton coin préféré chez toi ?",
-        "jeu": "Quel est le coin préféré de {P} chez lui ?"
+        "prepa": "Où est-ce que tu caches le bazar quand quelqu'un sonne ?",
+        "jeu": "Où {P} cache le bazar quand quelqu'un sonne ?"
       },
       "b": {
-        "prepa": "Où s'entassent tes affaires qui n'ont pas de place ?",
-        "jeu": "Où s'entassent les affaires de {P} qui n'ont pas de place ?"
-      }
+        "prepa": "Qu'est-ce que tu gardes alors que ça ne sert plus à rien ?",
+        "jeu": "Qu'est-ce que {P} garde alors que ça ne sert plus à rien ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-08",
@@ -148,16 +154,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Où tu poses tes clés en rentrant ?",
-        "jeu": "Où {P} pose ses clés en rentrant ?"
+        "prepa": "Sur quoi tu mens systématiquement, même pour rien ?",
+        "jeu": "Sur quoi {P} ment systématiquement, même pour rien ?"
       },
       "b": {
-        "prepa": "Où est branché ton chargeur de téléphone ?",
-        "jeu": "Où est branché le chargeur de téléphone de {P} ?"
-      }
+        "prepa": "Quelle est la dernière chose pour laquelle tu t'es excusé ?",
+        "jeu": "Quelle est la dernière chose pour laquelle {P} s'est excusé ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-09",
@@ -166,16 +173,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel est ton petit déjeuner type ?",
-        "jeu": "Quel est le petit déjeuner type de {P} ?"
+        "prepa": "Qu'est-ce que tu racontes toujours comme si c'était la première fois ?",
+        "jeu": "Qu'est-ce que {P} raconte toujours comme si c'était la première fois ?"
       },
       "b": {
-        "prepa": "Quelle est ta première boisson de la journée ?",
-        "jeu": "Quelle est la première boisson de la journée de {P} ?"
-      }
+        "prepa": "Quelle histoire tu enjolives à chaque fois ?",
+        "jeu": "Quelle histoire {P} enjolive à chaque fois ?"
+      },
+      "piquant": 2
     },
     {
       "id": "quo-10",
@@ -184,17 +192,18 @@
         "zamours",
         "zamis"
       ],
-      "diff": 2,
+      "diff": 3,
       "sensible": false,
-      "tol": "±1",
+      "tol": "±1 h",
       "a": {
-        "prepa": "Combien de fois ton réveil sonne avant que tu te lèves ?",
-        "jeu": "Combien de fois le réveil de {P} sonne avant qu'il se lève ?"
+        "prepa": "Combien de temps tu tiendrais sans ton téléphone ?",
+        "jeu": "Combien de temps {P} tiendrait sans son téléphone ?"
       },
       "b": {
-        "prepa": "Combien de cafés ou de thés tu bois par jour ?",
-        "jeu": "Combien de cafés ou de thés {P} boit par jour ?"
-      }
+        "prepa": "Combien de temps tu tiendrais sans râler sur quelqu'un ?",
+        "jeu": "Combien de temps {P} tiendrait sans râler sur quelqu'un ?"
+      },
+      "piquant": 2
     },
     {
       "id": "ecr-01",
@@ -213,7 +222,8 @@
       "b": {
         "prepa": "Quelle appli tu as désinstallée puis réinstallée ?",
         "jeu": "Quelle appli {P} a désinstallée puis réinstallée ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-02",
@@ -234,7 +244,8 @@
         "prepa": "Combien de notifications non lues sur ton téléphone là, maintenant ?",
         "jeu": "Combien de notifications non lues sur le téléphone de {P} là, maintenant ?",
         "verifiable": true
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-03",
@@ -252,7 +263,8 @@
       "b": {
         "prepa": "Quelle série tu as abandonnée en cours de route ?",
         "jeu": "Quelle série {P} a abandonnée en cours de route ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-04",
@@ -271,7 +283,8 @@
       "b": {
         "prepa": "Quel abonnement tu paies sans jamais l'utiliser ?",
         "jeu": "Quel abonnement {P} paie sans jamais l'utiliser ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-05",
@@ -290,7 +303,8 @@
       "b": {
         "prepa": "Tu réponds plutôt en vocal, en texte ou tu appelles ?",
         "jeu": "{P} répond plutôt en vocal, en texte ou en appelant ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-06",
@@ -308,7 +322,8 @@
       "b": {
         "prepa": "Quel onglet est ouvert sur ton téléphone depuis des semaines ?",
         "jeu": "Quel onglet est ouvert sur le téléphone de {P} depuis des semaines ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-07",
@@ -327,7 +342,8 @@
       "b": {
         "prepa": "Quel podcast ou quelle chaîne tu suis vraiment ?",
         "jeu": "Quel podcast ou quelle chaîne {P} suit vraiment ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-08",
@@ -345,7 +361,8 @@
       "b": {
         "prepa": "Quel est le dernier truc que tu t'es fait livrer ?",
         "jeu": "Quel est le dernier truc que {P} s'est fait livrer ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ecr-09",
@@ -354,16 +371,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Où est ton téléphone quand tu dors ?",
-        "jeu": "Où est le téléphone de {P} quand il dort ?"
+        "prepa": "Quelle est la dernière chose un peu honteuse que tu as cherchée ?",
+        "jeu": "Quelle est la dernière chose un peu honteuse que {P} a cherchée ?"
       },
       "b": {
-        "prepa": "Ton téléphone est en sonnerie, en vibreur ou en silencieux ?",
-        "jeu": "Le téléphone de {P} est en sonnerie, en vibreur ou en silencieux ?"
-      }
+        "prepa": "Quel compte tu regardes sans jamais l'avouer ?",
+        "jeu": "Quel compte {P} regarde sans jamais l'avouer ?"
+      },
+      "piquant": 2
     },
     {
       "id": "ecr-10",
@@ -375,15 +393,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'est quoi ton fond d'écran ?",
-        "jeu": "C'est quoi le fond d'écran de {P} ?",
-        "verifiable": true
+        "prepa": "Quelle série tu as regardée en avance, sans attendre l'autre ?",
+        "jeu": "Quelle série {P} a regardée en avance, sans attendre l'autre ?"
       },
       "b": {
-        "prepa": "Combien de photos tu as dans ton téléphone, à peu près ?",
-        "jeu": "Combien de photos {P} a dans son téléphone ?",
-        "verifiable": true
-      }
+        "prepa": "À quel message tu n'as toujours pas répondu ?",
+        "jeu": "À quel message {P} n'a toujours pas répondu ?"
+      },
+      "piquant": 2
     },
     {
       "id": "gou-01",
@@ -401,7 +418,8 @@
       "b": {
         "prepa": "Quel est ton dessert préféré ?",
         "jeu": "Quel est le dessert préféré de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-02",
@@ -419,7 +437,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu manges en cachette ?",
         "jeu": "Qu'est-ce que {P} mange en cachette ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-03",
@@ -437,7 +456,8 @@
       "b": {
         "prepa": "Quelle cuisine du monde tu préfères ?",
         "jeu": "Quelle cuisine du monde {P} préfère ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-04",
@@ -455,7 +475,8 @@
       "b": {
         "prepa": "Quel classique tu n'as jamais vu ?",
         "jeu": "Quel classique {P} n'a jamais vu ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-05",
@@ -473,7 +494,8 @@
       "b": {
         "prepa": "Quel est le dernier concert ou festival que tu as fait ?",
         "jeu": "Quel est le dernier concert ou festival que {P} a fait ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-06",
@@ -482,16 +504,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quelle est ta saison préférée ?",
-        "jeu": "Quelle est la saison préférée de {P} ?"
+        "prepa": "Qu'est-ce que tu prétends aimer juste pour faire plaisir ?",
+        "jeu": "Qu'est-ce que {P} prétend aimer juste pour faire plaisir ?"
       },
       "b": {
-        "prepa": "Quel est ton jour préféré de la semaine ?",
-        "jeu": "Quel est le jour préféré de la semaine de {P} ?"
-      }
+        "prepa": "Qu'est-ce que tu refuses de goûter, par principe ?",
+        "jeu": "Qu'est-ce que {P} refuse de goûter, par principe ?"
+      },
+      "piquant": 2
     },
     {
       "id": "gou-07",
@@ -509,7 +532,8 @@
       "b": {
         "prepa": "Dans quel pays tu ne mettrais jamais les pieds ?",
         "jeu": "Dans quel pays {P} ne mettrait jamais les pieds ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-08",
@@ -527,7 +551,8 @@
       "b": {
         "prepa": "Quel animal te fait vraiment peur ?",
         "jeu": "Quel animal fait vraiment peur à {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-09",
@@ -539,13 +564,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel vêtement tu portes le plus souvent ?",
-        "jeu": "Quel vêtement {P} porte le plus souvent ?"
+        "prepa": "Quel vêtement à toi mériterait de disparaître ?",
+        "jeu": "Quel vêtement de {P} mériterait de disparaître ?"
       },
       "b": {
-        "prepa": "Quelle couleur domine dans ton armoire ?",
-        "jeu": "Quelle couleur domine dans l'armoire de {P} ?"
-      }
+        "prepa": "Qu'est-ce que tu portes alors que ça ne te va pas du tout ?",
+        "jeu": "Qu'est-ce que {P} porte alors que ça ne lui va pas du tout ?"
+      },
+      "piquant": 2
     },
     {
       "id": "gou-10",
@@ -563,7 +589,8 @@
       "b": {
         "prepa": "Quel jeu vidéo tu as le plus joué ?",
         "jeu": "Quel jeu vidéo {P} a le plus joué ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "gou-11",
@@ -581,7 +608,8 @@
       "b": {
         "prepa": "Quel sport tu regardes sans jamais le pratiquer ?",
         "jeu": "Quel sport {P} regarde sans jamais le pratiquer ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "sou-01",
@@ -599,7 +627,8 @@
         "prepa": "Qui a fait le premier pas ?",
         "jeu": "Qui a fait le premier pas, selon {P} ?"
       },
-      "jumeau": "ami-01"
+      "jumeau": "ami-01",
+      "piquant": 1
     },
     {
       "id": "sou-02",
@@ -616,7 +645,8 @@
       "b": {
         "prepa": "Quel a été le premier cadeau offert entre vous ?",
         "jeu": "Quel a été le premier cadeau offert entre eux, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "sou-03",
@@ -633,7 +663,8 @@
       "b": {
         "prepa": "Où étiez-vous à ce moment-là ?",
         "jeu": "Où étaient-ils à ce moment-là, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "sou-04",
@@ -651,7 +682,8 @@
         "prepa": "Quelle série vous regardez uniquement ensemble ?",
         "jeu": "Quelle série ils regardent uniquement ensemble, selon {P} ?"
       },
-      "jumeau": "ami-06"
+      "jumeau": "ami-06",
+      "piquant": 1
     },
     {
       "id": "sou-05",
@@ -669,7 +701,8 @@
         "prepa": "C'est quoi votre blague privée que personne ne comprend ?",
         "jeu": "C'est quoi leur blague privée que personne ne comprend ?"
       },
-      "jumeau": "ami-03"
+      "jumeau": "ami-03",
+      "piquant": 1
     },
     {
       "id": "sou-06",
@@ -687,7 +720,8 @@
         "prepa": "Quel est votre meilleur souvenir de vacances ensemble ?",
         "jeu": "Quel est leur meilleur souvenir de vacances ensemble, selon {P} ?"
       },
-      "jumeau": "ami-05"
+      "jumeau": "ami-05",
+      "piquant": 1
     },
     {
       "id": "sou-07",
@@ -705,7 +739,8 @@
         "prepa": "Qu'est-ce qui met fin à vos disputes ?",
         "jeu": "Qu'est-ce qui met fin à leurs disputes, selon {P} ?"
       },
-      "jumeau": "ami-07"
+      "jumeau": "ami-07",
+      "piquant": 1
     },
     {
       "id": "sou-08",
@@ -722,7 +757,8 @@
       "b": {
         "prepa": "Quelle est la dernière chose que vous avez achetée ensemble ?",
         "jeu": "Quelle est la dernière chose qu'ils ont achetée ensemble ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ami-01",
@@ -740,7 +776,8 @@
         "prepa": "Qui a écrit le premier message, en général ?",
         "jeu": "Qui écrit le premier message, selon {P} ?"
       },
-      "jumeau": "sou-01"
+      "jumeau": "sou-01",
+      "piquant": 1
     },
     {
       "id": "ami-02",
@@ -757,7 +794,8 @@
       "b": {
         "prepa": "C'est quoi votre meilleur souvenir de soirée ?",
         "jeu": "C'est quoi leur meilleur souvenir de soirée, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ami-03",
@@ -775,7 +813,8 @@
         "prepa": "Quelle expression tu lui as volée ?",
         "jeu": "Quelle expression {P} lui a volée ?"
       },
-      "jumeau": "sou-05"
+      "jumeau": "sou-05",
+      "piquant": 1
     },
     {
       "id": "ami-04",
@@ -793,7 +832,8 @@
       "b": {
         "prepa": "Lequel de vous deux annule le plus souvent ?",
         "jeu": "Lequel des deux annule le plus souvent, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ami-05",
@@ -811,7 +851,8 @@
         "prepa": "C'est quoi le dernier endroit où vous êtes allés ensemble ?",
         "jeu": "C'est quoi le dernier endroit où ils sont allés ensemble ?"
       },
-      "jumeau": "sou-06"
+      "jumeau": "sou-06",
+      "piquant": 1
     },
     {
       "id": "ami-06",
@@ -829,7 +870,8 @@
         "prepa": "Quel film ou série vous revoyez à chaque fois ?",
         "jeu": "Quel film ou série ils revoient à chaque fois, selon {P} ?"
       },
-      "jumeau": "sou-04"
+      "jumeau": "sou-04",
+      "piquant": 1
     },
     {
       "id": "ami-07",
@@ -847,7 +889,8 @@
         "prepa": "Qu'est-ce que tu lui empruntes et que tu ne rends jamais ?",
         "jeu": "Qu'est-ce que {P} emprunte et ne rend jamais ?"
       },
-      "jumeau": "sou-07"
+      "jumeau": "sou-07",
+      "piquant": 1
     },
     {
       "id": "per-01",
@@ -865,7 +908,8 @@
       "b": {
         "prepa": "Quel est ton plus gros défaut ?",
         "jeu": "Quel est le plus gros défaut de {P}, selon lui-même ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-02",
@@ -883,7 +927,8 @@
       "b": {
         "prepa": "Qu'est-ce qui te fait rire aux larmes ?",
         "jeu": "Qu'est-ce qui fait rire {P} aux larmes ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-03",
@@ -901,7 +946,8 @@
       "b": {
         "prepa": "De quoi tu es le plus fier ?",
         "jeu": "De quoi {P} est le plus fier ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-04",
@@ -919,7 +965,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu fais pour vraiment décompresser ?",
         "jeu": "Qu'est-ce que {P} fait pour vraiment décompresser ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-05",
@@ -937,7 +984,8 @@
       "b": {
         "prepa": "Si tu étais un plat, lequel ?",
         "jeu": "Si {P} était un plat, lequel ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-06",
@@ -955,7 +1003,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu fais toujours en avance ?",
         "jeu": "Qu'est-ce que {P} fait toujours en avance ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-07",
@@ -973,7 +1022,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu dis quand tu t'excuses ?",
         "jeu": "Qu'est-ce que {P} dit quand il s'excuse ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "per-08",
@@ -991,7 +1041,8 @@
       "b": {
         "prepa": "Qu'est-ce qu'on te reproche le plus souvent ?",
         "jeu": "Qu'est-ce qu'on reproche le plus souvent à {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-01",
@@ -1009,7 +1060,8 @@
       "b": {
         "prepa": "C'est quoi ton tic de langage ?",
         "jeu": "C'est quoi le tic de langage de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-02",
@@ -1027,7 +1079,8 @@
       "b": {
         "prepa": "C'est quoi ton pire achat inutile ?",
         "jeu": "C'est quoi le pire achat inutile de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-03",
@@ -1045,7 +1098,8 @@
       "b": {
         "prepa": "C'est quoi ta pire coiffure du passé ?",
         "jeu": "C'est quoi la pire coiffure du passé de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-04",
@@ -1063,7 +1117,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu fais quand tu es seul chez toi ?",
         "jeu": "Qu'est-ce que {P} fait quand il est seul chez lui ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-05",
@@ -1081,7 +1136,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu gardes « au cas où » depuis des années ?",
         "jeu": "Qu'est-ce que {P} garde « au cas où » depuis des années ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-06",
@@ -1099,7 +1155,8 @@
       "b": {
         "prepa": "Si tu gagnais au loto, ta première dépense ?",
         "jeu": "Si {P} gagnait au loto, sa première dépense ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-07",
@@ -1117,7 +1174,8 @@
       "b": {
         "prepa": "À quelle célébrité on te compare ?",
         "jeu": "À quelle célébrité on compare {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "dro-08",
@@ -1135,7 +1193,8 @@
       "b": {
         "prepa": "C'est quoi ta chanson de karaoké ?",
         "jeu": "C'est quoi la chanson de karaoké de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "enf-01",
@@ -1153,7 +1212,8 @@
       "b": {
         "prepa": "C'était quoi ton jouet préféré ?",
         "jeu": "C'était quoi le jouet préféré de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "enf-02",
@@ -1162,16 +1222,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Dans quelle ville tu as grandi ?",
-        "jeu": "Dans quelle ville {P} a grandi ?"
+        "prepa": "Quelle bêtise d'enfance tu n'as jamais avouée ?",
+        "jeu": "Quelle bêtise d'enfance {P} n'a jamais avouée ?"
       },
       "b": {
-        "prepa": "Combien de fois tu as déménagé dans ta vie ?",
-        "jeu": "Combien de fois {P} a déménagé dans sa vie ?"
-      }
+        "prepa": "De quoi tu avais honte à l'adolescence ?",
+        "jeu": "De quoi {P} avait honte à l'adolescence ?"
+      },
+      "piquant": 2
     },
     {
       "id": "enf-03",
@@ -1189,7 +1250,8 @@
       "b": {
         "prepa": "C'est quoi le cadeau qui t'a le plus marqué enfant ?",
         "jeu": "C'est quoi le cadeau qui a le plus marqué {P} enfant ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "enf-04",
@@ -1207,7 +1269,8 @@
       "b": {
         "prepa": "Avec qui tu es le plus proche dans ta famille ?",
         "jeu": "Avec qui {P} est le plus proche dans sa famille ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "bou-01",
@@ -1225,7 +1288,8 @@
       "b": {
         "prepa": "Qu'est-ce que tu aimes le moins dans ton travail ?",
         "jeu": "Qu'est-ce que {P} aime le moins dans son travail ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "bou-02",
@@ -1234,16 +1298,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'était quoi ta matière préférée à l'école ?",
-        "jeu": "C'était quoi la matière préférée de {P} à l'école ?"
+        "prepa": "Qu'est-ce que tu fais au travail quand tu es censé bosser ?",
+        "jeu": "Qu'est-ce que {P} fait au travail quand il est censé bosser ?"
       },
       "b": {
-        "prepa": "C'était quoi la matière que tu détestais ?",
-        "jeu": "C'était quoi la matière que {P} détestait ?"
-      }
+        "prepa": "Quel est le pire mensonge que tu aies sorti à un patron ?",
+        "jeu": "Quel est le pire mensonge que {P} ait sorti à un patron ?"
+      },
+      "piquant": 2
     },
     {
       "id": "bou-03",
@@ -1261,7 +1326,8 @@
       "b": {
         "prepa": "Quel métier tu voulais faire à 8 ans ?",
         "jeu": "Quel métier {P} voulait faire à 8 ans ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "bou-04",
@@ -1272,15 +1338,15 @@
       ],
       "diff": 2,
       "sensible": false,
-      "tol": "±15 min",
       "a": {
-        "prepa": "À quelle heure tu commences à travailler ?",
-        "jeu": "À quelle heure {P} commence à travailler ?"
+        "prepa": "Qu'est-ce qui te ferait démissionner demain matin ?",
+        "jeu": "Qu'est-ce qui ferait démissionner {P} demain matin ?"
       },
       "b": {
-        "prepa": "Combien de temps de trajet pour aller travailler ?",
-        "jeu": "Combien de temps de trajet pour {P} ?"
-      }
+        "prepa": "Qui, au travail, te tape le plus sur le système ?",
+        "jeu": "Qui, au travail, tape le plus sur le système de {P} ?"
+      },
+      "piquant": 2
     },
     {
       "id": "ave-01",
@@ -1298,7 +1364,8 @@
       "b": {
         "prepa": "C'est quoi ton prochain gros achat ?",
         "jeu": "C'est quoi le prochain gros achat de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ave-02",
@@ -1316,7 +1383,8 @@
       "b": {
         "prepa": "C'est quoi ton prochain voyage prévu ?",
         "jeu": "C'est quoi le prochain voyage prévu de {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "ave-03",
@@ -1325,16 +1393,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 3,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'était quoi ta résolution de l'année ?",
-        "jeu": "C'était quoi la résolution de l'année de {P} ?"
+        "prepa": "Quelle promesse tu n'as jamais tenue ?",
+        "jeu": "Quelle promesse {P} n'a jamais tenue ?"
       },
       "b": {
-        "prepa": "Quel projet tu repousses depuis trop longtemps ?",
-        "jeu": "Quel projet {P} repousse depuis trop longtemps ?"
-      }
+        "prepa": "Qu'est-ce que tu jures d'arrêter chaque année ?",
+        "jeu": "Qu'est-ce que {P} jure d'arrêter chaque année ?"
+      },
+      "piquant": 2
     },
     {
       "id": "arg-01",
@@ -1352,7 +1421,8 @@
       "b": {
         "prepa": "C'est quoi la dépense que tu regrettes le plus ?",
         "jeu": "C'est quoi la dépense que {P} regrette le plus ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "int-01",
@@ -1369,7 +1439,8 @@
       "b": {
         "prepa": "Qu'est-ce qui te plaît le plus physiquement chez lui ?",
         "jeu": "Qu'est-ce qui plaît le plus physiquement à {P} chez son binôme ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "int-02",
@@ -1386,7 +1457,8 @@
       "b": {
         "prepa": "C'est quoi le compliment qui te touche le plus ?",
         "jeu": "C'est quoi le compliment qui touche le plus {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-01",
@@ -1404,7 +1476,8 @@
       "b": {
         "prepa": "Où partez-vous en voyage de noces ?",
         "jeu": "Où partent-ils en voyage de noces, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-02",
@@ -1423,7 +1496,8 @@
       "b": {
         "prepa": "La cérémonie : en intérieur ou en extérieur ?",
         "jeu": "La cérémonie, selon {P} : en intérieur ou en extérieur ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-03",
@@ -1441,7 +1515,8 @@
       "b": {
         "prepa": "Quelle couleur principale pour la déco ?",
         "jeu": "Quelle couleur principale pour la déco, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-04",
@@ -1459,7 +1534,8 @@
       "b": {
         "prepa": "Qui fera le discours le plus long ?",
         "jeu": "Qui fera le discours le plus long, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-05",
@@ -1477,7 +1553,8 @@
       "b": {
         "prepa": "Sur quoi êtes-vous prêts à rogner ?",
         "jeu": "Sur quoi sont-ils prêts à rogner, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-06",
@@ -1495,7 +1572,8 @@
       "b": {
         "prepa": "Photobooth ou photographe qui suit tout ?",
         "jeu": "Photobooth ou photographe, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-07",
@@ -1513,7 +1591,8 @@
       "b": {
         "prepa": "Pièce montée ou gâteau unique ?",
         "jeu": "Pièce montée ou gâteau unique, selon {P} ?"
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "mar-08",
@@ -1531,7 +1610,8 @@
       "b": {
         "prepa": "Où est-ce que ça s'est passé ?",
         "jeu": "Où est-ce que ça s'est passé, selon {P} ?"
-      }
+      },
+      "piquant": 1
     }
   ],
   "paires_qcm": [
@@ -1560,7 +1640,8 @@
           "du soir",
           "ni l'un ni l'autre"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-02",
@@ -1587,7 +1668,8 @@
           "salé",
           "les deux au même repas"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-03",
@@ -1614,7 +1696,8 @@
           "en train",
           "en voiture"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-04",
@@ -1641,7 +1724,8 @@
           "sur le canapé",
           "à voir du monde"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-05",
@@ -1668,7 +1752,8 @@
           "planificateur",
           "planificateur qui improvise"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-06",
@@ -1695,7 +1780,8 @@
           "toutes coupées",
           "filtrées"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-07",
@@ -1722,7 +1808,8 @@
           "à la maison",
           "jamais en entier"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-08",
@@ -1749,7 +1836,8 @@
           "le lendemain",
           "quand il n'y a plus d'assiettes"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-09",
@@ -1776,7 +1864,8 @@
           "au feeling",
           "en livraison"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-10",
@@ -1803,7 +1892,8 @@
           "difficile",
           "hors de question"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-11",
@@ -1830,7 +1920,8 @@
           "après un verre",
           "jamais"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-12",
@@ -1857,7 +1948,8 @@
           "dans l'heure",
           "dans la semaine"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-13",
@@ -1884,7 +1976,8 @@
           "mayo",
           "rien"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-14",
@@ -1911,7 +2004,8 @@
           "avec un livre",
           "dans le noir complet"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-15",
@@ -1937,7 +2031,8 @@
           "déçu",
           "vexé"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-16",
@@ -1963,7 +2058,8 @@
           "en oublie une sur deux",
           "a mis un rappel"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-17",
@@ -1990,7 +2086,8 @@
           "ne prend presque rien",
           "ne poste que des stories"
         ]
-      }
+      },
+      "piquant": 1
     },
     {
       "id": "qcm-18",
@@ -2017,7 +2114,8 @@
           "seul",
           "seul dans une équipe"
         ]
-      }
+      },
+      "piquant": 1
     }
   ],
   "bonus": [
@@ -2028,7 +2126,8 @@
         "zamis"
       ],
       "diff": 1,
-      "enonce": "Lequel de vous deux est le plus ponctuel ?"
+      "enonce": "Lequel de vous deux est le plus ponctuel ?",
+      "piquant": 1
     },
     {
       "id": "bon-02",
@@ -2037,7 +2136,8 @@
         "zamis"
       ],
       "diff": 1,
-      "enonce": "Lequel de vous deux a le plus mauvais caractère le matin ?"
+      "enonce": "Lequel de vous deux a le plus mauvais caractère le matin ?",
+      "piquant": 1
     },
     {
       "id": "bon-03",
@@ -2046,7 +2146,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux raconte le mieux les histoires ?"
+      "enonce": "Lequel de vous deux raconte le mieux les histoires ?",
+      "piquant": 1
     },
     {
       "id": "bon-04",
@@ -2055,7 +2156,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux serait éliminé le premier sur une île déserte ?"
+      "enonce": "Lequel de vous deux serait éliminé le premier sur une île déserte ?",
+      "piquant": 1
     },
     {
       "id": "bon-05",
@@ -2064,7 +2166,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux est le plus susceptible ?"
+      "enonce": "Lequel de vous deux est le plus susceptible ?",
+      "piquant": 1
     },
     {
       "id": "bon-06",
@@ -2073,7 +2176,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Qui est le chef quand vous cuisinez ensemble ?"
+      "enonce": "Qui est le chef quand vous cuisinez ensemble ?",
+      "piquant": 1
     },
     {
       "id": "bon-07",
@@ -2082,7 +2186,8 @@
         "zamis"
       ],
       "diff": 3,
-      "enonce": "Si vous ouvriez un commerce ensemble, ce serait quoi ?"
+      "enonce": "Si vous ouvriez un commerce ensemble, ce serait quoi ?",
+      "piquant": 1
     },
     {
       "id": "bon-08",
@@ -2091,7 +2196,8 @@
         "zamis"
       ],
       "diff": 3,
-      "enonce": "Quel animal représente votre duo ?"
+      "enonce": "Quel animal représente votre duo ?",
+      "piquant": 1
     },
     {
       "id": "bon-09",
@@ -2100,7 +2206,8 @@
         "zamis"
       ],
       "diff": 3,
-      "enonce": "Quelle est votre pire idée commune à ce jour ?"
+      "enonce": "Quelle est votre pire idée commune à ce jour ?",
+      "piquant": 1
     },
     {
       "id": "bon-10",
@@ -2109,7 +2216,8 @@
         "zamis"
       ],
       "diff": 3,
-      "enonce": "Quel mot vous dites tous les deux trop souvent ?"
+      "enonce": "Quel mot vous dites tous les deux trop souvent ?",
+      "piquant": 1
     },
     {
       "id": "bon-11",
@@ -2117,7 +2225,8 @@
         "zamours"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux prend le plus de place dans le lit ?"
+      "enonce": "Lequel de vous deux prend le plus de place dans le lit ?",
+      "piquant": 1
     },
     {
       "id": "bon-12",
@@ -2125,7 +2234,8 @@
         "zamours"
       ],
       "diff": 3,
-      "enonce": "Dans dix ans, vous vivez où ?"
+      "enonce": "Dans dix ans, vous vivez où ?",
+      "piquant": 1
     },
     {
       "id": "bon-13",
@@ -2133,7 +2243,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux annule le plus souvent ?"
+      "enonce": "Lequel de vous deux annule le plus souvent ?",
+      "piquant": 1
     },
     {
       "id": "bon-14",
@@ -2141,7 +2252,8 @@
         "zamis"
       ],
       "diff": 2,
-      "enonce": "Lequel de vous deux appelle l'autre en premier quand ça va mal ?"
+      "enonce": "Lequel de vous deux appelle l'autre en premier quand ça va mal ?",
+      "piquant": 1
     },
     {
       "id": "bon-15",
@@ -2151,7 +2263,8 @@
       ],
       "diff": 2,
       "sensible": true,
-      "enonce": "Lequel de vous deux paie le plus souvent l'addition ?"
+      "enonce": "Lequel de vous deux paie le plus souvent l'addition ?",
+      "piquant": 1
     },
     {
       "id": "bon-16",
@@ -2160,7 +2273,8 @@
       ],
       "occasion": "mariage",
       "diff": 2,
-      "enonce": "Lequel de vous deux stresse le plus pour l'organisation ?"
+      "enonce": "Lequel de vous deux stresse le plus pour l'organisation ?",
+      "piquant": 1
     },
     {
       "id": "bon-17",
@@ -2169,7 +2283,425 @@
       ],
       "occasion": "mariage",
       "diff": 3,
-      "enonce": "Quel invité va finir le dernier sur la piste ?"
+      "enonce": "Quel invité va finir le dernier sur la piste ?",
+      "piquant": 1
+    },
+    {
+      "id": "duo-01",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux raconte la même histoire pour la dixième fois ?"
+    },
+    {
+      "id": "duo-02",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux ment le mieux ?"
+    },
+    {
+      "id": "duo-03",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux parle trop fort au restaurant ?"
+    },
+    {
+      "id": "duo-04",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a le plus honte de l'autre en public ?"
+    },
+    {
+      "id": "duo-05",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 1,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux pleure devant un film ?"
+    },
+    {
+      "id": "duo-06",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux garde rancune le plus longtemps ?"
+    },
+    {
+      "id": "duo-07",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux conduit le plus mal ?"
+    },
+    {
+      "id": "duo-08",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux serait le plus nul en cas d'apocalypse ?"
+    },
+    {
+      "id": "duo-09",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux fait fuir les invités en premier ?"
+    },
+    {
+      "id": "duo-10",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux est incapable de dire non ?"
+    },
+    {
+      "id": "duo-11",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux range en cachant tout dans un tiroir ?"
+    },
+    {
+      "id": "duo-12",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux met trois heures à choisir au restaurant ?"
+    },
+    {
+      "id": "duo-13",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux abandonne une série en premier ?"
+    },
+    {
+      "id": "duo-14",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux vérifie le téléphone de l'autre ?"
+    },
+    {
+      "id": "duo-15",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux est le plus radin ?"
+    },
+    {
+      "id": "duo-16",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux s'endort devant la télé ?"
+    },
+    {
+      "id": "duo-17",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux parle de l'autre en mal quand il n'est pas là ?"
+    },
+    {
+      "id": "duo-18",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux est le plus susceptible pour rien ?"
+    },
+    {
+      "id": "duo-19",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 3,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux survivrait le mieux sans l'autre ?"
+    },
+    {
+      "id": "duo-20",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux a la pire playlist ?"
+    },
+    {
+      "id": "duo-21",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a déjà fait semblant d'écouter l'autre ?"
+    },
+    {
+      "id": "duo-22",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux craquerait le premier pendant un interrogatoire ?"
+    },
+    {
+      "id": "duo-23",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux ronfle et le nie ?"
+    },
+    {
+      "id": "duo-24",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 3,
+      "enonce": "Lequel de vous deux a le plus de choses à cacher dans son téléphone ?",
+      "sensible": true
+    },
+    {
+      "id": "duo-25",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 3,
+      "enonce": "Lequel de vous deux a déjà menti à l'autre cette semaine ?",
+      "sensible": true
+    },
+    {
+      "id": "duo-30",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux s'excuse en premier, toujours ?"
+    },
+    {
+      "id": "duo-31",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a la pire haleine le matin ?"
+    },
+    {
+      "id": "duo-32",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a le plus honte de la famille de l'autre ?"
+    },
+    {
+      "id": "duo-33",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a été le plus insupportable cette année ?"
+    },
+    {
+      "id": "duo-34",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux lâcherait l'autre pour une île déserte ?"
+    },
+    {
+      "id": "duo-35",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 3,
+      "enonce": "Lequel de vous deux a déjà regretté un « oui » le lendemain ?",
+      "sensible": true
+    },
+    {
+      "id": "duo-36",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux fait semblant d'aimer les cadeaux de l'autre ?"
+    },
+    {
+      "id": "duo-37",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux provoque les disputes sans jamais l'admettre ?"
+    },
+    {
+      "id": "duo-38",
+      "modes": [
+        "zamours"
+      ],
+      "diff": 2,
+      "piquant": 3,
+      "enonce": "Lequel de vous deux a déjà fouillé dans les affaires de l'autre ?",
+      "sensible": true
+    },
+    {
+      "id": "duo-40",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux annule toujours à la dernière minute ?"
+    },
+    {
+      "id": "duo-41",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 1,
+      "enonce": "Lequel de vous deux arrive systématiquement en retard ?"
+    },
+    {
+      "id": "duo-42",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux raconte votre pire souvenir à tout le monde ?"
+    },
+    {
+      "id": "duo-43",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux doit de l'argent à l'autre et l'a oublié ?"
+    },
+    {
+      "id": "duo-44",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux a la pire idée en fin de soirée ?"
+    },
+    {
+      "id": "duo-45",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux est le plus pénible en voyage ?"
+    },
+    {
+      "id": "duo-46",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux disparaît quand il faut ranger ?"
+    },
+    {
+      "id": "duo-47",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 3,
+      "enonce": "Lequel de vous deux a déjà dragué quelqu'un pour l'autre ?",
+      "sensible": true
+    },
+    {
+      "id": "duo-48",
+      "modes": [
+        "zamis"
+      ],
+      "diff": 2,
+      "piquant": 2,
+      "enonce": "Lequel de vous deux vous ferait virer d'un bar en premier ?"
     }
   ],
   "series_finale": [
@@ -2201,7 +2733,8 @@
           "prepa": "Douche : matin ou soir ?",
           "jeu": "Douche de {P} : matin ou soir ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-gouts",
@@ -2231,7 +2764,8 @@
           "prepa": "Ton fast-food ?",
           "jeu": "Le fast-food de {P} ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-ecrans",
@@ -2261,7 +2795,8 @@
           "prepa": "Ton temps d'écran, à l'heure près ?",
           "jeu": "Le temps d'écran de {P}, à l'heure près ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-enfance",
@@ -2291,7 +2826,8 @@
           "prepa": "La ville où tu as grandi ?",
           "jeu": "La ville où {P} a grandi ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-caractere",
@@ -2321,7 +2857,8 @@
           "prepa": "Si tu étais un animal ?",
           "jeu": "Si {P} était un animal ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-envies",
@@ -2351,7 +2888,8 @@
           "prepa": "Ta résolution de l'année ?",
           "jeu": "La résolution de l'année de {P} ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-bizarreries",
@@ -2381,7 +2919,8 @@
           "prepa": "Le truc improbable dans ton sac ?",
           "jeu": "Le truc improbable dans le sac de {P} ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-duo-zamours",
@@ -2410,7 +2949,8 @@
           "prepa": "Le surnom que tu lui donnes ?",
           "jeu": "Le surnom que {P} lui donne ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-duo-zamis",
@@ -2439,7 +2979,8 @@
           "prepa": "Le surnom que tu lui donnes ?",
           "jeu": "Le surnom que {P} lui donne ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-boulot",
@@ -2469,7 +3010,8 @@
           "prepa": "Ton premier job ?",
           "jeu": "Le premier job de {P} ?"
         }
-      ]
+      ],
+      "piquant": 1
     },
     {
       "id": "fin-mariage",
@@ -2499,7 +3041,8 @@
           "prepa": "L'heure à laquelle vous irez vous coucher ?",
           "jeu": "L'heure à laquelle ils iront se coucher, selon {P} ?"
         }
-      ]
+      ],
+      "piquant": 1
     }
   ],
   "citez_trois": [
@@ -2509,7 +3052,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 qualités de {P}."
+      "enonce": "Cite 3 qualités de {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-02",
@@ -2517,7 +3061,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 défauts de {P}. Avec le sourire."
+      "enonce": "Cite 3 défauts de {P}. Avec le sourire.",
+      "piquant": 1
     },
     {
       "id": "c3-03",
@@ -2525,7 +3070,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 choses qui énervent {P}."
+      "enonce": "Cite 3 choses qui énervent {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-04",
@@ -2533,7 +3079,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 choses qui font rire {P}."
+      "enonce": "Cite 3 choses qui font rire {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-05",
@@ -2541,7 +3088,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 passions de {P}."
+      "enonce": "Cite 3 passions de {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-06",
@@ -2549,7 +3097,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 séries ou films préférés de {P}."
+      "enonce": "Cite 3 séries ou films préférés de {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-07",
@@ -2557,7 +3106,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 plats préférés de {P}."
+      "enonce": "Cite 3 plats préférés de {P}.",
+      "piquant": 1
     },
     {
       "id": "c3-08",
@@ -2565,7 +3115,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 destinations où {P} veut aller."
+      "enonce": "Cite 3 destinations où {P} veut aller.",
+      "piquant": 1
     },
     {
       "id": "c3-09",
@@ -2573,7 +3124,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 applis que {P} utilise le plus."
+      "enonce": "Cite 3 applis que {P} utilise le plus.",
+      "piquant": 1
     },
     {
       "id": "c3-10",
@@ -2581,7 +3133,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 personnes que {P} appelle régulièrement."
+      "enonce": "Cite 3 personnes que {P} appelle régulièrement.",
+      "piquant": 1
     },
     {
       "id": "c3-11",
@@ -2589,7 +3142,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 expressions que {P} utilise tout le temps."
+      "enonce": "Cite 3 expressions que {P} utilise tout le temps.",
+      "piquant": 1
     },
     {
       "id": "c3-12",
@@ -2597,7 +3151,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 choses que {P} fait quand il est stressé."
+      "enonce": "Cite 3 choses que {P} fait quand il est stressé.",
+      "piquant": 1
     },
     {
       "id": "c3-13",
@@ -2605,7 +3160,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 souvenirs marquants de votre duo."
+      "enonce": "Cite 3 souvenirs marquants de votre duo.",
+      "piquant": 1
     },
     {
       "id": "c3-14",
@@ -2613,7 +3169,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 endroits où vous aimez aller tous les deux."
+      "enonce": "Cite 3 endroits où vous aimez aller tous les deux.",
+      "piquant": 1
     },
     {
       "id": "c3-15",
@@ -2621,7 +3178,8 @@
         "zamours",
         "zamis"
       ],
-      "enonce": "Cite 3 mots qui définissent votre duo."
+      "enonce": "Cite 3 mots qui définissent votre duo.",
+      "piquant": 1
     }
   ]
 }

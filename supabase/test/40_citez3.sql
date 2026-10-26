@@ -37,9 +37,9 @@ select assert_vrai((
 ), 'les deux enonces sont distincts');
 
 -- prepa : 9 questions + 3 sous-reponses
-select assert_vrai((select nb_questions_prepa(id) from parties) = 12,
-                   'la prepa passe a 12 questions : 9 + les 3 reponses du cite 3');
-select assert_vrai((select count(*) from reponses_prepa) = 48, '4 joueurs x 12 reponses');
+select assert_vrai((select nb_questions_prepa(id) from parties) = 14,
+                   'la prepa : 2 ouvertes + 1 QCM + 3 duos + 5 finale + 3 du cite 3');
+select assert_vrai((select count(*) from reponses_prepa) = 56, '4 joueurs x 14 reponses');
 select assert_vrai((select count(*) from reponses_prepa where question_id like 'c3-%') = 12,
                    '3 sous-reponses par joueur pour le cite 3');
 
@@ -130,8 +130,8 @@ begin
 end $$;
 select assert_vrai((select count(*) from tours where manche = 'citez3') = 0,
                    'variante desactivee : aucun tour cite 3');
-select assert_vrai((select nb_questions_prepa(id) from parties) = 9,
-                   'et la prepa reste a 9 questions');
+select assert_vrai((select nb_questions_prepa(id) from parties) = 11,
+                   'et la prepa retombe a 11 questions');
 
 reset role;
 \echo '=== MANCHE CITE 3 : OK ==='

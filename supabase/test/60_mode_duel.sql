@@ -38,8 +38,8 @@ end $$;
 select assert_vrai(current_setting('zz.mode') = 'duel',
                    'le duel s active de lui-meme : deux joueurs, un binome');
 select assert_vrai((select mode_jeu from parties) = 'duel', 'et la partie le sait');
-select assert_vrai((select count(*) from tours) = 7,
-                   '7 tours : 2 QCM + 4 libres + 1 bonus, pour un seul binome');
+select assert_vrai((select count(*) from tours) = 9,
+                   '9 tours : 2 QCM + 4 libres + 3 duos, pour un seul binome');
 
 \echo '--- QCM et questions libres : jugement mecanique ---'
 select devenir(:tv::uuid); set role authenticated;

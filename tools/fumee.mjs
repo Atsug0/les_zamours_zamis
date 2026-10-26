@@ -95,10 +95,10 @@ ok(deux.accord === true, "les deux d'accord : binôme verrouillé");
 
 const lance = await rpc(tv, "rpc_lancer", { p_format: "court" });
 ok(lance.etat === "prep", "la partie passe en préparation");
-ok(lance.tours === 14, "14 tours fabriqués", `(${lance.tours})`);
+ok(lance.tours === 18, "18 tours : 4 QCM, 8 libres, 6 duos", `(${lance.tours})`);
 
 const mes = await rpc(jetons[0].jeton, "rpc_mes_questions");
-ok(mes.total === 9, "9 questions à préparer");
+ok(mes.total === 11, "11 questions à préparer : 2 ouvertes, 1 QCM, 3 duos, 5 de finale");
 ok(
   mes.questions.filter((q) => /\.[ab]$/.test(q)).every((q) => q.endsWith(mes.role.toLowerCase())),
   "les paires servies correspondent au slot du joueur"
@@ -192,10 +192,10 @@ while (["qcm", "libre", "bonus"].includes(etat) && garde++ < 60) {
 ok(etat === "finale", "les manches s'enchaînent jusqu'à la finale", `(${etat})`);
 
 const tours = await lire(tv, `v_tours?partie_id=eq.${partie.partie_id}&select=statut,points,manche`);
-ok(tours.every((t) => t.statut === "juge"), "les 14 tours sont jugés");
+ok(tours.every((t) => t.statut === "juge"), "les 18 tours sont jugés");
 ok(
-  tours.filter((t) => t.manche === "bonus").every((t) => t.points === 30),
-  "le bonus concordant vaut 30 points"
+  tours.filter((t) => t.manche === "bonus").every((t) => t.points === 10),
+  "chaque duo concordant vaut 10 points, soit 30 par binôme"
 );
 
 const passages = await lire(tv, `v_passages_finale?partie_id=eq.${partie.partie_id}&order=ordre`);
@@ -221,7 +221,7 @@ ok(fin.etat === "palmares", "la partie se termine sur le palmarès");
 const palmares = await lire(tv, `v_palmares?partie_id=eq.${partie.partie_id}&order=rang`);
 ok(palmares.length === 2 && palmares[0].rang === 1, "le palmarès classe les binômes");
 const recap = await lire(tv, `v_recap?partie_id=eq.${partie.partie_id}&select=ordre`);
-ok(recap.length === 14, "le récap de soirée contient les 14 tours");
+ok(recap.length === 18, "le récap de soirée contient les 18 tours");
 
 // ---------------------------------------------------------------
 // Mode « qui connaît le mieux X », par HTTP lui aussi.

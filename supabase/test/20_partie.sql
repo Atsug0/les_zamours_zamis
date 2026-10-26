@@ -68,11 +68,13 @@ select assert_vrai((
 
 \echo '--- les tours ---'
 -- court, 2 binomes : (1 paire QCM + 2 paires libres) x 2 slots x 2 binomes + 1 bonus x 2
-select assert_vrai((select count(*) from tours) = 14, '14 tours fabriques');
+-- court, 2 binomes : 4 QCM + 8 libres + 6 duos
+select assert_vrai((select count(*) from tours) = 18, '18 tours fabriques');
 select assert_vrai((select count(*) from tours where manche = 'qcm')   = 4, '4 tours QCM');
 select assert_vrai((select count(*) from tours where manche = 'libre') = 8, '8 tours libres');
-select assert_vrai((select count(*) from tours where manche = 'bonus') = 2, '2 tours bonus');
-select assert_vrai((select count(distinct ordre) from tours) = 14, 'les ordres sont uniques');
+select assert_vrai((select count(*) from tours where manche = 'bonus') = 6,
+                   '3 duos par binome : le format le plus drole merite une manche');
+select assert_vrai((select count(distinct ordre) from tours) = 18, 'les ordres sont uniques');
 select assert_vrai((select min(ordre) from tours where manche = 'libre')
                  > (select max(ordre) from tours where manche = 'qcm'),
                    'la manche QCM passe avant la manche libre');
@@ -114,8 +116,8 @@ select assert_vrai((
 
 \echo '--- la preparation ---'
 reset role; select devenir(:p1::uuid); set role authenticated;
-select assert_vrai((rpc_mes_questions()->>'total')::int = 9,
-                   'chaque joueur a 9 questions : 2 ouvertes + 1 QCM + 1 bonus + 5 finale');
+select assert_vrai((rpc_mes_questions()->>'total')::int = 11,
+                   'chaque joueur a 11 questions : 2 ouvertes + 1 QCM + 3 duos + 5 finale');
 select set_config('zz.q1', (rpc_mes_questions()->'questions'->>0), false);
 select assert_vrai(right(current_setting('zz.q1'),1) = lower((rpc_mes_questions()->>'role')),
                    'les paires servies correspondent au slot du joueur');
@@ -134,12 +136,12 @@ select assert_vrai((
   ) z where z.value ~ '\.[ab]$'
 ), 'sets croises : aucune paire commune entre les deux membres');
 select assert_vrai((
-  select count(*) = 6 from (
+  select count(*) = 8 from (
     select x.value from jsonb_array_elements_text(rpc_mes_questions()->'questions') x
     intersect
     select y.value from jsonb_array_elements_text(current_setting('zz.qp2')::jsonb) y
   ) z
-), 'exactement 6 questions communes : le bonus et les 5 de la finale');
+), 'exactement 8 questions communes : les 3 duos et les 5 de la finale');
 
 select assert_erreur('select rpc_repondre_prepa(''quo-99.a'', ''test'')',
                      'repondre a une question hors de son set');
@@ -161,10 +163,10 @@ begin
   end loop;
 end $$;
 select assert_vrai((rpc_repondre_prepa(current_setting('zz.q1'), 'final')->>'termine')::boolean,
-                   'drapeau termine une fois les 9 questions remplies');
+                   'drapeau termine une fois les 11 questions remplies');
 
 -- personne ne lit les reponses d un autre
-select assert_vrai((select count(*) from jsonb_object_keys(rpc_mes_reponses())) = 9,
+select assert_vrai((select count(*) from jsonb_object_keys(rpc_mes_reponses())) = 11,
                    'rpc_mes_reponses ne rend que les siennes');
 reset role; select devenir(:p3::uuid); set role authenticated;
 select assert_vrai((select count(*) from jsonb_object_keys(rpc_mes_reponses())) = 0,

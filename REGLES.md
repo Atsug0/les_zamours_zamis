@@ -93,10 +93,10 @@ Chaque joueur répond à **sa propre série** :
 |---|---|---|
 | 2 | **questions ouvertes** | sur lui-même, réponse libre et courte |
 | 1 | **QCM** | sur lui-même, 3 propositions |
-| 1 | **question bonus** | la même pour les deux membres du binôme |
+| 3 | **« qui de vous deux »** | les mêmes pour les deux membres du binôme |
 | 5 | **série finale** | sur lui-même, réponses courtes, servira à la finale |
 
-Soit **9 questions par joueur**, environ 3 minutes de préparation. C'est volontairement
+Soit **11 questions par joueur**, environ 3 minutes de préparation. C'est volontairement
 court : la prépa est le seul moment mort de la soirée, personne ne la regarde.
 
 ### 3.1 La règle des sets croisés
@@ -279,16 +279,23 @@ l'écran. La preuve tranche mieux que la majorité, et le joueur se trahit tout 
 
 ---
 
-## 7. La question bonus
+## 7. La manche des « qui de vous deux »
 
-Un seul passage par binôme, en fin de manches.
+**Trois passages par binôme**, en fin de manches. C'est le format le plus drôle du jeu,
+et il méritait mieux qu'une question unique.
 
-1. L'écran TV affiche l'énoncé — le même pour les deux membres.
+1. L'écran TV affiche l'énoncé — **le même pour les deux membres**, qui y ont répondu
+   séparément pendant la préparation.
 2. Roulement, puis **les deux réponses apparaissent en même temps**.
-3. Jugement : **vote de tous les autres joueurs**, mêmes règles qu'en §6.1, mais
-   fenêtre de **20 secondes** et le présentateur commente avant d'ouvrir le vote.
+3. Jugement : **vote de tous les autres joueurs**, mêmes règles qu'en §6.1, fenêtre de
+   **20 secondes**.
 
-**30 points** si les deux réponses concordent.
+**10 points** par concordance, soit 30 au maximum.
+
+Pourquoi ça marche : la question est drôle *avant* la réponse (« lequel de vous deux
+ment le mieux ? »), et le **désaccord est la blague**. Une question qui demande un fait
+neutre — une heure de lever, un nombre d'oreillers — ne fait rire personne, même si elle
+se juge parfaitement. Voir `BANQUE.md` §2 bis.
 
 ### 7.1 Score maximum avant la finale
 
@@ -296,7 +303,7 @@ Un seul passage par binôme, en fin de manches.
 |---|---|---|
 | QCM | 2 × 5 | 10 |
 | Libre | 4 × 15 | 60 |
-| Bonus | 1 × 30 | 30 |
+| Duos | 3 × 10 | 30 |
 | **Total** | | **100** |
 
 Un score sur 100 à l'entrée de la finale : lisible pour tout le monde, à l'œil, sur la TV.
@@ -415,7 +422,7 @@ Le jeu expose une intimité **consentie**. Ces règles sont dans le produit, pas
 | Préparation | progression anonyme, aucun contenu |
 | Manche | binôme appelé, énoncé en grand, réponse en attente, puis double révélation |
 | Vote | décompte des votes masqué → révélé → verdict |
-| Bonus | roulement, puis les deux réponses simultanément |
+| Duos | roulement, puis les deux réponses simultanément |
 | Finale | chrono géant, question en cours, 5 pastilles ✓/✗/en attente |
 | Palmarès | classement final, meilleures réponses de la soirée |
 

@@ -44,7 +44,7 @@ begin
   end loop;
 end $$;
 
-select assert_vrai((select count(*) from reponses_prepa) = 36, '4 joueurs x 9 questions preparees');
+select assert_vrai((select count(*) from reponses_prepa) = 44, '4 joueurs x 11 questions preparees');
 select assert_vrai((select termines from v_progression) = 4, 'la TV voit 4 joueurs sur 4 termines');
 
 \echo '--- manche QCM : le joueur tape son propre choix ---'
@@ -239,10 +239,10 @@ begin
 end $$;
 
 select assert_vrai((select count(*) from tours where statut <> 'juge') = 0, 'tous les tours sont joues');
-select assert_vrai((select count(*) from tours where manche = 'bonus' and verdict) = 2,
-                   'le bonus compare les deux reponses de prepa, sans consignation');
+select assert_vrai((select count(*) from tours where manche = 'bonus' and verdict) = 6,
+                   'les duos comparent les deux reponses de prepa, sans consignation');
 select assert_vrai((select sum(points) from tours where manche = 'bonus') = 60,
-                   'un bonus concordant vaut 30 points');
+                   '6 duos concordants a 10 points : 30 par binome, total inchange');
 
 \echo '--- reprise de siege en cours de partie ---'
 -- Ce chemin etait casse : rpc_reprendre_siege reattribue joueurs.id, et
@@ -369,7 +369,7 @@ select assert_vrai((rpc_suivant()->>'etat') = 'palmares', 'la partie se termine 
 set role authenticated;
 select assert_vrai((select count(*) from v_palmares) = 2, 'le palmares liste les deux binomes');
 select assert_vrai((select count(*) from v_palmares where rang = 1) = 1, 'un seul binome en tete');
-select assert_vrai((select count(*) from v_recap) = 14, 'le recap contient les 14 tours joues');
+select assert_vrai((select count(*) from v_recap) = 18, 'le recap contient les 18 tours joues');
 -- verifie depuis les VUES : un client a de quoi recalculer les scores
 select assert_vrai((
   select bool_and(pal.score = a.m + b.f) from v_palmares pal

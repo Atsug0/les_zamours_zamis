@@ -148,8 +148,42 @@ C'est le meilleur moment de jeu disponible : **la preuve remplace le vote**, per
 peut contester, et le joueur se trahit lui-même. Aucune question du PDF ne pouvait
 faire ça en 2015.
 
+## 6 bis. Le piquant, ou pourquoi la première version était ennuyeuse
+
+La charte de départ optimisait la **concordance** : réponse courte, unique, arbitrable.
+Elle a produit une banque techniquement impeccable et **sans relief** — un audit l'a
+chiffré : **77 % des questions n'avaient aucun enjeu**. « À quelle heure tu te lèves le
+samedi ? » coche toutes les règles et ne fait rire personne.
+
+La concordance est la mécanique, pas le but. Une bonne question a en plus **une prise** :
+
+| Elle a une prise quand… | Exemple |
+|---|---|
+| elle **révèle** un travers | « Sur quoi {P} ment systématiquement, même pour rien ? » |
+| elle **embarrasse** avec affection | « De quoi {P} se vante alors que ce n'est pas vrai ? » |
+| elle **oppose** les deux réponses | « Lequel de vous deux parle trop fort au restaurant ? » |
+| elle **force une anecdote** | « Quelle est la dernière chose que {P} a cassée ? » |
+| elle est **drôle avant la réponse** | « Lequel de vous deux ronfle et le nie ? » |
+
+À l'inverse, ces formulations sont presque toujours plates : *à quelle heure…*,
+*combien de temps…*, *quel est son X préféré*, *où range-t-il…*. Un fait neutre se
+vérifie, mais ne raconte rien.
+
+### Le curseur `piquant`
+Chaque question porte un niveau de 1 à 3. **Ce n'est pas la difficulté** : une question
+peut être facile et gênante.
+
+- **1 — tout public.** Ça passe à Noël avec les beaux-parents.
+- **2 — ça pique.** Le registre par défaut du jeu : on se chambre.
+- **3 — croustillant.** Marqué `sensible`, donc **tiré seulement si les deux membres du
+  binôme ont activé les catégories sensibles au lobby**. Le consentement existait déjà,
+  il sert maintenant de curseur.
+
 ## 7. Charte de rédaction — pour écrire la suite
 
+0. **Une question doit avoir une prise.** Si elle ne révèle rien, n'embarrasse
+   personne et ne fait pas se contredire deux personnes, elle n'a pas sa place —
+   même si elle se juge parfaitement. C'est la règle qui manquait (§6 bis).
 1. **Zéro pronom de genre.** Jamais. `{P}` et le tutoiement suffisent à tout.
 2. **Deux formulations obligatoires** : `prepa` au tutoiement, `jeu` avec `{P}`.
 3. **Réponse en 4 mots maximum**, unique, qu'un tiers peut arbitrer. Si la réponse

@@ -201,8 +201,8 @@ export default function LobbyJoueur({ e, pin }: { e: Etat; pin: string | null })
                 <Bascule
                   active={sensibles}
                   onChange={setSensibles}
-                  titre="Catégories sensibles"
-                  dit="Argent, famille, intime. Désactivées par défaut, et il faut être d'accord à deux."
+                  titre="Mode croustillant"
+                  dit="Débloque les questions qui piquent vraiment : rancunes, petits mensonges, argent, intime. Il faut être d'accord à deux."
                 />
                 {modeVoulu === "zamours" && (
                   <Bascule
