@@ -181,6 +181,16 @@ on suggère, on ne décrit pas : « où est-ce que vous avez failli vous faire s
 savoir, qu'est-ce que tu ferais ». Une question explicite sort du jeu : elle gêne au
 lieu de faire rire, et elle ferme la table au lieu de l'ouvrir.
 
+### Mesurer la qualité : ce que vaut le chiffre
+Un script compte les questions « à enjeu » en cherchant des mots révélateurs
+(*pire*, *jamais*, *cachette*, *ment*, *honte*…). **C'est une sonde, pas une note.**
+Elle rate tout ce qui a du mordant sans ces mots — « qui va trop boire au vin d'honneur »
+était compté comme plat — et elle ne voit pas les QCM, dont l'enjeu vit dans les
+*propositions* et non dans l'énoncé.
+
+Elle sert à repérer les blocs oubliés, pas à décerner un satisfecit. Le passage final
+s'est fait **à l'œil, question par question**.
+
 ### Le curseur `piquant`
 Chaque question porte un niveau de 1 à 3. **Ce n'est pas la difficulté** : une question
 peut être facile et gênante.

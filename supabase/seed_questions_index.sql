@@ -359,4 +359,4 @@ insert into questions_index (id, paire, slot, theme, kind, modes, occasion, sens
   ('c3-12', null, null, null, 'citez3', array['zamours','zamis']::text[], null, false),
   ('c3-13', null, null, null, 'citez3', array['zamours','zamis']::text[], null, false),
   ('c3-14', null, null, null, 'citez3', array['zamours','zamis']::text[], null, false),
-  ('c3-15', null, null, null, 'citez3', array['zamours','zamis']::text[], null, false);
+  ('c3-15', null, null, null, 'citez3', array['zamours','zamis']::text[], null, true);
