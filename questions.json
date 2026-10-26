@@ -212,18 +212,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quelle appli tu utilises le plus ?",
-        "jeu": "Quelle appli {P} utilise le plus ?",
-        "verifiable": true
+        "prepa": "Quelle appli tu ouvres sans même y penser ?",
+        "jeu": "Quelle appli {P} ouvre sans même y penser ?"
       },
       "b": {
-        "prepa": "Quelle appli tu as désinstallée puis réinstallée ?",
-        "jeu": "Quelle appli {P} a désinstallée puis réinstallée ?"
+        "prepa": "Quelle appli tu cacherais si on prenait ton téléphone ?",
+        "jeu": "Quelle appli {P} cacherait si on prenait son téléphone ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ecr-02",
@@ -233,19 +232,16 @@
         "zamis"
       ],
       "diff": 3,
-      "sensible": false,
-      "tol": "±20 %",
+      "sensible": true,
       "a": {
-        "prepa": "Quel est ton temps d'écran quotidien ? (regarde, on vérifie)",
-        "jeu": "Quel est le temps d'écran quotidien de {P} ?",
-        "verifiable": true
+        "prepa": "Quelle story tu as regardée trois fois ?",
+        "jeu": "Quelle story {P} a regardée trois fois ?"
       },
       "b": {
-        "prepa": "Combien de notifications non lues sur ton téléphone là, maintenant ?",
-        "jeu": "Combien de notifications non lues sur le téléphone de {P} là, maintenant ?",
-        "verifiable": true
+        "prepa": "Qui tu vas encore regarder de temps en temps, sans raison ?",
+        "jeu": "Qui {P} va encore regarder de temps en temps, sans raison ?"
       },
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "ecr-03",
@@ -255,16 +251,16 @@
         "zamis"
       ],
       "diff": 2,
-      "sensible": false,
+      "sensible": true,
       "a": {
-        "prepa": "Quelle est la dernière série que tu as terminée ?",
-        "jeu": "Quelle est la dernière série que {P} a terminée ?"
+        "prepa": "Quelle capture d'écran tu as envoyée à tes potes récemment ?",
+        "jeu": "Quelle capture d'écran {P} a envoyée à ses potes récemment ?"
       },
       "b": {
-        "prepa": "Quelle série tu as abandonnée en cours de route ?",
-        "jeu": "Quelle série {P} a abandonnée en cours de route ?"
+        "prepa": "De qui tu t'es moqué par message cette semaine ?",
+        "jeu": "De qui {P} s'est moqué par message cette semaine ?"
       },
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "ecr-04",
@@ -293,18 +289,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel emoji tu envoies le plus ?",
-        "jeu": "Quel emoji {P} envoie le plus ?",
-        "verifiable": true
+        "prepa": "Quel message tu as vu sans jamais répondre ?",
+        "jeu": "Quel message {P} a vu sans jamais répondre ?"
       },
       "b": {
-        "prepa": "Tu réponds plutôt en vocal, en texte ou tu appelles ?",
-        "jeu": "{P} répond plutôt en vocal, en texte ou en appelant ?"
+        "prepa": "Qui tu laisses en vu le plus souvent ?",
+        "jeu": "Qui {P} laisse en vu le plus souvent ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ecr-06",
@@ -313,17 +308,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 3,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Qu'est-ce que tu demandes le plus souvent à une IA ?",
-        "jeu": "Qu'est-ce que {P} demande le plus souvent à une IA ?"
+        "prepa": "Qu'est-ce que tu as demandé à une IA et que tu n'oserais demander à personne ?",
+        "jeu": "Qu'est-ce que {P} a demandé à une IA et n'oserait demander à personne ?"
       },
       "b": {
         "prepa": "Quel onglet est ouvert sur ton téléphone depuis des semaines ?",
         "jeu": "Quel onglet est ouvert sur le téléphone de {P} depuis des semaines ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ecr-07",
@@ -355,14 +350,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel est ton dernier achat en seconde main ?",
-        "jeu": "Quel est le dernier achat en seconde main de {P} ?"
+        "prepa": "Quel achat impulsif tu regrettes encore ?",
+        "jeu": "Quel achat impulsif {P} regrette encore ?"
       },
       "b": {
-        "prepa": "Quel est le dernier truc que tu t'es fait livrer ?",
-        "jeu": "Quel est le dernier truc que {P} s'est fait livrer ?"
+        "prepa": "Qu'est-ce que tu as commandé et planqué en rentrant ?",
+        "jeu": "Qu'est-ce que {P} a commandé et planqué en rentrant ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ecr-09",
@@ -409,17 +404,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel est ton plat préféré ?",
-        "jeu": "Quel est le plat préféré de {P} ?"
+        "prepa": "Qu'est-ce que tu manges debout devant le frigo à deux heures du matin ?",
+        "jeu": "Qu'est-ce que {P} mange debout devant le frigo à deux heures du matin ?"
       },
       "b": {
-        "prepa": "Quel est ton dessert préféré ?",
-        "jeu": "Quel est le dessert préféré de {P} ?"
+        "prepa": "Quel plat tu dis adorer alors que tu t'en fiches ?",
+        "jeu": "Quel plat {P} dit adorer alors qu'il s'en fiche ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "gou-02",
@@ -450,14 +445,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Qu'est-ce que tu commandes toujours au restaurant ?",
-        "jeu": "Qu'est-ce que {P} commande toujours au restaurant ?"
+        "prepa": "Qu'est-ce que tu piques systématiquement dans l'assiette des autres ?",
+        "jeu": "Qu'est-ce que {P} pique systématiquement dans l'assiette des autres ?"
       },
       "b": {
-        "prepa": "Quelle cuisine du monde tu préfères ?",
-        "jeu": "Quelle cuisine du monde {P} préfère ?"
+        "prepa": "Qu'est-ce que tu n'oserais jamais renvoyer en cuisine ?",
+        "jeu": "Qu'est-ce que {P} n'oserait jamais renvoyer en cuisine ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "gou-04",
@@ -488,14 +483,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel style de musique tu écoutes le plus ?",
-        "jeu": "Quel style de musique {P} écoute le plus ?"
+        "prepa": "Quelle chanson tu mets quand tu veux te la raconter ?",
+        "jeu": "Quelle chanson {P} met quand il veut se la raconter ?"
       },
       "b": {
-        "prepa": "Quel est le dernier concert ou festival que tu as fait ?",
-        "jeu": "Quel est le dernier concert ou festival que {P} a fait ?"
+        "prepa": "Quel artiste tu écoutes en cachette ?",
+        "jeu": "Quel artiste {P} écoute en cachette ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "gou-06",
@@ -583,14 +578,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel jeu de société tu sors toujours ?",
-        "jeu": "Quel jeu de société {P} sort toujours ?"
+        "prepa": "À quel jeu tu es le plus mauvais perdant ?",
+        "jeu": "À quel jeu {P} est le plus mauvais perdant ?"
       },
       "b": {
-        "prepa": "Quel jeu vidéo tu as le plus joué ?",
-        "jeu": "Quel jeu vidéo {P} a le plus joué ?"
+        "prepa": "À quoi tu as déjà triché pour gagner ?",
+        "jeu": "À quoi {P} a déjà triché pour gagner ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "gou-11",
@@ -617,18 +612,18 @@
       "modes": [
         "zamours"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Où est-ce que vous vous êtes rencontrés ?",
-        "jeu": "Où est-ce que {P} et son binôme se sont rencontrés ?"
+        "prepa": "C'était quoi ta toute première impression sur lui ?",
+        "jeu": "C'était quoi la toute première impression de {P} ?"
       },
       "b": {
-        "prepa": "Qui a fait le premier pas ?",
-        "jeu": "Qui a fait le premier pas, selon {P} ?"
+        "prepa": "Qui a craqué le premier, vraiment ?",
+        "jeu": "Qui a craqué le premier, vraiment, selon {P} ?"
       },
       "jumeau": "ami-01",
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "sou-02",
@@ -636,17 +631,17 @@
       "modes": [
         "zamours"
       ],
-      "diff": 2,
+      "diff": 3,
       "sensible": false,
       "a": {
-        "prepa": "Quelle a été votre première sortie ensemble ?",
-        "jeu": "Quelle a été leur première sortie ensemble, selon {P} ?"
+        "prepa": "Quel détail t'a fait craquer, qu'il ignore sûrement ?",
+        "jeu": "Quel détail a fait craquer {P}, et qu'il ignore sûrement ?"
       },
       "b": {
-        "prepa": "Quel a été le premier cadeau offert entre vous ?",
-        "jeu": "Quel a été le premier cadeau offert entre eux, selon {P} ?"
+        "prepa": "Qu'est-ce qui a failli tout faire capoter au début ?",
+        "jeu": "Qu'est-ce qui a failli tout faire capoter au début, selon {P} ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "sou-03",
@@ -655,16 +650,16 @@
         "zamours"
       ],
       "diff": 2,
-      "sensible": false,
+      "sensible": true,
       "a": {
-        "prepa": "Qui a dit « je t'aime » en premier ?",
-        "jeu": "Qui a dit « je t'aime » en premier, selon {P} ?"
+        "prepa": "Où est-ce que vous avez failli vous faire surprendre ?",
+        "jeu": "Où ont-ils failli se faire surprendre, selon {P} ?"
       },
       "b": {
-        "prepa": "Où étiez-vous à ce moment-là ?",
-        "jeu": "Où étaient-ils à ce moment-là, selon {P} ?"
+        "prepa": "Combien de temps avant de vous dire que c'était sérieux ?",
+        "jeu": "Combien de temps avant que ça devienne sérieux, selon {P} ?"
       },
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "sou-04",
@@ -713,15 +708,15 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel a été votre premier voyage ensemble ?",
-        "jeu": "Quel a été leur premier voyage ensemble, selon {P} ?"
+        "prepa": "Quel est le pire voyage que vous ayez fait ensemble ?",
+        "jeu": "Quel est leur pire voyage ensemble, selon {P} ?"
       },
       "b": {
-        "prepa": "Quel est votre meilleur souvenir de vacances ensemble ?",
-        "jeu": "Quel est leur meilleur souvenir de vacances ensemble, selon {P} ?"
+        "prepa": "Quelle dispute de vacances vous ressortez encore ?",
+        "jeu": "Quelle dispute de vacances ils ressortent encore, selon {P} ?"
       },
       "jumeau": "ami-05",
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "sou-07",
@@ -751,14 +746,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quelle est la première chose que vous avez achetée ensemble ?",
-        "jeu": "Quelle est la première chose qu'ils ont achetée ensemble ?"
+        "prepa": "Quel objet chez vous déclenche une discussion à chaque fois ?",
+        "jeu": "Quel objet chez eux déclenche une discussion à chaque fois ?"
       },
       "b": {
-        "prepa": "Quelle est la dernière chose que vous avez achetée ensemble ?",
-        "jeu": "Quelle est la dernière chose qu'ils ont achetée ensemble ?"
+        "prepa": "Qu'est-ce que l'un a acheté sans demander l'avis de l'autre ?",
+        "jeu": "Qu'est-ce que l'un a acheté sans demander l'avis de l'autre, selon {P} ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ami-01",
@@ -766,18 +761,18 @@
       "modes": [
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Où est-ce que vous vous êtes rencontrés ?",
-        "jeu": "Où est-ce que {P} et son binôme se sont rencontrés ?"
+        "prepa": "C'est quoi la première chose que tu as pensée de lui ?",
+        "jeu": "C'est quoi la première chose que {P} a pensée de son binôme ?"
       },
       "b": {
-        "prepa": "Qui a écrit le premier message, en général ?",
-        "jeu": "Qui écrit le premier message, selon {P} ?"
+        "prepa": "Combien de temps avant de vous considérer vraiment amis ?",
+        "jeu": "Combien de temps avant qu'ils se considèrent vraiment amis, selon {P} ?"
       },
       "jumeau": "sou-01",
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ami-02",
@@ -806,15 +801,15 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quel surnom tu lui donnes ?",
-        "jeu": "Quel surnom {P} lui donne ?"
+        "prepa": "Comment il est enregistré dans ton téléphone ?",
+        "jeu": "Comment son binôme est enregistré dans le téléphone de {P} ?"
       },
       "b": {
-        "prepa": "Quelle expression tu lui as volée ?",
-        "jeu": "Quelle expression {P} lui a volée ?"
+        "prepa": "Comment tu le décris à quelqu'un qui ne le connaît pas ?",
+        "jeu": "Comment {P} le décrit à quelqu'un qui ne le connaît pas ?"
       },
       "jumeau": "sou-05",
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ami-04",
@@ -844,15 +839,15 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'est quoi votre rituel à tous les deux ?",
-        "jeu": "C'est quoi leur rituel à tous les deux, selon {P} ?"
+        "prepa": "C'est quoi le truc que vous faites et dont personne d'autre ne veut ?",
+        "jeu": "C'est quoi le truc qu'ils font et dont personne d'autre ne veut, selon {P} ?"
       },
       "b": {
-        "prepa": "C'est quoi le dernier endroit où vous êtes allés ensemble ?",
-        "jeu": "C'est quoi le dernier endroit où ils sont allés ensemble ?"
+        "prepa": "Quel plan vous annulez tous les deux avec soulagement ?",
+        "jeu": "Quel plan ils annulent tous les deux avec soulagement ?"
       },
       "jumeau": "sou-06",
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ami-06",
@@ -860,18 +855,18 @@
       "modes": [
         "zamis"
       ],
-      "diff": 2,
-      "sensible": false,
+      "diff": 3,
+      "sensible": true,
       "a": {
-        "prepa": "Qu'est-ce que vous commandez systématiquement tous les deux ?",
-        "jeu": "Qu'est-ce qu'ils commandent systématiquement, selon {P} ?"
+        "prepa": "Quelle bêtise vous avez faite et jamais racontée à personne ?",
+        "jeu": "Quelle bêtise ils ont faite et jamais racontée, selon {P} ?"
       },
       "b": {
-        "prepa": "Quel film ou série vous revoyez à chaque fois ?",
-        "jeu": "Quel film ou série ils revoient à chaque fois, selon {P} ?"
+        "prepa": "Qu'est-ce qu'il sait sur toi que personne d'autre ne sait ?",
+        "jeu": "Qu'est-ce que son binôme sait sur {P} et que personne d'autre ne sait ?"
       },
       "jumeau": "sou-04",
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "ami-07",
@@ -975,17 +970,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 3,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Si tu étais un animal, lequel ?",
-        "jeu": "Si {P} était un animal, lequel ?"
+        "prepa": "C'est quoi ton pire réflexe quand on te contredit ?",
+        "jeu": "C'est quoi le pire réflexe de {P} quand on le contredit ?"
       },
       "b": {
-        "prepa": "Si tu étais un plat, lequel ?",
-        "jeu": "Si {P} était un plat, lequel ?"
+        "prepa": "Qu'est-ce qu'on te dit tout le temps et qui t'agace ?",
+        "jeu": "Qu'est-ce qu'on dit tout le temps à {P} et qui l'agace ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "per-06",
@@ -997,14 +992,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Qu'est-ce que tu remets toujours au lendemain ?",
-        "jeu": "Qu'est-ce que {P} remet toujours au lendemain ?"
+        "prepa": "Qu'est-ce que tu fais passer pour de l'organisation alors que c'est de la flemme ?",
+        "jeu": "Qu'est-ce que {P} fait passer pour de l'organisation alors que c'est de la flemme ?"
       },
       "b": {
-        "prepa": "Qu'est-ce que tu fais toujours en avance ?",
-        "jeu": "Qu'est-ce que {P} fait toujours en avance ?"
+        "prepa": "Qu'est-ce que tu promets toujours et ne fais jamais ?",
+        "jeu": "Qu'est-ce que {P} promet toujours et ne fait jamais ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "per-07",
@@ -1111,14 +1106,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Qu'est-ce que tu chantes à fond dans la voiture ?",
-        "jeu": "Qu'est-ce que {P} chante à fond dans la voiture ?"
+        "prepa": "Qu'est-ce que tu fais chez toi et que tu nierais en public ?",
+        "jeu": "Qu'est-ce que {P} fait chez lui et qu'il nierait en public ?"
       },
       "b": {
-        "prepa": "Qu'est-ce que tu fais quand tu es seul chez toi ?",
-        "jeu": "Qu'est-ce que {P} fait quand il est seul chez lui ?"
+        "prepa": "Quelle chanson tu chantes à fond quand tu es seul ?",
+        "jeu": "Quelle chanson {P} chante à fond quand il est seul ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "dro-05",
@@ -1146,17 +1141,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 2,
-      "sensible": false,
+      "diff": 3,
+      "sensible": true,
       "a": {
-        "prepa": "Quel super-pouvoir tu voudrais ?",
-        "jeu": "Quel super-pouvoir {P} voudrait ?"
+        "prepa": "Si personne ne devait jamais le savoir, qu'est-ce que tu ferais ?",
+        "jeu": "Si personne ne devait jamais le savoir, qu'est-ce que {P} ferait ?"
       },
       "b": {
-        "prepa": "Si tu gagnais au loto, ta première dépense ?",
-        "jeu": "Si {P} gagnait au loto, sa première dépense ?"
+        "prepa": "Si tu gagnais au loto, qu'est-ce que tu cacherais à tout le monde ?",
+        "jeu": "Si {P} gagnait au loto, qu'est-ce qu'il cacherait à tout le monde ?"
       },
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "dro-07",
@@ -1166,16 +1161,16 @@
         "zamis"
       ],
       "diff": 2,
-      "sensible": false,
+      "sensible": true,
       "a": {
-        "prepa": "Avec quelle célébrité tu dînerais ?",
-        "jeu": "Avec quelle célébrité {P} dînerait ?"
+        "prepa": "Quelle célébrité aurait droit à ta carte blanche ?",
+        "jeu": "Quelle célébrité aurait droit à la carte blanche de {P} ?"
       },
       "b": {
-        "prepa": "À quelle célébrité on te compare ?",
-        "jeu": "À quelle célébrité on compare {P} ?"
+        "prepa": "Quelle célébrité tu trouves complètement surcotée ?",
+        "jeu": "Quelle célébrité {P} trouve complètement surcotée ?"
       },
-      "piquant": 1
+      "piquant": 3
     },
     {
       "id": "dro-08",
@@ -1203,17 +1198,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'était quoi ton dessin animé préféré ?",
-        "jeu": "C'était quoi le dessin animé préféré de {P} ?"
+        "prepa": "C'était quoi ta phase la plus honteuse à l'adolescence ?",
+        "jeu": "C'était quoi la phase la plus honteuse de {P} à l'adolescence ?"
       },
       "b": {
-        "prepa": "C'était quoi ton jouet préféré ?",
-        "jeu": "C'était quoi le jouet préféré de {P} ?"
+        "prepa": "Quelle photo de toi enfant tu ferais disparaître ?",
+        "jeu": "Quelle photo d'enfance {P} ferait disparaître ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "enf-02",
@@ -1244,14 +1239,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'est quoi le plat de ton enfance ?",
-        "jeu": "C'est quoi le plat de l'enfance de {P} ?"
+        "prepa": "Quelle bêtise t'a valu la plus grosse engueulade ?",
+        "jeu": "Quelle bêtise a valu à {P} la plus grosse engueulade ?"
       },
       "b": {
-        "prepa": "C'est quoi le cadeau qui t'a le plus marqué enfant ?",
-        "jeu": "C'est quoi le cadeau qui a le plus marqué {P} enfant ?"
+        "prepa": "Qu'est-ce que tu as cassé en laissant accuser quelqu'un d'autre ?",
+        "jeu": "Qu'est-ce que {P} a cassé en laissant accuser quelqu'un d'autre ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "enf-04",
@@ -1261,16 +1256,16 @@
         "zamis"
       ],
       "diff": 2,
-      "sensible": true,
+      "sensible": false,
       "a": {
-        "prepa": "À qui tu ressembles le plus dans ta famille ?",
-        "jeu": "À qui {P} ressemble le plus dans sa famille ?"
+        "prepa": "De qui tu tiens ton pire défaut, dans ta famille ?",
+        "jeu": "De qui {P} tient son pire défaut, dans sa famille ?"
       },
       "b": {
-        "prepa": "Avec qui tu es le plus proche dans ta famille ?",
-        "jeu": "Avec qui {P} est le plus proche dans sa famille ?"
+        "prepa": "Qui, dans ta famille, te fait le plus honte en public ?",
+        "jeu": "Qui, dans la famille de {P}, lui fait le plus honte en public ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "bou-01",
@@ -1279,17 +1274,17 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'est quoi ton métier, en un mot ?",
-        "jeu": "C'est quoi le métier de {P}, en un mot ?"
+        "prepa": "Comment tu expliques ton métier à quelqu'un qui n'y comprend rien ?",
+        "jeu": "Comment {P} explique son métier à quelqu'un qui n'y comprend rien ?"
       },
       "b": {
-        "prepa": "Qu'est-ce que tu aimes le moins dans ton travail ?",
-        "jeu": "Qu'est-ce que {P} aime le moins dans son travail ?"
+        "prepa": "Qu'est-ce que tu fais au boulot et que personne ne remarque ?",
+        "jeu": "Qu'est-ce que {P} fait au boulot et que personne ne remarque ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "bou-02",
@@ -1320,14 +1315,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "C'était quoi ton premier job ?",
-        "jeu": "C'était quoi le premier job de {P} ?"
+        "prepa": "Quel est le job le plus humiliant que tu aies fait ?",
+        "jeu": "Quel est le job le plus humiliant qu'ait fait {P} ?"
       },
       "b": {
-        "prepa": "Quel métier tu voulais faire à 8 ans ?",
-        "jeu": "Quel métier {P} voulait faire à 8 ans ?"
+        "prepa": "Pour quoi tu t'es déjà fait convoquer ?",
+        "jeu": "Pour quoi {P} s'est déjà fait convoquer ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "bou-04",
@@ -1358,14 +1353,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Où tu te vois dans 5 ans ?",
-        "jeu": "Où {P} se voit dans 5 ans ?"
+        "prepa": "Qu'est-ce que tu ferais si tu pouvais tout plaquer demain ?",
+        "jeu": "Qu'est-ce que {P} ferait s'il pouvait tout plaquer demain ?"
       },
       "b": {
-        "prepa": "C'est quoi ton prochain gros achat ?",
-        "jeu": "C'est quoi le prochain gros achat de {P} ?"
+        "prepa": "Quel achat déraisonnable tu finiras par faire ?",
+        "jeu": "Quel achat déraisonnable {P} finira par faire ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ave-02",
@@ -1377,14 +1372,14 @@
       "diff": 2,
       "sensible": false,
       "a": {
-        "prepa": "Quelle compétence tu veux apprendre ?",
-        "jeu": "Quelle compétence {P} veut apprendre ?"
+        "prepa": "Qu'est-ce que tu veux apprendre juste pour frimer ?",
+        "jeu": "Qu'est-ce que {P} veut apprendre juste pour frimer ?"
       },
       "b": {
-        "prepa": "C'est quoi ton prochain voyage prévu ?",
-        "jeu": "C'est quoi le prochain voyage prévu de {P} ?"
+        "prepa": "Qu'est-ce que tu as abandonné après deux séances ?",
+        "jeu": "Qu'est-ce que {P} a abandonné après deux séances ?"
       },
-      "piquant": 1
+      "piquant": 2
     },
     {
       "id": "ave-03",
@@ -1622,26 +1617,27 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "a": {
-        "prepa": "Tu te douches plutôt…",
-        "jeu": "{P} se douche plutôt…",
+        "prepa": "Un message qui t'embête, tu…",
+        "jeu": "Un message qui embête {P}, il…",
         "props": [
-          "le matin",
-          "le soir",
-          "les deux"
+          "réponds direct",
+          "laisses en vu",
+          "réponds trois jours après"
         ]
       },
       "b": {
-        "prepa": "Tu es plutôt…",
-        "jeu": "{P} est plutôt…",
+        "prepa": "On te complimente, tu…",
+        "jeu": "On complimente {P}, il…",
         "props": [
-          "du matin",
-          "du soir",
-          "ni l'un ni l'autre"
+          "dis merci",
+          "minimises",
+          "renvoies le compliment"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-02",
@@ -1650,26 +1646,27 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "a": {
-        "prepa": "Le matin, c'est plutôt…",
-        "jeu": "Le matin, pour {P}, c'est plutôt…",
+        "prepa": "Tu as cinq minutes de retard, tu…",
+        "jeu": "{P} a cinq minutes de retard, il…",
         "props": [
-          "café",
-          "thé",
-          "ni l'un ni l'autre"
+          "préviens",
+          "accélères",
+          "inventes une excuse"
         ]
       },
       "b": {
-        "prepa": "Tu es plutôt…",
-        "jeu": "{P} est plutôt…",
+        "prepa": "Une photo de toi ratée est postée, tu…",
+        "jeu": "Une photo ratée de {P} est postée, il…",
         "props": [
-          "sucré",
-          "salé",
-          "les deux au même repas"
+          "demandes de la retirer",
+          "te détags en silence",
+          "t'en fiches"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-03",
@@ -1678,26 +1675,27 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "a": {
-        "prepa": "En vacances, tu choisis…",
-        "jeu": "En vacances, {P} choisit…",
+        "prepa": "Devant un film triste, tu…",
+        "jeu": "Devant un film triste, {P}…",
         "props": [
-          "la mer",
-          "la montagne",
-          "la ville"
+          "pleures",
+          "fais semblant de rien",
+          "te moques des autres"
         ]
       },
       "b": {
-        "prepa": "Tu préfères voyager…",
-        "jeu": "{P} préfère voyager…",
+        "prepa": "Au karaoké, tu…",
+        "jeu": "Au karaoké, {P}…",
         "props": [
-          "en avion",
-          "en train",
-          "en voiture"
+          "prends le micro en premier",
+          "y vas si on insiste",
+          "jamais de la vie"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-04",
@@ -1706,26 +1704,27 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "a": {
-        "prepa": "Tu es plutôt…",
-        "jeu": "{P} est plutôt…",
+        "prepa": "Tu trouves cinquante euros par terre, tu…",
+        "jeu": "{P} trouve cinquante euros par terre, il…",
         "props": [
-          "chien",
-          "chat",
-          "aucun des deux"
+          "cherches le propriétaire",
+          "gardes sans réfléchir",
+          "offres la tournée"
         ]
       },
       "b": {
-        "prepa": "Un dimanche parfait, c'est…",
-        "jeu": "Un dimanche parfait pour {P}, c'est…",
+        "prepa": "Quelqu'un te double dans la file, tu…",
+        "jeu": "Quelqu'un double {P} dans la file, il…",
         "props": [
-          "dehors à marcher",
-          "sur le canapé",
-          "à voir du monde"
+          "ne dis rien",
+          "soupires très fort",
+          "dis quelque chose"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-05",
@@ -1792,24 +1791,25 @@
       ],
       "diff": 2,
       "a": {
-        "prepa": "Une série, tu la regardes…",
-        "jeu": "Une série, {P} la regarde…",
+        "prepa": "Une série que tout le monde adore et que tu trouves nulle, tu…",
+        "jeu": "Une série que tout le monde adore et que {P} trouve nulle, il…",
         "props": [
-          "d'une traite",
-          "un épisode par soir",
-          "en fond en faisant autre chose"
+          "le dis",
+          "fais semblant d'aimer",
+          "changes de sujet"
         ]
       },
       "b": {
-        "prepa": "Un film, tu le regardes…",
-        "jeu": "Un film, {P} le regarde…",
+        "prepa": "Au restaurant, l'addition, tu…",
+        "jeu": "Au restaurant, l'addition, {P}…",
         "props": [
-          "au cinéma",
-          "à la maison",
-          "jamais en entier"
+          "la vérifies ligne par ligne",
+          "la partages sans regarder",
+          "laisses les autres gérer"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-08",
@@ -1958,26 +1958,27 @@
         "zamours",
         "zamis"
       ],
-      "diff": 1,
+      "diff": 2,
       "a": {
-        "prepa": "L'ananas sur la pizza…",
-        "jeu": "L'ananas sur la pizza, pour {P}…",
+        "prepa": "Un coup de cœur, tu…",
+        "jeu": "Un coup de cœur, {P}…",
         "props": [
-          "oui",
-          "non",
-          "jamais essayé"
+          "fonces",
+          "attends un signe",
+          "ne fais jamais rien"
         ]
       },
       "b": {
-        "prepa": "Avec les frites…",
-        "jeu": "Avec les frites, {P} prend…",
+        "prepa": "Ton ex t'écrit, tu…",
+        "jeu": "L'ex de {P} lui écrit, il…",
         "props": [
-          "ketchup",
-          "mayo",
-          "rien"
+          "réponds",
+          "montres à quelqu'un d'abord",
+          "bloques"
         ]
       },
-      "piquant": 1
+      "piquant": 3,
+      "sensible": true
     },
     {
       "id": "qcm-14",
@@ -1988,12 +1989,12 @@
       ],
       "diff": 2,
       "a": {
-        "prepa": "Le réveil, tu…",
-        "jeu": "Le réveil, {P}…",
+        "prepa": "Le réveil sonne, tu…",
+        "jeu": "Le réveil de {P} sonne, il…",
         "props": [
-          "le repousse plusieurs fois",
-          "se lève direct",
-          "se réveille avant"
+          "te lèves direct",
+          "le repousses trois fois",
+          "le coupes et te rendors"
         ]
       },
       "b": {
@@ -2001,11 +2002,12 @@
         "jeu": "{P} s'endort…",
         "props": [
           "avec son téléphone",
-          "avec un livre",
+          "devant une série",
           "dans le noir complet"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-15",
@@ -2070,24 +2072,25 @@
       ],
       "diff": 2,
       "a": {
-        "prepa": "Les photos, tu les…",
-        "jeu": "Les photos, {P} les…",
+        "prepa": "On te raconte un ragot, tu…",
+        "jeu": "On raconte un ragot à {P}, il…",
         "props": [
-          "trie et archive",
-          "laisse s'entasser",
-          "supprime régulièrement"
+          "le gardes pour toi",
+          "le répètes à une personne",
+          "le répètes à tout le monde"
         ]
       },
       "b": {
-        "prepa": "En vacances, tu…",
-        "jeu": "En vacances, {P}…",
+        "prepa": "Tu as fait une bêtise, tu…",
+        "jeu": "{P} a fait une bêtise, il…",
         "props": [
-          "prend tout en photo",
-          "ne prend presque rien",
-          "ne poste que des stories"
+          "avoues tout de suite",
+          "attends qu'on remarque",
+          "nies jusqu'au bout"
         ]
       },
-      "piquant": 1
+      "piquant": 2,
+      "sensible": false
     },
     {
       "id": "qcm-18",
@@ -3043,6 +3046,69 @@
         }
       ],
       "piquant": 1
+    },
+    {
+      "id": "fin-sans-filtre",
+      "titre": "Sans filtre",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "piquant": 2,
+      "questions": [
+        {
+          "prepa": "La dernière chose que tu as regrettée d'avoir dite ?",
+          "jeu": "La dernière chose que {P} a regrettée d'avoir dite ?"
+        },
+        {
+          "prepa": "Ce que tu fais quand tu t'ennuies en soirée ?",
+          "jeu": "Ce que {P} fait quand il s'ennuie en soirée ?"
+        },
+        {
+          "prepa": "Ce que tu ne prêteras jamais à personne ?",
+          "jeu": "Ce que {P} ne prêtera jamais à personne ?"
+        },
+        {
+          "prepa": "Ton excuse préférée pour annuler ?",
+          "jeu": "L'excuse préférée de {P} pour annuler ?"
+        },
+        {
+          "prepa": "La chose la plus chère que tu as cassée ?",
+          "jeu": "La chose la plus chère que {P} a cassée ?"
+        }
+      ]
+    },
+    {
+      "id": "fin-cash",
+      "titre": "Cash",
+      "modes": [
+        "zamours",
+        "zamis"
+      ],
+      "piquant": 3,
+      "sensible": true,
+      "questions": [
+        {
+          "prepa": "Le mensonge que tu répètes le plus souvent ?",
+          "jeu": "Le mensonge que {P} répète le plus souvent ?"
+        },
+        {
+          "prepa": "Ce que tu n'avoueras jamais à tes parents ?",
+          "jeu": "Ce que {P} n'avouera jamais à ses parents ?"
+        },
+        {
+          "prepa": "La personne que tu as le plus déçue ?",
+          "jeu": "La personne que {P} a le plus déçue ?"
+        },
+        {
+          "prepa": "Ce que tu ferais pour mille euros ?",
+          "jeu": "Ce que {P} ferait pour mille euros ?"
+        },
+        {
+          "prepa": "Ton pire moment en soirée ?",
+          "jeu": "Le pire moment de {P} en soirée ?"
+        }
+      ]
     }
   ],
   "citez_trois": [

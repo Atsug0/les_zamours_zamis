@@ -4,7 +4,7 @@ La banque vit dans **`questions.json`**. Les garde-fous sont dans **`lint_questi
 `python3 lint_questions.py` échoue si une règle ci-dessous est violée. À lancer avant
 tout commit de contenu.
 
-État actuel : **291 questions jouables** — 84 paires ouvertes (168), 18 paires QCM (36),
+État actuel : **plus de 300 questions jouables** — 84 paires ouvertes (168), 18 paires QCM (36),
 17 bonus, 11 séries de finale (55), 15 « cite 3 ». Fonds commun utilisable sans aucun bloc
 d'occasion : **69 paires ouvertes en zamours, 65 en zamis**.
 
@@ -168,6 +168,18 @@ La concordance est la mécanique, pas le but. Une bonne question a en plus **une
 À l'inverse, ces formulations sont presque toujours plates : *à quelle heure…*,
 *combien de temps…*, *quel est son X préféré*, *où range-t-il…*. Un fait neutre se
 vérifie, mais ne raconte rien.
+
+### Le registre : actuel, direct, allusif
+Le fonds a été réécrit thème par thème pour parler de 2026 et pas de 1998 : les stories
+qu'on regarde trois fois, le message laissé en vu, la capture d'écran envoyée aux potes,
+ce qu'on demande à une IA et qu'on n'oserait demander à personne, l'achat planqué en
+rentrant, l'artiste qu'on écoute en cachette.
+
+**Le coquin est admis, et il est allusif.** C'est le registre de l'émission d'origine —
+on suggère, on ne décrit pas : « où est-ce que vous avez failli vous faire surprendre »,
+« quelle célébrité aurait droit à ta carte blanche », « si personne ne devait jamais le
+savoir, qu'est-ce que tu ferais ». Une question explicite sort du jeu : elle gêne au
+lieu de faire rire, et elle ferme la table au lieu de l'ouvrir.
 
 ### Le curseur `piquant`
 Chaque question porte un niveau de 1 à 3. **Ce n'est pas la difficulté** : une question
